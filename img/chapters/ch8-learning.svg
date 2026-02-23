@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8eef8"/>
+      <stop offset="100%" stop-color="#c8d8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#bg7)"/>
+  <!-- Network/brain nodes -->
+  <g fill="none" stroke="#6888bb" stroke-width="1.5" opacity="0.4">
+    <line x1="250" y1="130" x2="350" y2="170"/>
+    <line x1="250" y1="200" x2="350" y2="170"/>
+    <line x1="350" y1="170" x2="450" y2="130"/>
+    <line x1="350" y1="170" x2="450" y2="200"/>
+    <line x1="450" y1="130" x2="550" y2="170"/>
+    <line x1="450" y1="200" x2="550" y2="170"/>
+  </g>
+  <g fill="#7898cc" opacity="0.7">
+    <circle cx="250" cy="130" r="8"/>
+    <circle cx="250" cy="200" r="8"/>
+    <circle cx="350" cy="170" r="10"/>
+    <circle cx="450" cy="130" r="8"/>
+    <circle cx="450" cy="200" r="8"/>
+    <circle cx="550" cy="170" r="10"/>
+  </g>
+  <!-- AND/OR gate symbols -->
+  <g transform="translate(300, 100)" opacity="0.5">
+    <text x="0" y="0" font-size="16" fill="#5878aa" font-family="monospace">UND</text>
+  </g>
+  <g transform="translate(470, 100)" opacity="0.5">
+    <text x="0" y="0" font-size="16" fill="#5878aa" font-family="monospace">ODER</text>
+  </g>
+  <!-- Condition brackets -->
+  <g stroke="#8aa8dd" stroke-width="2" fill="none" opacity="0.3">
+    <path d="M180 120 L170 165 L180 210"/>
+    <path d="M620 120 L630 165 L620 210"/>
+  </g>
+  <!-- Combined condition flow -->
+  <g opacity="0.3">
+    <rect x="330" y="230" width="140" height="30" rx="4" fill="none" stroke="#5878aa" stroke-width="1.5"/>
+    <text x="400" y="250" text-anchor="middle" font-size="11" fill="#5878aa" font-family="monospace">A &amp;&amp; B || C</text>
+  </g>
+  <!-- Text -->
+  <text x="400" y="50" text-anchor="middle" font-size="20" fill="#4868a0" font-family="Georgia, serif" letter-spacing="3">K A P I T E L  7</text>
+  <text x="400" y="78" text-anchor="middle" font-size="14" fill="#6888bb" font-family="sans-serif">Lernen · Kombinierte Bedingungen</text>
+</svg>

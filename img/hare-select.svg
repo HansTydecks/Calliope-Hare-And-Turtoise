@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf0d5"/>
+      <stop offset="100%" stop-color="#f4d9a0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="24" fill="url(#hbg)"/>
+  <!-- Body -->
+  <ellipse cx="200" cy="280" rx="80" ry="60" fill="#c47d2e" opacity="0.85"/>
+  <!-- Head -->
+  <circle cx="200" cy="190" r="55" fill="#d4943c"/>
+  <!-- Ears -->
+  <ellipse cx="175" cy="110" rx="16" ry="55" fill="#d4943c" transform="rotate(-10 175 110)"/>
+  <ellipse cx="175" cy="110" rx="9" ry="40" fill="#f0c78a" transform="rotate(-10 175 110)"/>
+  <ellipse cx="225" cy="105" rx="16" ry="55" fill="#d4943c" transform="rotate(10 225 105)"/>
+  <ellipse cx="225" cy="105" rx="9" ry="40" fill="#f0c78a" transform="rotate(10 225 105)"/>
+  <!-- Eyes -->
+  <circle cx="182" cy="182" r="10" fill="white"/>
+  <circle cx="218" cy="182" r="10" fill="white"/>
+  <circle cx="184" cy="183" r="5" fill="#2a1f14"/>
+  <circle cx="220" cy="183" r="5" fill="#2a1f14"/>
+  <circle cx="185" cy="181" r="2" fill="white"/>
+  <circle cx="221" cy="181" r="2" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="200" cy="200" rx="6" ry="4" fill="#a55d1a"/>
+  <!-- Whiskers -->
+  <line x1="170" y1="198" x2="140" y2="192" stroke="#a55d1a" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="170" y1="202" x2="140" y2="208" stroke="#a55d1a" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="230" y1="198" x2="260" y2="192" stroke="#a55d1a" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="230" y1="202" x2="260" y2="208" stroke="#a55d1a" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Feet -->
+  <ellipse cx="165" cy="330" rx="25" ry="12" fill="#b87228"/>
+  <ellipse cx="235" cy="330" rx="25" ry="12" fill="#b87228"/>
+  <!-- Calliope mini board (hint) -->
+  <circle cx="200" cy="275" r="18" fill="none" stroke="#e8c96e" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="200" y="280" text-anchor="middle" font-size="10" fill="#a55d1a" font-family="sans-serif">☆</text>
+  <!-- Speed lines -->
+  <line x1="80" y1="270" x2="100" y2="270" stroke="#d4943c" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <line x1="70" y1="285" x2="95" y2="285" stroke="#d4943c" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+  <line x1="75" y1="300" x2="98" y2="300" stroke="#d4943c" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef4f8"/>
+      <stop offset="100%" stop-color="#d5e5ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#bg2)"/>
+  <!-- Breathing circles (pulsing) -->
+  <circle cx="400" cy="180" r="30" fill="none" stroke="#7ab5d4" stroke-width="2" opacity="0.8"/>
+  <circle cx="400" cy="180" r="55" fill="none" stroke="#7ab5d4" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="400" cy="180" r="80" fill="none" stroke="#7ab5d4" stroke-width="1" opacity="0.3"/>
+  <circle cx="400" cy="180" r="105" fill="none" stroke="#7ab5d4" stroke-width="0.8" opacity="0.15"/>
+  <!-- Loop arrow -->
+  <path d="M370 120 A40 40 0 1 1 430 120" fill="none" stroke="#5a9ab5" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="432,115 440,125 425,125" fill="#5a9ab5"/>
+  <!-- Dots representing heartbeat -->
+  <g fill="#5a9ab5" opacity="0.6">
+    <circle cx="200" cy="220" r="4"/>
+    <circle cx="230" cy="200" r="4"/>
+    <circle cx="260" cy="220" r="4"/>
+    <circle cx="290" cy="200" r="4"/>
+    <circle cx="510" cy="220" r="4"/>
+    <circle cx="540" cy="200" r="4"/>
+    <circle cx="570" cy="220" r="4"/>
+    <circle cx="600" cy="200" r="4"/>
+  </g>
+  <!-- Infinity symbol hint -->
+  <path d="M360 250 Q380 230 400 250 Q420 270 440 250 Q420 230 400 250 Q380 270 360 250" fill="none" stroke="#9cc5d8" stroke-width="2" opacity="0.5"/>
+  <!-- Text -->
+  <text x="400" y="80" text-anchor="middle" font-size="20" fill="#5a7a8a" font-family="Georgia, serif" letter-spacing="3">K A P I T E L  2</text>
+  <text x="400" y="108" text-anchor="middle" font-size="14" fill="#7a9aaa" font-family="sans-serif">Atmen · Endlosschleife</text>
+</svg>

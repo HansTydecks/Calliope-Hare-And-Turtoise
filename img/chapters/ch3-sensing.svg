@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0eef8"/>
+      <stop offset="100%" stop-color="#ddd8ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#bg3)"/>
+  <!-- Sensor waves -->
+  <g stroke="#8a7ab5" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M200 180 Q220 140 240 180"/>
+    <path d="M190 180 Q220 120 250 180"/>
+    <path d="M180 180 Q220 100 260 180"/>
+  </g>
+  <g stroke="#8a7ab5" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M560 180 Q580 140 600 180"/>
+    <path d="M550 180 Q580 120 610 180"/>
+    <path d="M540 180 Q580 100 620 180"/>
+  </g>
+  <!-- Central sensor (eye/light symbol) -->
+  <circle cx="400" cy="170" r="35" fill="none" stroke="#7a6aaa" stroke-width="2.5"/>
+  <circle cx="400" cy="170" r="15" fill="#b8a8dd" opacity="0.7"/>
+  <circle cx="400" cy="170" r="6" fill="#6a5a9a"/>
+  <!-- Light rays into sensor -->
+  <g stroke="#c8b8ee" stroke-width="1" opacity="0.5">
+    <line x1="340" y1="130" x2="375" y2="155"/>
+    <line x1="460" y1="130" x2="425" y2="155"/>
+    <line x1="340" y1="210" x2="375" y2="185"/>
+    <line x1="460" y1="210" x2="425" y2="185"/>
+    <line x1="400" y1="110" x2="400" y2="140"/>
+  </g>
+  <!-- Sound waves (left) -->
+  <g stroke="#9a8abb" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(120, 170)">
+    <path d="M0 0 C10 -15 10 15 0 0"/>
+    <path d="M10 0 C25 -25 25 25 10 0"/>
+    <path d="M20 0 C40 -35 40 35 20 0"/>
+  </g>
+  <!-- Temperature (right) -->
+  <rect x="660" y="140" width="12" height="60" rx="6" fill="none" stroke="#b58a7a" stroke-width="1.5" opacity="0.5"/>
+  <rect x="663" y="170" width="6" height="27" rx="3" fill="#d4a48a" opacity="0.5"/>
+  <circle cx="666" cy="205" r="8" fill="#d4a48a" opacity="0.4"/>
+  <!-- Text -->
+  <text x="400" y="60" text-anchor="middle" font-size="20" fill="#6a5a8a" font-family="Georgia, serif" letter-spacing="3">K A P I T E L  3</text>
+  <text x="400" y="88" text-anchor="middle" font-size="14" fill="#8a7aaa" font-family="sans-serif">Wahrnehmen · Sensoren</text>
+</svg>
