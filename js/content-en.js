@@ -18,11 +18,12 @@ window.CONTENT_EN = {
     or: 'or',
     backToSelection: 'Back',
     lrs: 'LRS',
+    python: 'Python',
     prevChapter: 'Previous Chapter',
     nextChapter: 'Next Chapter',
     problemTitle: 'The Problem',
     conceptTitle: 'The Computer Science Idea',
-    guidedTaskTitle: 'Guided Task',
+    guidedTaskTitle: 'Task',
     openTasksTitle: 'Tasks',
     extensionTitle: 'What if…?',
     chapterLabel: 'Chapter',
@@ -50,7 +51,7 @@ window.CONTENT_EN = {
         title: 'Awakening',
         conceptLabel: 'Sequence — Commands in Order',
         conceptShort: 'Sequence',
-        image: 'img/chapters/ch1-awakening.svg',
+        image: 'img/chapters/hare/h1.png',
 
         narrative: `<p>Something stirs in the digital world. A tiny light blinks on a small board. It's a hare — not one of flesh and bone, but one of light and electricity. Right now, it's just a possibility. It knows only one thing: it has just been switched on.</p>
 
@@ -123,7 +124,7 @@ Stop.</code>
         title: 'Breathing',
         conceptLabel: 'Forever Loop — Continuous Repetition',
         conceptShort: 'Forever Loop',
-        image: 'img/chapters/ch2-breathing.svg',
+        image: 'img/chapters/hare/h2.png',
 
         narrative: `<p>Your hare gave its first sign of life. But then — silence. The program is finished and the hare stands still. Living beings don't just go quiet. They breathe. Inhale, exhale, over and over.</p>
 
@@ -198,7 +199,7 @@ Heartbeat → Pause → Heartbeat → Pause → …</code>
         title: 'Perceiving',
         conceptLabel: 'Inputs and Sensors',
         conceptShort: 'Sensors',
-        image: 'img/chapters/ch3-perceiving.svg',
+        image: 'img/chapters/hare/h3.png',
 
         narrative: `<p>Your hare breathes steadily — day and night the same. But living beings sleep when it's dark and wake when light comes. They sense the world around them.</p>
 
@@ -272,7 +273,7 @@ If the number is small → it's dark</code>
         title: 'Deciding',
         conceptLabel: 'Conditions — If-Then',
         conceptShort: 'If-Then',
-        image: 'img/chapters/ch4-deciding.svg',
+        image: 'img/chapters/hare/h4.png',
 
         narrative: `<p>Your hare can see now. It wakes when light falls on it and sleeps when it's dark. But its world knows only two states: on and off. Real living beings make decisions — small, everyday ones. Is it warm enough? Is someone approaching?</p>
 
@@ -345,7 +346,7 @@ IF Button B pressed
         title: 'Moving',
         conceptLabel: 'Motor Control and Ultrasonic Sensor',
         conceptShort: 'Motors',
-        image: 'img/chapters/ch5-moving.svg',
+        image: 'img/chapters/hare/h5.png',
 
         narrative: `<p>Your hare can breathe, see, and decide. But it still sits motionless. A hare that doesn't move isn't a real hare. Movement changes everything — a being that can move explores the world, flees from danger, and discovers new things.</p>
 
@@ -422,7 +423,7 @@ Ultrasonic distance < 15 cm
         title: 'My Animal',
         conceptLabel: 'Personality — Integrating All Concepts',
         conceptShort: 'Integration',
-        image: 'img/chapters/ch6-mytier.svg',
+        image: 'img/chapters/hare/h6.png',
 
         narrative: `<p>Your hare can breathe, see, react to buttons, move, and dodge obstacles. All these pieces together already make quite a lively creature. But so far, you've been following instructions — now it's time to make your hare truly <em>your</em> animal.</p>
 
@@ -492,7 +493,7 @@ on shake → hare shows surprised face</code>
         title: 'Feelings',
         conceptLabel: 'States and Variables',
         conceptShort: 'Variables',
-        image: 'img/chapters/ch7-feelings.svg',
+        image: 'img/chapters/hare/h7.png',
         bonus: true,
 
         narrative: `<p>Your hare can do many things — but does it truly live? What gives a being real life are inner states: hungry, tired, content. These states change how it reacts to the world.</p>
@@ -567,7 +568,7 @@ ELSE
         title: 'Learning',
         conceptLabel: 'Combining Multiple Conditions',
         conceptShort: 'AND / OR',
-        image: 'img/chapters/ch8-learning.svg',
+        image: 'img/chapters/hare/h8.png',
         bonus: true,
 
         narrative: `<p>So far your hare makes simple choices: hungry or not, bright or dark. Real learning begins where simple answers aren't enough — when it's bright AND the hare is hungry, but also tired.</p>
@@ -640,7 +641,7 @@ IF tiredness > 7 OR light level < 30
         title: 'Encounter',
         conceptLabel: 'Convergence — Algorithms as Blueprints',
         conceptShort: 'Algorithms',
-        image: 'img/chapters/ch9-encounter.svg',
+        image: 'img/chapters/hare/h9.png',
         bonus: true,
 
         narrative: `<p>Your hare has come far. It can breathe, see, decide, move, and feel. But today it meets another being — slow, deliberate. A tortoise. At first the hare thinks: What can this slow creature do?</p>
@@ -720,7 +721,7 @@ Same algorithm. Different character.</code>
         title: 'Awakening',
         conceptLabel: 'Sequence — Commands in Order',
         conceptShort: 'Sequence',
-        image: 'img/chapters/ch1-awakening.svg',
+        image: 'img/chapters/tortoise/t1.png',
 
         narrative: `<p>Deep in the circuits of a small board, something ancient stirs. A tortoise wakes up. Slowly. Very slowly. It never rushes. A small light appears — gently, like a sunrise.</p>
 
@@ -792,7 +793,7 @@ Stop.</code>
         title: 'Breathing',
         conceptLabel: 'Forever Loop — Continuous Repetition',
         conceptShort: 'Forever Loop',
-        image: 'img/chapters/ch2-breathing.svg',
+        image: 'img/chapters/tortoise/t2.png',
 
         narrative: `<p>Your tortoise gave its first sign. But then — silence. Tortoises aren't stones. They live. They breathe. Slowly and steadily, with a rhythm unchanged for centuries.</p>
 
@@ -865,7 +866,7 @@ Ebb → Flow → Ebb → Flow → …</code>
         title: 'Perceiving',
         conceptLabel: 'Inputs and Sensors',
         conceptShort: 'Sensors',
-        image: 'img/chapters/ch3-perceiving.svg',
+        image: 'img/chapters/tortoise/t3.png',
 
         narrative: `<p>Your tortoise breathes steadily — day and night the same. But real tortoises feel the sun's warmth on their shells. They know when it's time to wake and when to rest.</p>
 
@@ -939,7 +940,7 @@ Small number → dark</code>
         title: 'Deciding',
         conceptLabel: 'Conditions — If-Then',
         conceptShort: 'If-Then',
-        image: 'img/chapters/ch4-deciding.svg',
+        image: 'img/chapters/tortoise/t4.png',
 
         narrative: `<p>Your tortoise can see — wakes in sunlight, rests in darkness. But its world has only two states. Real tortoises make decisions — thoughtfully, deliberately.</p>
 
@@ -1006,7 +1007,7 @@ IF Button B pressed
         title: 'Moving',
         conceptLabel: 'Motor Control and Ultrasonic Sensor',
         conceptShort: 'Motors',
-        image: 'img/chapters/ch5-moving.svg',
+        image: 'img/chapters/tortoise/t5.png',
 
         narrative: `<p>Your tortoise can breathe, see, and decide. But it still sits still. Even the wisest tortoise must eventually move — slowly, steadily, unstoppably. Tortoises have crossed oceans, not through speed, but through persistence.</p>
 
@@ -1082,7 +1083,7 @@ Ultrasonic distance < 20 cm
         title: 'My Animal',
         conceptLabel: 'Personality — Integrating All Concepts',
         conceptShort: 'Integration',
-        image: 'img/chapters/ch6-mytier.svg',
+        image: 'img/chapters/tortoise/t6.png',
 
         narrative: `<p>Your tortoise can breathe, see, react, move, and steer around obstacles. All that together makes a wise little creature. But so far you followed instructions — now you'll make your tortoise truly <em>your</em> animal.</p>
 
@@ -1152,7 +1153,7 @@ on shake → tortoise retreats into shell</code>
         title: 'Feelings',
         conceptLabel: 'States and Variables',
         conceptShort: 'Variables',
-        image: 'img/chapters/ch7-feelings.svg',
+        image: 'img/chapters/tortoise/t7.png',
         bonus: true,
 
         narrative: `<p>Your tortoise can do many things — but does it truly live? What makes a being alive are inner states: hungry, tired, content. These change behaviour — subtly but noticeably.</p>
@@ -1226,7 +1227,7 @@ ELSE
         title: 'Learning',
         conceptLabel: 'Combining Multiple Conditions',
         conceptShort: 'AND / OR',
-        image: 'img/chapters/ch8-learning.svg',
+        image: 'img/chapters/tortoise/t8.png',
         bonus: true,
 
         narrative: `<p>So far, simple decisions: hungry or not, bright or dark. True wisdom begins where simple answers aren't enough. It's bright, BUT the tortoise is tired — should it get up?</p>
@@ -1299,7 +1300,7 @@ IF tiredness > 10 OR light level < 50
         title: 'Encounter',
         conceptLabel: 'Convergence — Algorithms as Blueprints',
         conceptShort: 'Algorithms',
-        image: 'img/chapters/ch9-encounter.svg',
+        image: 'img/chapters/tortoise/t9.png',
         bonus: true,
 
         narrative: `<p>Your tortoise has come far — slowly but steadily. Today it meets another being: fast, excited — a hare. At first the tortoise thinks: What good is this frantic creature?</p>

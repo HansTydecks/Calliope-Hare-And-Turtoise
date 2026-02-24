@@ -15,6 +15,7 @@
     path: null,       // 'hare' or 'tortoise'
     chapter: 0,       // 0-indexed
     lrs: false,
+    python: false,
     hardware: false,
     completedChapters: new Set()
   };
@@ -92,6 +93,7 @@
     btnNextChapter: $('#btnNextChapter'),
     btnBackToSelection: $('#btnBackToSelection'),
     btnLRS: $('#btnLRS'),
+    btnPython: $('#btnPython'),
     hardwareCheckbox: $('#hardwareCheckbox')
   };
 
@@ -122,6 +124,7 @@
         path: state.path,
         chapter: state.chapter,
         lrs: state.lrs,
+        python: state.python,
         hardware: state.hardware,
         completed: [...state.completedChapters]
       }));
@@ -136,6 +139,7 @@
         state.path = saved.path || null;
         state.chapter = saved.chapter || 0;
         state.lrs = saved.lrs || false;
+        state.python = saved.python || false;
         state.hardware = saved.hardware || false;
         state.completedChapters = new Set(saved.completed || []);
       }
@@ -155,6 +159,11 @@
 
     // LRS toggle
     els.btnLRS.addEventListener('click', toggleLRS);
+
+    // Python toggle
+    if (els.btnPython) {
+      els.btnPython.addEventListener('click', togglePython);
+    }
 
     // Hardware toggle
     if (els.hardwareCheckbox) {
@@ -256,6 +265,12 @@
       document.documentElement.setAttribute('data-lrs', 'true');
       els.btnLRS.classList.add('active');
     }
+
+    // Python state
+    if (state.python) {
+      document.documentElement.setAttribute('data-python', 'true');
+      if (els.btnPython) els.btnPython.classList.add('active');
+    }
   }
 
   /* --- LRS --- */
@@ -264,6 +279,17 @@
     document.documentElement.setAttribute('data-lrs', state.lrs.toString());
     els.btnLRS.classList.toggle('active', state.lrs);
     saveState();
+  }
+
+  /* --- Python Mode --- */
+  function togglePython() {
+    state.python = !state.python;
+    document.documentElement.setAttribute('data-python', state.python.toString());
+    els.btnPython.classList.toggle('active', state.python);
+    saveState();
+    if (state.path) {
+      renderChapter();
+    }
   }
 
   /* --- Views --- */
@@ -290,7 +316,7 @@
 
     // Animal info
     const isHare = path === 'hare';
-    els.sidebarAnimalImg.src = isHare ? 'img/hare-select.svg' : 'img/tortoise-select.svg';
+    els.sidebarAnimalImg.src = isHare ? 'img/hare-select.png' : 'img/tortoise-select.png';
     els.sidebarAnimalImg.alt = isHare ? ui.hareName : ui.tortoiseName;
     els.sidebarAnimalName.textContent = isHare ? ui.hareName : ui.tortoiseName;
 
@@ -376,6 +402,17 @@
     // Concept
     els.conceptText.innerHTML = chapter.concept || '';
 
+    // Python concept supplement
+    const pyData = getPythonData(state.chapter);
+    if (state.python && pyData && pyData.concept) {
+      els.conceptText.innerHTML += renderPythonBlock(pyData.concept);
+    }
+
+    // Python narrative supplement (appears after narrative)
+    if (state.python && pyData && pyData.narrative) {
+      els.narrativeText.innerHTML += renderPythonBlock(pyData.narrative);
+    }
+
     // Guided Task (with hardware mode support)
     renderGuidedTask(chapter.guidedTask, ui);
 
@@ -413,11 +450,16 @@
       return;
     }
 
+    const pyData = getPythonData(state.chapter);
+
     let html = `<h3 style="margin-bottom: 1rem; font-family: var(--font-serif);">${task.title}</h3>`;
 
     task.steps.forEach((step, i) => {
       // Pick text based on hardware mode
       const text = (state.hardware && step.textHw) ? step.textHw : step.text;
+      // Python alternative for this step
+      const pyStep = (state.python && pyData && pyData.steps && pyData.steps[i])
+        ? renderPythonBlock(pyData.steps[i]) : '';
 
       html += `
         <div class="task-step">
@@ -425,6 +467,7 @@
           <div class="task-step__content">
             <h4>${step.title}</h4>
             <p>${text}</p>
+            ${pyStep}
             <label class="task-step__check">
               <input type="checkbox"> ${ui.checkDone || 'Erledigt'}
             </label>
@@ -433,7 +476,58 @@
       `;
     });
 
+    // Python full guided task block
+    if (state.python && pyData && pyData.fullTask) {
+      html += renderPythonBlock(pyData.fullTask);
+    }
+
     els.guidedTaskContent.innerHTML = html;
+  }
+
+  /* --- Python Data Lookup --- */
+  function getPythonData(chapterIndex) {
+    if (!state.python || !state.path) return null;
+    const pyContent = window.PYTHON_CONTENT;
+    if (!pyContent) return null;
+    const langData = pyContent[state.lang] || pyContent.de;
+    if (!langData) return null;
+    const pathData = langData[state.path];
+    if (!pathData) return null;
+    return pathData[chapterIndex] || null;
+  }
+
+  /* --- Python Block Renderer --- */
+  function renderPythonBlock(pyContent) {
+    if (!pyContent) return '';
+
+    const header = `<div class="python-section__header">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFD43B" stroke-width="2">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+      Python / MakeCode
+    </div>`;
+
+    let body = '';
+
+    if (typeof pyContent === 'string') {
+      body = `<div class="python-section__explanation">${pyContent}</div>`;
+    } else if (typeof pyContent === 'object') {
+      if (pyContent.explanation) {
+        body += `<div class="python-section__explanation">${pyContent.explanation}</div>`;
+      }
+      if (pyContent.code) {
+        body += `<pre><code>${escapeHtml(pyContent.code)}</code></pre>`;
+      }
+      if (pyContent.tip) {
+        body += `<div class="python-section__tip"><strong>💡 Tipp:</strong> ${pyContent.tip}</div>`;
+      }
+    }
+
+    return `<div class="python-section">${header}${body}</div>`;
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   function renderOpenTasks(tasks, ui) {

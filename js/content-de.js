@@ -18,11 +18,12 @@ window.CONTENT_DE = {
     or: 'oder',
     backToSelection: 'Zurück',
     lrs: 'LRS',
+    python: 'Python',
     prevChapter: 'Vorheriges Kapitel',
     nextChapter: 'Nächstes Kapitel',
     problemTitle: 'Das Problem',
     conceptTitle: 'Die Informatik-Idee',
-    guidedTaskTitle: 'Geführte Aufgabe',
+    guidedTaskTitle: 'Aufgabe',
     openTasksTitle: 'Aufgaben',
     extensionTitle: 'Was wäre, wenn…?',
     chapterLabel: 'Kapitel',
@@ -50,7 +51,7 @@ window.CONTENT_DE = {
         title: 'Erwachen',
         conceptLabel: 'Sequenz — Befehle nacheinander',
         conceptShort: 'Sequenz',
-        image: 'img/chapters/ch1-awakening.svg',
+        image: 'img/chapters/hare/h1.png',
 
         narrative: `<p>Etwas regt sich in der digitalen Welt. Ein winziges Licht blinkt auf einer kleinen Platine. Es ist ein Hase — kein echter aus Fell und Knochen, sondern einer aus Licht und Elektrizität. Im Moment ist er nur eine Möglichkeit. Er weiß nur eines: Er wurde gerade eingeschaltet.</p>
 
@@ -123,7 +124,7 @@ Bleib stehen.</code>
         title: 'Atmen',
         conceptLabel: 'Endlosschleife — Dauerhaftes Wiederholen',
         conceptShort: 'Endlosschleife',
-        image: 'img/chapters/ch2-breathing.svg',
+        image: 'img/chapters/hare/h2.png',
 
         narrative: `<p>Dein Hase hat sein erstes Lebenszeichen gegeben. Aber dann — Stille. Das Programm ist fertig, und der Hase steht wieder still. Lebendige Wesen verstummen nicht einfach. Sie atmen. Einatmen, ausatmen, immer weiter.</p>
 
@@ -198,7 +199,7 @@ Herzschlag → Pause → Herzschlag → Pause → …</code>
         title: 'Wahrnehmen',
         conceptLabel: 'Eingaben und Sensoren',
         conceptShort: 'Sensoren',
-        image: 'img/chapters/ch3-perceiving.svg',
+        image: 'img/chapters/hare/h3.png',
 
         narrative: `<p>Dein Hase atmet in stetigem Rhythmus — egal ob Tag oder Nacht. Aber lebendige Wesen schlafen, wenn es dunkel ist, und wachen auf, wenn das Licht kommt. Sie spüren die Welt um sich herum.</p>
 
@@ -272,7 +273,7 @@ Wenn die Zahl klein ist → es ist dunkel</code>
         title: 'Entscheiden',
         conceptLabel: 'Bedingungen — Wenn-Dann',
         conceptShort: 'Wenn-Dann',
-        image: 'img/chapters/ch4-deciding.svg',
+        image: 'img/chapters/hare/h4.png',
 
         narrative: `<p>Dein Hase kann jetzt sehen. Er wacht auf, wenn Licht auf ihn fällt, und schläft, wenn es dunkel wird. Aber seine Welt kennt nur zwei Zustände: an und aus. Echte Lebewesen treffen Entscheidungen — kleine, alltägliche. Ist es warm genug? Kommt jemand näher?</p>
 
@@ -345,7 +346,7 @@ WENN Knopf B gedrückt
         title: 'Bewegen',
         conceptLabel: 'Motorsteuerung und Ultraschallsensor',
         conceptShort: 'Motoren',
-        image: 'img/chapters/ch5-moving.svg',
+        image: 'img/chapters/hare/h5.png',
 
         narrative: `<p>Dein Hase kann atmen, sehen und entscheiden. Aber er sitzt immer noch still auf der Platine. Ein Hase, der sich nicht bewegt, ist kein richtiger Hase. Bewegung verändert alles — ein Wesen, das sich bewegen kann, erkundet die Welt, flieht vor Gefahren, entdeckt Neues.</p>
 
@@ -422,7 +423,7 @@ Ultraschall-Abstand < 15 cm
         title: 'Mein Tier',
         conceptLabel: 'Persönlichkeit — Integration aller Konzepte',
         conceptShort: 'Integration',
-        image: 'img/chapters/ch6-mytier.svg',
+        image: 'img/chapters/hare/h6.png',
 
         narrative: `<p>Dein Hase kann jetzt atmen, sehen, auf Knöpfe reagieren, sich bewegen und Hindernissen ausweichen. All diese Einzelteile zusammen ergeben schon ein recht lebendiges Wesen. Aber bisher hast du immer Anleitungen befolgt — jetzt ist es Zeit, deinen Hasen zu <em>deinem</em> Tier zu machen.</p>
 
@@ -492,7 +493,7 @@ wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
         title: 'Gefühle',
         conceptLabel: 'Zustände und Variablen',
         conceptShort: 'Variablen',
-        image: 'img/chapters/ch7-feelings.svg',
+        image: 'img/chapters/hare/h7.png',
         bonus: true,
 
         narrative: `<p>Dein Hase kann viel — aber lebt er wirklich? Was einem Wesen echtes Leben einhaucht, sind innere Zustände: hungrig, müde, zufrieden. Diese Zustände verändern, wie er auf die Welt reagiert.</p>
@@ -567,7 +568,7 @@ SONST
         title: 'Lernen',
         conceptLabel: 'Kombination mehrerer Bedingungen',
         conceptShort: 'UND / ODER',
-        image: 'img/chapters/ch8-learning.svg',
+        image: 'img/chapters/hare/h8.png',
         bonus: true,
 
         narrative: `<p>Bisher trifft dein Hase einfache Entscheidungen: hungrig oder nicht, hell oder dunkel. Echtes Lernen beginnt dort, wo einfache Antworten nicht mehr reichen — wenn es hell ist UND der Hase Hunger hat, aber gleichzeitig müde ist.</p>
@@ -640,7 +641,7 @@ WENN muedigkeit > 7 ODER Lichtstärke < 30
         title: 'Begegnung',
         conceptLabel: 'Zusammenführung — Algorithmen als Baupläne',
         conceptShort: 'Algorithmen',
-        image: 'img/chapters/ch9-encounter.svg',
+        image: 'img/chapters/hare/h9.png',
         bonus: true,
 
         narrative: `<p>Dein Hase ist weit gekommen. Er kann atmen, sehen, entscheiden, sich bewegen und fühlen. Doch heute trifft er auf ein anderes Wesen — langsam, bedächtig. Eine Schildkröte. Zuerst denkt er: Was kann dieses langsame Wesen schon?</p>
@@ -720,7 +721,7 @@ Gleicher Algorithmus. Anderer Charakter.</code>
         title: 'Erwachen',
         conceptLabel: 'Sequenz — Befehle nacheinander',
         conceptShort: 'Sequenz',
-        image: 'img/chapters/ch1-awakening.svg',
+        image: 'img/chapters/tortoise/t1.png',
 
         narrative: `<p>Tief in den Schaltkreisen einer kleinen Platine regt sich etwas Uraltes. Eine Schildkröte wacht auf. Langsam. Sehr langsam. Sie eilt nicht — sie hat noch nie geeilt. Ein kleines Licht erscheint, behutsam wie ein Sonnenaufgang.</p>
 
@@ -793,7 +794,7 @@ Bleib stehen.</code>
         title: 'Atmen',
         conceptLabel: 'Endlosschleife — Dauerhaftes Wiederholen',
         conceptShort: 'Endlosschleife',
-        image: 'img/chapters/ch2-breathing.svg',
+        image: 'img/chapters/tortoise/t2.png',
 
         narrative: `<p>Deine Schildkröte hat ihr erstes Zeichen gegeben. Aber dann — Stille. Schildkröten sind keine Steine. Sie leben. Sie atmen. Langsam und stetig, mit einem Rhythmus, der sich über Jahrhunderte nicht verändert hat.</p>
 
@@ -866,7 +867,7 @@ Ebbe → Flut → Ebbe → Flut → …</code>
         title: 'Wahrnehmen',
         conceptLabel: 'Eingaben und Sensoren',
         conceptShort: 'Sensoren',
-        image: 'img/chapters/ch3-perceiving.svg',
+        image: 'img/chapters/tortoise/t3.png',
 
         narrative: `<p>Deine Schildkröte atmet stetig — egal ob Tag oder Nacht. Aber echte Schildkröten spüren die Wärme der Sonne auf ihrem Panzer. Sie wissen, wann es Zeit ist aufzuwachen und wann Zeit zu ruhen.</p>
 
@@ -940,7 +941,7 @@ Wenn die Zahl klein ist → es ist dunkel</code>
         title: 'Entscheiden',
         conceptLabel: 'Bedingungen — Wenn-Dann',
         conceptShort: 'Wenn-Dann',
-        image: 'img/chapters/ch4-deciding.svg',
+        image: 'img/chapters/tortoise/t4.png',
 
         narrative: `<p>Deine Schildkröte sieht jetzt — wacht bei Sonne auf, ruht im Dunkeln. Aber ihre Welt hat nur zwei Zustände: wach und ruhend. Echte Schildkröten treffen Entscheidungen — bedächtig, wohlüberlegt.</p>
 
@@ -1007,7 +1008,7 @@ WENN Knopf B gedrückt
         title: 'Bewegen',
         conceptLabel: 'Motorsteuerung und Ultraschallsensor',
         conceptShort: 'Motoren',
-        image: 'img/chapters/ch5-moving.svg',
+        image: 'img/chapters/tortoise/t5.png',
 
         narrative: `<p>Deine Schildkröte kann atmen, sehen und entscheiden. Aber sie sitzt noch auf der Stelle. Selbst die klügste Schildkröte muss sich irgendwann bewegen — langsam, gleichmäßig, unaufhaltsam. Schildkröten haben Ozeane durchquert, nicht durch Geschwindigkeit, sondern durch Beharrlichkeit.</p>
 
@@ -1083,7 +1084,7 @@ Ultraschall-Abstand < 20 cm
         title: 'Mein Tier',
         conceptLabel: 'Persönlichkeit — Integration aller Konzepte',
         conceptShort: 'Integration',
-        image: 'img/chapters/ch6-mytier.svg',
+        image: 'img/chapters/tortoise/t6.png',
 
         narrative: `<p>Deine Schildkröte kann atmen, sehen, reagieren, sich bewegen und Hindernissen ausweichen. All das zusammen ergibt schon ein weises kleines Wesen. Aber bisher hast du Anleitungen befolgt — jetzt machst du deine Schildkröte zu <em>deinem</em> Tier.</p>
 
@@ -1153,7 +1154,7 @@ wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
         title: 'Gefühle',
         conceptLabel: 'Zustände und Variablen',
         conceptShort: 'Variablen',
-        image: 'img/chapters/ch7-feelings.svg',
+        image: 'img/chapters/tortoise/t7.png',
         bonus: true,
 
         narrative: `<p>Deine Schildkröte kann viel — aber lebt sie wirklich? Was ein Wesen lebendig macht, sind innere Zustände: satt oder hungrig, wach oder müde. Diese verändern das Verhalten — subtil, aber spürbar.</p>
@@ -1227,7 +1228,7 @@ SONST
         title: 'Lernen',
         conceptLabel: 'Kombination mehrerer Bedingungen',
         conceptShort: 'UND / ODER',
-        image: 'img/chapters/ch8-learning.svg',
+        image: 'img/chapters/tortoise/t8.png',
         bonus: true,
 
         narrative: `<p>Bisher einfache Entscheidungen: hungrig oder nicht, hell oder dunkel. Wahre Weisheit beginnt, wo einfache Antworten nicht reichen. Es ist hell, ABER die Schildkröte ist müde — soll sie aufstehen?</p>
@@ -1300,7 +1301,7 @@ WENN muedigkeit > 10 ODER Lichtstärke < 50
         title: 'Begegnung',
         conceptLabel: 'Zusammenführung — Algorithmen als Baupläne',
         conceptShort: 'Algorithmen',
-        image: 'img/chapters/ch9-encounter.svg',
+        image: 'img/chapters/tortoise/t9.png',
         bonus: true,
 
         narrative: `<p>Deine Schildkröte ist weit gekommen — langsam, aber stetig. Doch heute begegnet sie einem anderen Wesen: schnell, aufgeregt, ein Hase. Zuerst denkt sie: Was soll dieses hektische Wesen?</p>
