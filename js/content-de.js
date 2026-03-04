@@ -84,8 +84,8 @@ Bleib stehen.</code>
               text: 'Ziehe den Block <span class="calliope-block">pausiere (ms) 500</span> aus <strong>Grundlagen</strong> unter deinen LED-Block. Der Hase ist schnell — 500 Millisekunden reichen ihm.'
             },
             {
-              title: 'Zeige einen Stern',
-              text: 'Ziehe einen weiteren <span class="calliope-block">zeige LEDs</span> Block darunter. Male ein Stern-Muster (★). Füge wieder eine Pause von 500 ms ein.'
+              title: 'Zeige einen Pfeil',
+              text: 'Ziehe einen weiteren <span class="calliope-block">zeige LEDs</span> Block darunter. Male ein Pfeil-Muster (↑). Füge wieder eine Pause von 500 ms ein.'
             },
             {
               title: 'Lösche die Anzeige',
@@ -93,8 +93,8 @@ Bleib stehen.</code>
             },
             {
               title: 'Teste dein Programm',
-              text: 'Klicke auf den ▶ Play-Button im Simulator. Siehst du, wie zuerst das Herz erscheint, dann der Stern, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.',
-              textHw: 'Lade das Programm auf deinen Calliope mini herunter. Siehst du, wie zuerst das Herz erscheint, dann der Stern, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.'
+              text: 'Klicke auf den ▶ Play-Button im Simulator. Siehst du, wie zuerst das Herz erscheint, dann der Pfeil, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.',
+              textHw: 'Lade das Programm auf deinen Calliope mini herunter. Siehst du, wie zuerst das Herz erscheint, dann der Pfeil, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.'
             }
           ]
         },
@@ -350,18 +350,19 @@ WENN Knopf B gedrückt
 
         narrative: `<p>Dein Hase kann atmen, sehen und entscheiden. Aber er sitzt immer noch still auf der Platine. Ein Hase, der sich nicht bewegt, ist kein richtiger Hase. Bewegung verändert alles — ein Wesen, das sich bewegen kann, erkundet die Welt, flieht vor Gefahren, entdeckt Neues.</p>
 
-<p>Der Calliope mini kann Motoren ansteuern. Dein Hase will natürlich schnell sein. Aber Geschwindigkeit hat ihren Preis — wer zu schnell ist, übersieht Hindernisse. Deshalb bekommt dein Hase auch einen <strong>Ultraschallsensor</strong>: Er erkennt, wenn etwas im Weg ist, und kann rechtzeitig ausweichen. Fluchtverhalten — wie ein echter Hase!</p>`,
+<p>Mit dem <strong>MotionKit</strong> bekommt dein Calliope mini Räder und Sensoren. Das MotionKit hat zwei Motoren (links und rechts), einen <strong>Ultraschallsensor</strong> und LEDs. Dein Hase will natürlich schnell sein. Aber Geschwindigkeit hat ihren Preis — wer zu schnell ist, übersieht Hindernisse. Der Ultraschallsensor erkennt, wenn etwas im Weg ist, und dein Hase kann rechtzeitig ausweichen. Fluchtverhalten — wie ein echter Hase!</p>`,
 
-        problem: `<p>Dein Hase soll sich bewegen und Hindernisse erkennen können. Die Motoren starten automatisch. Wenn der Ultraschallsensor ein Hindernis erkennt, soll der Hase blitzschnell ausweichen — Fluchtverhalten!</p>`,
+        problem: `<p>Dein Hase soll sich mit dem MotionKit bewegen und Hindernisse erkennen können. Die Motoren starten automatisch. Wenn der Ultraschallsensor ein Hindernis erkennt, soll der Hase blitzschnell ausweichen — Fluchtverhalten!</p>`,
 
-        concept: `<p>Ein <strong>Motor</strong> wandelt elektrische Energie in Bewegung um. Du steuerst Richtung und Geschwindigkeit (0–100).</p>
+        concept: `<p>Das <strong>MotionKit</strong> hat zwei Motoren — links und rechts. Du steuerst Richtung (vorwärts/rückwärts) und Tempo (0–255).</p>
 <p>Ein <strong>Ultraschallsensor</strong> misst Abstände — wie ein Echolot. Er sendet Schallwellen aus und misst, wie lange sie brauchen, um zurückzukommen.</p>
-<code>Motor A + B vorwärts mit Geschwindigkeit 80
+<code>Motor links Richtung vorwärts Tempo 200
+Motor rechts Richtung vorwärts Tempo 200
 → Der Hase rennt los!
 
-Ultraschall-Abstand < 15 cm
+Ultraschallsensor cm < 15
 → Hindernis erkannt! Ausweichen!</code>
-<p>Motor A und B können unterschiedlich schnell drehen — so fährt dein Hase Kurven.</p>`,
+<p>Der linke und der rechte Motor können unterschiedlich schnell drehen — so fährt dein Hase Kurven.</p>`,
 
         guidedTask: {
           title: 'Der Hase flieht vor Hindernissen',
@@ -371,24 +372,20 @@ Ultraschall-Abstand < 15 cm
               text: 'Öffne dein Projekt <strong>„Mein Hase"</strong>.'
             },
             {
-              title: 'Motor-Blöcke finden',
-              text: 'Gehe in die Kategorie <strong>Motoren</strong>. Du findest dort Blöcke wie <span class="calliope-block">setze Motor A auf Geschwindigkeit</span>.'
-            },
-            {
-              title: 'Ultraschall einrichten',
-              text: 'Füge den Ultraschallsensor hinzu. Unter <strong>Sensoren</strong> findest du den Block <span class="calliope-block">Ultraschall Abstand (cm)</span>.'
+              title: 'MotionKit laden',
+              text: 'Öffne die <strong>Erweiterungen</strong> und wähle das <strong>MotionKit-Paket</strong> aus. Die neuen Blöcke erscheinen in der Codeblock-Bibliothek.'
             },
             {
               title: 'Vorwärts fahren',
-              text: 'In <span class="calliope-block">dauerhaft</span>: Setze beide Motoren auf Geschwindigkeit 80. Zeige einen Pfeil nach oben auf den LEDs.'
+              text: 'In <span class="calliope-block">dauerhaft</span>: Setze <span class="calliope-block">Motor links Richtung vorwärts Tempo 200</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 200</span>. Zeige einen Pfeil nach oben auf den LEDs.'
             },
             {
               title: 'Hindernis-Erkennung',
-              text: 'Füge eine Bedingung ein: <span class="calliope-block">wenn Ultraschall Abstand < 15</span> → Stoppe beide Motoren, zeige ein Ausrufezeichen.'
+              text: 'Füge eine Bedingung ein: <span class="calliope-block">wenn Ultraschallsensor cm &lt; 15</span> → Stoppe beide Motoren mit <span class="calliope-block">Motor links anhalten</span> und <span class="calliope-block">Motor rechts anhalten</span>. Zeige ein Ausrufezeichen.'
             },
             {
               title: 'Fluchtverhalten',
-              text: 'Nach dem Stoppen: Motor A auf −80, Motor B auf 80 (Drehung), <span class="calliope-block">pausiere 500</span>, dann wieder beide vorwärts. Der Hase dreht sich blitzschnell weg!'
+              text: 'Nach dem Stoppen: <span class="calliope-block">Motor links Richtung rückwärts Tempo 200</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 200</span> (schnelle Drehung). <span class="calliope-block">pausiere 500</span>, dann wieder beide vorwärts. Der Hase dreht sich blitzschnell weg!'
             },
             {
               title: 'Teste das Fluchtverhalten',
@@ -402,7 +399,7 @@ Ultraschall-Abstand < 15 cm
           {
             level: 'explore',
             title: 'Kurven fahren',
-            text: 'Was passiert, wenn Motor A auf 80 und Motor B auf 30 steht? Probiere verschiedene Kombinationen. Dein Hase kann Kurven fahren!'
+            text: 'Was passiert, wenn <span class="calliope-block">Motor links</span> auf Tempo 200 und <span class="calliope-block">Motor rechts</span> auf Tempo 80 steht? Probiere verschiedene Kombinationen. Dein Hase kann Kurven fahren!'
           },
           {
             level: 'create',
@@ -412,8 +409,8 @@ Ultraschall-Abstand < 15 cm
         ],
 
         extensions: [
-          'Was wäre, wenn der Hase seine Geschwindigkeit an die Helligkeit anpasst? Bei viel Licht rennt er, bei wenig Licht schleicht er.',
-          'Was passiert, wenn ein Motor vorwärts und der andere rückwärts dreht?'
+          'Was wäre, wenn der Hase sein Tempo an die Helligkeit anpasst? Bei viel Licht rennt er, bei wenig Licht schleicht er.',
+          'Was passiert, wenn <span class="calliope-block">Motor links</span> vorwärts und <span class="calliope-block">Motor rechts</span> rückwärts dreht?'
         ]
       },
 
@@ -498,7 +495,9 @@ wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
 
         narrative: `<p>Dein Hase kann viel — aber lebt er wirklich? Was einem Wesen echtes Leben einhaucht, sind innere Zustände: hungrig, müde, zufrieden. Diese Zustände verändern, wie er auf die Welt reagiert.</p>
 
-<p>In der Programmierung speichern wir solche Zustände in <strong>Variablen</strong> — Schubladen mit Etikett und einer Zahl darin. Dein Hase ist ungeduldig, auch mit seinen Gefühlen: Sein Hunger steigt schnell, er braucht viel Aufmerksamkeit!</p>`,
+<p>In der Programmierung speichern wir solche Zustände in <strong>Variablen</strong> — Schubladen mit Etikett und einer Zahl darin. Dein Hase ist ungeduldig, auch mit seinen Gefühlen: Sein Hunger steigt schnell, er braucht viel Aufmerksamkeit!</p>
+
+<p><strong>Lass dich inspirieren!</strong> Auf <a href="https://tinysuperlab.com/produkte/motionkit/programmieren/" target="_blank">tinysuperlab.com</a> findest du weitere Ideen und Projekte für dein MotionKit.</p>`,
 
         problem: `<p>Dein Hase soll „hungrig" werden können. Ein Hunger-Wert steigt langsam an. Wenn er gefüttert wird (Knopf B), sinkt der Hunger. Auf den LEDs soll das sichtbar sein.</p>`,
 
@@ -1012,17 +1011,19 @@ WENN Knopf B gedrückt
 
         narrative: `<p>Deine Schildkröte kann atmen, sehen und entscheiden. Aber sie sitzt noch auf der Stelle. Selbst die klügste Schildkröte muss sich irgendwann bewegen — langsam, gleichmäßig, unaufhaltsam. Schildkröten haben Ozeane durchquert, nicht durch Geschwindigkeit, sondern durch Beharrlichkeit.</p>
 
-<p>Mit Motoren bewegt sich deine Schildkröte, wie es ihrer Natur entspricht: ruhig und zuverlässig. Und mit dem <strong>Ultraschallsensor</strong> erkennt sie Hindernisse rechtzeitig. Kein hektisches Ausweichen — ein bedächtiges Umlenken.</p>`,
+<p>Mit dem <strong>MotionKit</strong> bekommt dein Calliope mini Räder und Sensoren. Das MotionKit hat zwei Motoren (links und rechts), einen <strong>Ultraschallsensor</strong> und LEDs. Deine Schildkröte bewegt sich, wie es ihrer Natur entspricht: ruhig und zuverlässig. Der Ultraschallsensor erkennt Hindernisse rechtzeitig. Kein hektisches Ausweichen — ein bedächtiges Umlenken.</p>`,
 
-        problem: `<p>Deine Schildkröte soll sich bewegen und Hindernisse erkennen. Die Motoren fahren automatisch. Bei einem Hindernis lenkt sie ruhig um — kein Fluchtverhalten, sondern vorsichtiges Navigieren.</p>`,
+        problem: `<p>Deine Schildkröte soll sich mit dem MotionKit bewegen und Hindernisse erkennen. Die Motoren fahren automatisch. Bei einem Hindernis lenkt sie ruhig um — kein Fluchtverhalten, sondern vorsichtiges Navigieren.</p>`,
 
-        concept: `<p>Ein <strong>Motor</strong> wandelt elektrische Energie in Bewegung. <strong>Ultraschallsensor</strong>: misst Abstände mit Schallwellen.</p>
-<code>Motor A + B vorwärts mit Geschwindigkeit 30
+        concept: `<p>Das <strong>MotionKit</strong> hat zwei Motoren — links und rechts. Du steuerst Richtung (vorwärts/rückwärts) und Tempo (0–255).</p>
+<p>Ein <strong>Ultraschallsensor</strong> misst Abstände — wie ein Echolot.</p>
+<code>Motor links Richtung vorwärts Tempo 80
+Motor rechts Richtung vorwärts Tempo 80
 → Die Schildkröte gleitet los.
 
-Ultraschall-Abstand < 20 cm
+Ultraschallsensor cm < 20
 → Hindernis! Langsam umlenken.</code>
-<p>Unterschiedliche Motorgeschwindigkeiten = Kurven.</p>`,
+<p>Unterschiedliche Tempo-Werte links und rechts = Kurven.</p>`,
 
         guidedTask: {
           title: 'Die Schildkröte navigiert vorsichtig',
@@ -1032,24 +1033,20 @@ Ultraschall-Abstand < 20 cm
               text: 'Öffne <strong>„Meine Schildkröte"</strong>.'
             },
             {
-              title: 'Motor-Blöcke finden',
-              text: 'Unter <strong>Motoren</strong>: <span class="calliope-block">setze Motor A auf Geschwindigkeit</span>.'
-            },
-            {
-              title: 'Ultraschall einrichten',
-              text: 'Unter <strong>Sensoren</strong>: <span class="calliope-block">Ultraschall Abstand (cm)</span>.'
+              title: 'MotionKit laden',
+              text: 'Öffne die <strong>Erweiterungen</strong> und wähle das <strong>MotionKit-Paket</strong> aus. Die neuen Blöcke erscheinen in der Codeblock-Bibliothek.'
             },
             {
               title: 'Vorwärts gleiten',
-              text: 'In <span class="calliope-block">dauerhaft</span>: Beide Motoren auf 30. Langsamer Pfeil auf den LEDs.'
+              text: 'In <span class="calliope-block">dauerhaft</span>: Setze <span class="calliope-block">Motor links Richtung vorwärts Tempo 80</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 80</span>. Zeige einen langsamen Pfeil auf den LEDs.'
             },
             {
               title: 'Hindernis-Erkennung',
-              text: '<span class="calliope-block">wenn Ultraschall Abstand < 20</span> → Motoren stoppen, Panzer-Symbol anzeigen.'
+              text: 'Füge eine Bedingung ein: <span class="calliope-block">wenn Ultraschallsensor cm &lt; 20</span> → Stoppe beide Motoren mit <span class="calliope-block">Motor links anhalten</span> und <span class="calliope-block">Motor rechts anhalten</span>. Zeige ein Panzer-Symbol.'
             },
             {
               title: 'Vorsichtiges Umlenken',
-              text: 'Nach dem Stoppen: Motor A auf 30, Motor B auf 10 (sanfte Kurve), <span class="calliope-block">pausiere 1000</span>, dann wieder geradeaus. Ruhig und bedacht.'
+              text: 'Nach dem Stoppen: <span class="calliope-block">Motor links Richtung vorwärts Tempo 80</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 30</span> (sanfte Kurve). <span class="calliope-block">pausiere 1000</span>, dann wieder beide auf Tempo 80. Ruhig und bedacht.'
             },
             {
               title: 'Testen',
@@ -1063,7 +1060,7 @@ Ultraschall-Abstand < 20 cm
           {
             level: 'explore',
             title: 'Sanfte Kurven',
-            text: 'Motor A auf 30, Motor B auf 15 — was passiert? Probiere verschiedene Kombinationen.'
+            text: '<span class="calliope-block">Motor links</span> auf Tempo 80, <span class="calliope-block">Motor rechts</span> auf Tempo 30 — was passiert? Probiere verschiedene Kombinationen.'
           },
           {
             level: 'create',
@@ -1073,8 +1070,8 @@ Ultraschall-Abstand < 20 cm
         ],
 
         extensions: [
-          'Was wäre, wenn die Geschwindigkeit von der Helligkeit abhängt?',
-          'Was passiert, wenn ein Motor vorwärts und der andere rückwärts dreht?'
+          'Was wäre, wenn das Tempo von der Helligkeit abhängt?',
+          'Was passiert, wenn <span class="calliope-block">Motor links</span> vorwärts und <span class="calliope-block">Motor rechts</span> rückwärts dreht?'
         ]
       },
 
@@ -1159,7 +1156,9 @@ wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
 
         narrative: `<p>Deine Schildkröte kann viel — aber lebt sie wirklich? Was ein Wesen lebendig macht, sind innere Zustände: satt oder hungrig, wach oder müde. Diese verändern das Verhalten — subtil, aber spürbar.</p>
 
-<p>In <strong>Variablen</strong> speichern wir solche Zustände. Deine Schildkröte ist genügsam — ihr Hunger steigt nur langsam. Sie braucht wenig, aber beständig. Wer sich eine Schildkröte aussucht, muss nicht ständig aufpassen — aber er darf sie nicht vergessen.</p>`,
+<p>In <strong>Variablen</strong> speichern wir solche Zustände. Deine Schildkröte ist genügsam — ihr Hunger steigt nur langsam. Sie braucht wenig, aber beständig. Wer sich eine Schildkröte aussucht, muss nicht ständig aufpassen — aber er darf sie nicht vergessen.</p>
+
+<p><strong>Lass dich inspirieren!</strong> Auf <a href="https://tinysuperlab.com/produkte/motionkit/programmieren/" target="_blank">tinysuperlab.com</a> findest du weitere Ideen und Projekte für dein MotionKit.</p>`,
 
         problem: `<p>Deine Schildkröte soll „hungrig" werden. Hunger steigt langsam. Füttern (Knopf B) senkt ihn. Auf den LEDs soll das sichtbar sein.</p>`,
 
