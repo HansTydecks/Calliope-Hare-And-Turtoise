@@ -94,6 +94,10 @@
           <span class="hardware-toggle__text" data-i18n="hardwareLabel">Ich besitze die nötige Hardware (Calliope mini + Motoren + Sensoren)</span>
         </label>
       </div>
+
+      <div class="teacher-access">
+        <button class="btn-teacher" id="btnTeacher" title="Bereich für Lehrkräfte">🔑 Lehrkräfte</button>
+      </div>
     </div>
   </main>
 
@@ -219,6 +223,18 @@
       &copy; 2025 Hans Tydecks
     </p>
   </footer>
+
+  <!-- ============================================ -->
+  <!-- TEACHER SOLUTION MODAL                       -->
+  <!-- ============================================ -->
+  <div class="modal-overlay" id="teacherModal" hidden>
+    <div class="modal">
+      <button class="modal__close" id="teacherModalClose" aria-label="Schließen">&times;</button>
+      <div class="modal__content" id="teacherModalContent">
+        <!-- Filled by app.js -->
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================ -->
   <!-- SCRIPTS                                      -->

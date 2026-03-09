@@ -610,4 +610,111 @@
   /* --- Start --- */
   document.addEventListener('DOMContentLoaded', init);
 
+  /* --- Teacher Solutions --- */
+  (function initTeacher() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnTeacher   = document.querySelector('#btnTeacher');
+      const modal        = document.querySelector('#teacherModal');
+      const modalClose   = document.querySelector('#teacherModalClose');
+      const modalContent = document.querySelector('#teacherModalContent');
+
+      if (!btnTeacher || !modal) return;
+
+      let authenticated = false;
+
+      btnTeacher.addEventListener('click', () => {
+        modal.hidden = false;
+        if (authenticated) {
+          renderSolutionsView('hare');
+        } else {
+          renderPasswordForm();
+        }
+      });
+
+      modalClose.addEventListener('click', () => { modal.hidden = true; });
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.hidden = true;
+      });
+
+      function renderPasswordForm() {
+        modalContent.innerHTML = `
+          <div class="teacher-password">
+            <h2>Bereich für Lehrkräfte</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+              Bitte geben Sie das Passwort ein, um die Lösungen zu sehen.
+            </p>
+            <input type="password" id="teacherPwInput" placeholder="Passwort" autocomplete="off">
+            <button class="btn-submit" id="teacherPwSubmit">Anmelden</button>
+            <span class="error-msg" id="teacherPwError"></span>
+          </div>
+        `;
+
+        const pwInput  = document.querySelector('#teacherPwInput');
+        const pwSubmit = document.querySelector('#teacherPwSubmit');
+        const pwError  = document.querySelector('#teacherPwError');
+
+        const checkPassword = () => {
+          const solutions = (window.CONTENT_DE && window.CONTENT_DE.teacherSolutions) || {};
+          if (pwInput.value === solutions.password) {
+            authenticated = true;
+            renderSolutionsView('hare');
+          } else {
+            pwError.textContent = 'Falsches Passwort.';
+            pwInput.value = '';
+            pwInput.focus();
+          }
+        };
+
+        pwSubmit.addEventListener('click', checkPassword);
+        pwInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') checkPassword();
+        });
+
+        setTimeout(() => pwInput.focus(), 100);
+      }
+
+      function renderSolutionsView(activePath) {
+        const solutions = (window.CONTENT_DE && window.CONTENT_DE.teacherSolutions) || {};
+        const hareData = solutions.hare || [];
+        const tortoiseData = solutions.tortoise || [];
+        const data = activePath === 'hare' ? hareData : tortoiseData;
+
+        const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        let chaptersHtml = '';
+        data.forEach(item => {
+          let inner = '';
+          if (item.note) {
+            inner += `<p class="solution-note">${item.note}</p>`;
+          }
+          if (item.code) {
+            inner += `<pre>${esc(item.code)}</pre>`;
+          }
+          chaptersHtml += `
+            <div class="teacher-solution-chapter">
+              <h3>${item.title}</h3>
+              ${inner}
+            </div>
+          `;
+        });
+
+        modalContent.innerHTML = `
+          <div class="teacher-solutions">
+            <h2>Lehrerlösungen</h2>
+            <div class="teacher-path-tabs">
+              <button class="teacher-path-tab ${activePath === 'hare' ? 'active' : ''}" data-path="hare">🐇 Hase</button>
+              <button class="teacher-path-tab ${activePath === 'tortoise' ? 'active' : ''}" data-path="tortoise">🐢 Schildkröte</button>
+            </div>
+            ${chaptersHtml}
+          </div>
+        `;
+
+        // Tab switching
+        modalContent.querySelectorAll('.teacher-path-tab').forEach(tab => {
+          tab.addEventListener('click', () => renderSolutionsView(tab.dataset.path));
+        });
+      }
+    });
+  })();
+
 })();

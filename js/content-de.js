@@ -73,7 +73,7 @@ Bleib stehen.</code>
           steps: [
             {
               title: 'Öffne den Editor',
-              text: 'Gehe zu <a href="https://makecode.calliope.cc" target="_blank">makecode.calliope.cc</a> und erstelle ein neues Projekt. Nenne es <strong>„Mein Hase"</strong>.'
+              text: 'Gehe zu <a href="https://makecode.calliope.cc" target="_blank">makecode.calliope.cc</a> und erstelle ein neues Projekt. Benenne dein Projekt <strong>wie du möchtest.</strong>.'
             },
             {
               title: 'Zeige ein Herz',
@@ -81,11 +81,11 @@ Bleib stehen.</code>
             },
             {
               title: 'Füge eine Pause ein',
-              text: 'Ziehe den Block <span class="calliope-block">pausiere (ms) 500</span> aus <strong>Grundlagen</strong> unter deinen LED-Block. Der Hase ist schnell — 500 Millisekunden reichen ihm.'
+              text: 'Ziehe den Block <span class="calliope-block">pausiere (ms) </span> aus <strong>Grundlagen</strong> unter deinen LED-Block. Der Hase ist schnell — eine halbe Sekunde reicht ihm.'
             },
             {
               title: 'Zeige einen Pfeil',
-              text: 'Ziehe einen weiteren <span class="calliope-block">zeige LEDs</span> Block darunter. Male ein Pfeil-Muster (↑). Füge wieder eine Pause von 500 ms ein.'
+              text: 'Ziehe den Block <span class="calliope-block">zeige Symbol</span> aus <strong>Grundlagen</strong> darunter und wähle den Pfeil nach oben (↑). Füge wieder eine Pause von einer halben Sekunde ein.'
             },
             {
               title: 'Lösche die Anzeige',
@@ -94,7 +94,7 @@ Bleib stehen.</code>
             {
               title: 'Teste dein Programm',
               text: 'Klicke auf den ▶ Play-Button im Simulator. Siehst du, wie zuerst das Herz erscheint, dann der Pfeil, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.',
-              textHw: 'Lade das Programm auf deinen Calliope mini herunter. Siehst du, wie zuerst das Herz erscheint, dann der Pfeil, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.'
+              textHw: 'Klicke auf <strong>Herunterladen</strong>, öffne die Datei im Datei-Explorer und ziehe sie auf deinen Calliope mini. Blinkt dein Mini? Dann hast du alles richtig gemacht! Siehst du, wie zuerst das Herz erscheint, dann der Pfeil, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.'
             }
           ]
         },
@@ -144,11 +144,11 @@ Herzschlag → Pause → Herzschlag → Pause → …</code>
           steps: [
             {
               title: 'Öffne dein Projekt',
-              text: 'Öffne dein Projekt <strong>„Mein Hase"</strong>.'
+              text: 'Öffne dein Projekt.'
             },
             {
               title: 'Finde den Dauerhaft-Block',
-              text: 'Du siehst den Block <span class="calliope-block">dauerhaft</span> bereits im Editor. Alles, was du dort hineinsetzt, wird endlos wiederholt.'
+              text: 'Du siehst den Block <span class="calliope-block">dauerhaft</span> bereits im Editor. Programme werden von oben nach unten abgearbeitet — und alles im <span class="calliope-block">dauerhaft</span>-Block wird danach endlos wiederholt.'
             },
             {
               title: 'Zeige ein Herz',
@@ -156,7 +156,7 @@ Herzschlag → Pause → Herzschlag → Pause → …</code>
             },
             {
               title: 'Pause — Einatmen',
-              text: 'Füge <span class="calliope-block">pausiere (ms) 300</span> ein. Der Hase atmet schnell!'
+              text: 'Füge <span class="calliope-block">pausiere (ms)</span> ein — wie lange? Der Hase atmet schnell, ein Drittel einer Sekunde passt zu ihm!'
             },
             {
               title: 'Zeige ein kleines Herz',
@@ -164,7 +164,7 @@ Herzschlag → Pause → Herzschlag → Pause → …</code>
             },
             {
               title: 'Pause — Ausatmen',
-              text: 'Füge eine weitere Pause von <span class="calliope-block">300</span> ms ein.'
+              text: 'Füge eine weitere Pause derselben Länge ein.'
             },
             {
               title: 'Beobachte',
@@ -239,7 +239,7 @@ Wenn die Zahl klein ist → es ist dunkel</code>
             },
             {
               title: 'Schlaf-Modus einfügen',
-              text: 'In den <strong>sonst</strong>-Bereich: <span class="calliope-block">Bildschirminhalt löschen</span>. Wenn es dunkel ist, schläft der Hase.'
+              text: 'In den <strong>sonst</strong>-Bereich: <span class="calliope-block">zeige Zeichenfolge „z"</span>. Wenn es dunkel ist, schläft der Hase — und zeigt es auch!'
             },
             {
               title: 'Teste mit Licht und Schatten',
@@ -299,7 +299,7 @@ WENN Knopf B gedrückt
             },
             {
               title: 'Freude zeigen',
-              text: 'Füge in diesen Block ein: <span class="calliope-block">zeige LEDs</span> — male ein fröhliches Gesicht (😊). Dann <span class="calliope-block">pausiere (ms) 500</span> und <span class="calliope-block">Bildschirminhalt löschen</span>.'
+              text: 'Überlege dir: Wie zeigt dein Hase, dass er sich freut? Wähle ein passendes LED-Muster oder Symbol, füge eine kurze Pause ein und lösche danach den Bildschirm.'
             },
             {
               title: 'Knopf B: Füttern',
@@ -307,7 +307,7 @@ WENN Knopf B gedrückt
             },
             {
               title: 'Fressen zeigen',
-              text: 'Füge ein anderes LED-Muster ein — vielleicht ein offener Mund oder ein Karotten-Symbol. Pause und Löschen wie vorher.'
+              text: 'Überlege dir: Was zeigt dein Hase, wenn er frisst? Wähle ein anderes Muster oder Symbol als bei Knopf A. Pause und Löschen wie vorher.'
             },
             {
               title: 'Atmung beibehalten',
@@ -350,47 +350,43 @@ WENN Knopf B gedrückt
 
         narrative: `<p>Dein Hase kann atmen, sehen und entscheiden. Aber er sitzt immer noch still auf der Platine. Ein Hase, der sich nicht bewegt, ist kein richtiger Hase. Bewegung verändert alles — ein Wesen, das sich bewegen kann, erkundet die Welt, flieht vor Gefahren, entdeckt Neues.</p>
 
-<p>Mit dem <strong>MotionKit</strong> bekommt dein Calliope mini Räder und Sensoren. Das MotionKit hat zwei Motoren (links und rechts), einen <strong>Ultraschallsensor</strong> und LEDs. Dein Hase will natürlich schnell sein. Aber Geschwindigkeit hat ihren Preis — wer zu schnell ist, übersieht Hindernisse. Der Ultraschallsensor erkennt, wenn etwas im Weg ist, und dein Hase kann rechtzeitig ausweichen. Fluchtverhalten — wie ein echter Hase!</p>`,
+<p>Mit dem <strong>Maqueen</strong>-Roboter bekommt dein Calliope mini Räder und Sensoren. Der Maqueen hat zwei Motoren und einen <strong>Ultraschallsensor</strong>. Dein Hase soll nur losfahren, wenn es hell genug ist — und anhalten, wenn ein Hindernis vor ihm steht. Das baust du Schritt für Schritt auf!</p>`,
 
-        problem: `<p>Dein Hase soll sich mit dem MotionKit bewegen und Hindernisse erkennen können. Die Motoren starten automatisch. Wenn der Ultraschallsensor ein Hindernis erkennt, soll der Hase blitzschnell ausweichen — Fluchtverhalten!</p>`,
+        problem: `<p>Dein Hase soll sich bewegen — aber nur, wenn es hell genug ist. Und selbst dann muss er auf Hindernisse achten. Wie bringst du ihm bei, seine Umgebung zu prüfen, bevor er losfährt?</p>`,
 
-        concept: `<p>Das <strong>MotionKit</strong> hat zwei Motoren — links und rechts. Du steuerst Richtung (vorwärts/rückwärts) und Tempo (0–255).</p>
-<p>Ein <strong>Ultraschallsensor</strong> misst Abstände — wie ein Echolot. Er sendet Schallwellen aus und misst, wie lange sie brauchen, um zurückzukommen.</p>
-<code>Motor links Richtung vorwärts Tempo 200
-Motor rechts Richtung vorwärts Tempo 200
-→ Der Hase rennt los!
-
-Ultraschallsensor cm < 15
-→ Hindernis erkannt! Ausweichen!</code>
-<p>Der linke und der rechte Motor können unterschiedlich schnell drehen — so fährt dein Hase Kurven.</p>`,
+        concept: `<p>Der <strong>Maqueen</strong>-Roboter hat zwei Motoren und einen <strong>Ultraschallsensor</strong>, der Abstände misst — wie ein Echolot.</p>
+<p>Dein Programm prüft zwei Dinge, bevor der Hase fährt:</p>
+<code>WENN Lichtstärke > 10 (es ist hell)
+  UND WENN Ultraschall > 5 cm (kein Hindernis)
+    DANN fahre vorwärts!
+  SONST → stoppe die Motoren
+SONST (es ist dunkel)
+  → stoppe und zeige „z"</code>
+<p>Wir bauen das in zwei Schritten auf: Erst reagiert der Hase nur auf Licht, dann kommt die Hindernis-Erkennung dazu.</p>`,
 
         guidedTask: {
-          title: 'Der Hase flieht vor Hindernissen',
+          title: 'Der Hase lernt sich zu bewegen',
           steps: [
             {
               title: 'Öffne dein Projekt',
-              text: 'Öffne dein Projekt <strong>„Mein Hase"</strong>.'
+              text: 'Öffne dein Projekt.'
             },
             {
-              title: 'MotionKit laden',
-              text: 'Öffne die <strong>Erweiterungen</strong> und wähle das <strong>MotionKit-Paket</strong> aus. Die neuen Blöcke erscheinen in der Codeblock-Bibliothek.'
+              title: 'Maqueen-Erweiterung laden',
+              text: 'Klicke auf <strong>Erweiterungen</strong> und suche nach <strong>Maqueen</strong>. Füge das Paket hinzu — neue Blöcke für Motoren und Sensoren erscheinen.'
             },
             {
-              title: 'Vorwärts fahren',
-              text: 'In <span class="calliope-block">dauerhaft</span>: Setze <span class="calliope-block">Motor links Richtung vorwärts Tempo 200</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 200</span>. Zeige einen Pfeil nach oben auf den LEDs.'
+              title: 'Schritt 1 — Fahren bei Licht',
+              text: 'In <span class="calliope-block">dauerhaft</span>: Füge <span class="calliope-block">wenn … dann … sonst</span> ein. Bedingung: <span class="calliope-block">Lichtstärke > 10</span>. Im <strong>dann</strong>-Bereich: <span class="calliope-block">Motor alle vorwärts Tempo 50</span> und deine Atem-Animation (großes Herz → kleines Herz). Im <strong>sonst</strong>-Bereich: <span class="calliope-block">Motor alle stoppen</span> und <span class="calliope-block">zeige Zeichenfolge „z"</span>. Teste: Bedecke den Lichtsensor — der Hase stoppt und schläft!'
             },
             {
-              title: 'Hindernis-Erkennung',
-              text: 'Füge eine Bedingung ein: <span class="calliope-block">wenn Ultraschallsensor cm &lt; 15</span> → Stoppe beide Motoren mit <span class="calliope-block">Motor links anhalten</span> und <span class="calliope-block">Motor rechts anhalten</span>. Zeige ein Ausrufezeichen.'
+              title: 'Schritt 2 — Hindernis-Erkennung',
+              text: 'Erweitere den <strong>dann</strong>-Bereich: Füge <em>innerhalb</em> der Licht-Bedingung eine zweite Bedingung ein: <span class="calliope-block">wenn Ultraschall Abstand (cm) > 5</span>. Nur wenn nichts im Weg ist, fährt der Hase. Im neuen <strong>sonst</strong>-Bereich: <span class="calliope-block">Motor alle stoppen</span>. Der Hase fährt jetzt nur, wenn es hell ist <strong>und</strong> kein Hindernis vor ihm steht!'
             },
             {
-              title: 'Fluchtverhalten',
-              text: 'Nach dem Stoppen: <span class="calliope-block">Motor links Richtung rückwärts Tempo 200</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 200</span> (schnelle Drehung). <span class="calliope-block">pausiere 500</span>, dann wieder beide vorwärts. Der Hase dreht sich blitzschnell weg!'
-            },
-            {
-              title: 'Teste das Fluchtverhalten',
-              text: 'Starte den Simulator und beobachte die Sensorwerte. Verändere den Abstandswert, um das Verhalten zu testen.',
-              textHw: 'Lade das Programm auf deinen Calliope, stelle ein Hindernis auf und beobachte, wie der Hase ausweicht!'
+              title: 'Testen',
+              text: 'Starte den Simulator. Bedecke den Lichtsensor → der Hase schläft. Gib Licht → er fährt. Setze ein Hindernis nahe → er stoppt.',
+              textHw: 'Lade das Programm auf deinen Calliope und teste: Licht an → er fährt. Hand vor den Ultraschallsensor → er stoppt. Licht aus → er schläft!'
             }
           ]
         },
@@ -398,19 +394,19 @@ Ultraschallsensor cm < 15
         openTasks: [
           {
             level: 'explore',
-            title: 'Kurven fahren',
-            text: 'Was passiert, wenn <span class="calliope-block">Motor links</span> auf Tempo 200 und <span class="calliope-block">Motor rechts</span> auf Tempo 80 steht? Probiere verschiedene Kombinationen. Dein Hase kann Kurven fahren!'
+            title: 'Geschwindigkeit anpassen',
+            text: 'Was passiert bei Tempo 20? Bei Tempo 100? Wie schnell soll dein Hase fahren? Probiere verschiedene Werte!'
           },
           {
             level: 'create',
-            title: 'Fluchtverhalten verbessern',
-            text: 'Erweitere das Fluchtverhalten: Der Hase soll abwechselnd nach links und rechts ausweichen. Oder er soll je nach Abstand unterschiedlich schnell reagieren.'
+            title: 'Verhalten bei Hindernis',
+            text: 'Was soll der Hase tun, wenn ein Hindernis erkannt wird? Nur stoppen — oder auch ein warnendes Symbol zeigen? Oder vielleicht einen Ton spielen?'
           }
         ],
 
         extensions: [
           'Was wäre, wenn der Hase sein Tempo an die Helligkeit anpasst? Bei viel Licht rennt er, bei wenig Licht schleicht er.',
-          'Was passiert, wenn <span class="calliope-block">Motor links</span> vorwärts und <span class="calliope-block">Motor rechts</span> rückwärts dreht?'
+          'Kannst du den Hasen rückwärts fahren lassen, wenn ein Hindernis erkannt wird?'
         ]
       },
 
@@ -424,14 +420,14 @@ Ultraschallsensor cm < 15
 
         narrative: `<p>Dein Hase kann jetzt atmen, sehen, auf Knöpfe reagieren, sich bewegen und Hindernissen ausweichen. All diese Einzelteile zusammen ergeben schon ein recht lebendiges Wesen. Aber bisher hast du immer Anleitungen befolgt — jetzt ist es Zeit, deinen Hasen zu <em>deinem</em> Tier zu machen.</p>
 
-<p>In diesem Kapitel bekommt dein Hase zwei neue Fähigkeiten: Er reagiert auf <strong>Berührung</strong> (Touch-Pins) und auf <strong>Schütteln</strong>. Damit und mit allem, was du bisher gelernt hast, gestaltest du die Persönlichkeit deines Hasen. Wie reagiert er, wenn er gestreichelt wird? Was passiert, wenn er geschüttelt wird? Wie bewegt er sich, wenn er ein Hindernis sieht? Das entscheidest jetzt du!</p>`,
+<p>In diesem Kapitel bekommt dein Hase drei neue Fähigkeiten: Er reagiert auf <strong>Berührung</strong> (Touch-Pins), auf <strong>Schütteln</strong> und auf <strong>Geräusche</strong> (Mikrofon). Damit und mit allem, was du bisher gelernt hast, gestaltest du die Persönlichkeit deines Hasen. Wie reagiert er, wenn er gestreichelt wird? Was passiert, wenn du ihn anschreist? Das entscheidest jetzt du!</p>`,
 
-        problem: `<p>Dein Hase hat viele Fähigkeiten — aber noch keine eigene Persönlichkeit. Kombiniere alles, was du bisher gelernt hast, und füge neue Interaktionen hinzu: Touch-Pins und Schütteln. Mach aus deinem Hasen ein einzigartiges Tier!</p>`,
+        problem: `<p>Dein Hase hat viele Fähigkeiten — aber noch keine eigene Persönlichkeit. Kombiniere alles, was du bisher gelernt hast, und füge neue Interaktionen hinzu: Touch-Pins, Schütteln und Mikrofon. Mach aus deinem Hasen ein einzigartiges Tier!</p>`,
 
-        concept: `<p>Der Calliope mini hat <strong>Touch-Pins</strong> (berührungsempfindliche Kontakte) und einen <strong>Beschleunigungssensor</strong>, der Schütteln erkennt.</p>
+        concept: `<p>Der Calliope mini hat <strong>Touch-Pins</strong> (berührungsempfindliche Kontakte), einen <strong>Beschleunigungssensor</strong> (Schütteln) und ein <strong>Mikrofon</strong> (Lautstärke).</p>
 <code>wenn Pin P1 berührt → Hase dreht nach links
-wenn Pin P2 berührt → Hase dreht nach rechts
-wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
+wenn geschüttelt → Hase zeigt überraschtes Gesicht
+wenn Lautstärke > 100 → Hase erschrickt und dreht sich schnell</code>
 <p><strong>Integration</strong> bedeutet: Du verbindest alle bisherigen Konzepte (Sequenz, Schleife, Sensoren, Bedingungen, Motoren) zu einem zusammenhängenden, eigenen Programm. Weniger Anleitung, mehr eigene Ideen!</p>`,
 
         guidedTask: {
@@ -439,7 +435,7 @@ wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
           steps: [
             {
               title: 'Überblick verschaffen',
-              text: 'Öffne dein Projekt <strong>„Mein Hase"</strong>. Schau dir an, was dein Hase schon kann: Atmen, Licht erkennen, auf Knöpfe reagieren, fahren, ausweichen.'
+              text: 'Öffne dein Projekt. Schau dir an, was dein Hase schon kann: Atmen, Licht erkennen, auf Knöpfe reagieren, fahren, ausweichen.'
             },
             {
               title: 'Touch-Pins entdecken',
@@ -448,6 +444,10 @@ wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
             {
               title: 'Schütteln einbauen',
               text: 'Nutze <span class="calliope-block">wenn geschüttelt</span> aus <strong>Eingabe</strong>. Was soll dein Hase tun, wenn er geschüttelt wird? Erschrecken? Fröhlich hüpfen? Entscheide selbst!'
+            },
+            {
+              title: 'Mikrofon nutzen',
+              text: 'Unter <strong>Eingabe</strong> findest du <span class="calliope-block">Lautstärke</span>. Baue eine Bedingung ein: Wenn die Lautstärke hoch genug ist (z.B. wenn du den Hasen anschreist), soll er mit den Motoren reagieren — vielleicht dreht er sich schnell weg oder fährt einen Schlenker!'
             },
             {
               title: 'Verhalten kombinieren',
@@ -495,49 +495,49 @@ wenn geschüttelt → Hase zeigt überraschtes Gesicht</code>
 
         narrative: `<p>Dein Hase kann viel — aber lebt er wirklich? Was einem Wesen echtes Leben einhaucht, sind innere Zustände: hungrig, müde, zufrieden. Diese Zustände verändern, wie er auf die Welt reagiert.</p>
 
-<p>In der Programmierung speichern wir solche Zustände in <strong>Variablen</strong> — Schubladen mit Etikett und einer Zahl darin. Dein Hase ist ungeduldig, auch mit seinen Gefühlen: Sein Hunger steigt schnell, er braucht viel Aufmerksamkeit!</p>
+<p>In der Programmierung speichern wir solche Zustände in <strong>Variablen</strong> — Schubladen mit Etikett und einer Zahl darin. Der Calliope mini hat <strong>3 RGB-LEDs</strong> — perfekt, um den Hunger deines Hasen sichtbar zu machen!</p>
 
-<p><strong>Lass dich inspirieren!</strong> Auf <a href="https://tinysuperlab.com/produkte/motionkit/programmieren/" target="_blank">tinysuperlab.com</a> findest du weitere Ideen und Projekte für dein MotionKit.</p>`,
+<p>Dein Hase ist ungeduldig, auch mit seinen Gefühlen: Sein Hunger steigt schnell, er braucht viel Aufmerksamkeit!</p>`,
 
-        problem: `<p>Dein Hase soll „hungrig" werden können. Ein Hunger-Wert steigt langsam an. Wenn er gefüttert wird (Knopf B), sinkt der Hunger. Auf den LEDs soll das sichtbar sein.</p>`,
+        problem: `<p>Dein Hase soll „hungrig" werden können. Jedes Mal, wenn er gefüttert wird (Knopf B), geht eine RGB-LED an — bis alle <strong>3 LEDs</strong> leuchten. Dann ist er satt und kann nicht mehr gefüttert werden.</p>`,
 
         concept: `<p>Eine <strong>Variable</strong> ist ein benannter Speicherplatz mit einem Namen und einem Wert.</p>
-<code>hunger = 0          → Der Hase ist satt.
-hunger = hunger + 1  → Er wird etwas hungriger.
-hunger = 0           → Er wurde gefüttert.</code>
-<p>Du kannst Variablen abfragen:</p>
-<code>WENN hunger > 5
-  DANN zeige trauriges Gesicht
+<code>futter = 0          → Der Hase ist hungrig (keine LED an).
+futter = futter + 1  → Er bekommt Futter (eine LED mehr).
+futter = 3           → Er ist satt (alle 3 LEDs an).</code>
+<p>Du kannst Variablen abfragen und begrenzen:</p>
+<code>WENN futter < 3
+  DANN futter = futter + 1
 SONST
-  zeige fröhliches Gesicht</code>
-<p>In MakeCode: <strong>Variablen</strong> → <strong>Variable erstellen</strong>.</p>`,
+  → nichts tun (schon satt!)</code>
+<p>In MakeCode: <strong>Variablen</strong> → <strong>Variable erstellen</strong>. Die RGB-LEDs findest du unter <strong>RGB-LED</strong>.</p>`,
 
         guidedTask: {
-          title: 'Der Hase bekommt Hunger',
+          title: 'Der Hase bekommt Futter',
           steps: [
             {
               title: 'Variable erstellen',
-              text: 'Gehe zu <strong>Variablen</strong> → <strong>Variable erstellen</strong>. Nenne sie <code>hunger</code>.'
+              text: 'Gehe zu <strong>Variablen</strong> → <strong>Variable erstellen</strong>. Nenne sie <code>futter</code>.'
             },
             {
               title: 'Startwert setzen',
-              text: 'In <span class="calliope-block">beim Start</span>: Setze <span class="calliope-block">hunger auf 0</span>.'
-            },
-            {
-              title: 'Hunger steigern',
-              text: 'In <span class="calliope-block">dauerhaft</span>: <span class="calliope-block">ändere hunger um 1</span>, danach <span class="calliope-block">pausiere (ms) 2000</span>. Alle 2 Sekunden wird er hungriger.'
-            },
-            {
-              title: 'Gesicht zeigen',
-              text: '<span class="calliope-block">wenn hunger > 5</span> → trauriges LED-Gesicht. <strong>Sonst</strong> → fröhliches LED-Gesicht.'
+              text: 'In <span class="calliope-block">beim Start</span>: Setze <span class="calliope-block">futter auf 0</span>. Dein Hase startet hungrig — keine LED leuchtet.'
             },
             {
               title: 'Füttern mit Knopf B',
-              text: 'In <span class="calliope-block">wenn Knopf B gedrückt</span>: Setze <span class="calliope-block">hunger auf 0</span>. Zeige kurz ein Herz (♥).'
+              text: 'In <span class="calliope-block">wenn Knopf B gedrückt</span>: Prüfe mit <span class="calliope-block">wenn futter &lt; 3</span> — nur dann darf gefüttert werden. Wenn ja: <span class="calliope-block">ändere futter um 1</span>.'
+            },
+            {
+              title: 'RGB-LEDs anzeigen',
+              text: 'Noch im Knopf-B-Block: Nutze <span class="calliope-block">wenn … dann … sonst wenn …</span>, um je nach Wert von <code>futter</code> die passende Anzahl RGB-LEDs einzuschalten. Bei 1 leuchtet eine LED, bei 2 zwei, bei 3 alle drei.'
+            },
+            {
+              title: 'Satt-Meldung',
+              text: 'Im <strong>sonst</strong>-Teil (wenn <code>futter</code> schon 3 ist): Zeige kurz ein fröhliches Symbol — der Hase ist satt und braucht nichts mehr!'
             },
             {
               title: 'Beobachte',
-              text: 'Der Hase ist erst fröhlich, wird dann traurig. Drücke B → er ist wieder zufrieden. Du musst dich um ihn kümmern!'
+              text: 'Drücke B mehrmals. Die LEDs gehen eine nach der anderen an. Nach dem dritten Mal passiert nichts mehr — dein Hase ist satt!'
             }
           ]
         },
@@ -545,19 +545,19 @@ SONST
         openTasks: [
           {
             level: 'explore',
-            title: 'Zweites Gefühl: Müdigkeit',
-            text: 'Erstelle eine zweite Variable <code>muedigkeit</code>. Bei Knopf A darf der Hase „schlafen". Jetzt hat er zwei Bedürfnisse!'
+            title: 'Hunger über Zeit',
+            text: 'Baue in <span class="calliope-block">dauerhaft</span> ein, dass <code>futter</code> langsam sinkt (z.B. alle paar Sekunden um 1). Jetzt musst du dich dauerhaft um deinen Hasen kümmern!'
           },
           {
             level: 'create',
-            title: 'Gefühls-Anzeige',
-            text: 'Zeige den Hunger als wachsenden LED-Balken an. Je hungriger, desto mehr LEDs leuchten.'
+            title: 'Farben zeigen Stimmung',
+            text: 'Ändere die Farbe der RGB-LEDs je nach Futter-Stand: rot = hungrig, gelb = etwas satt, grün = voll satt.'
           }
         ],
 
         extensions: [
           'Was wäre, wenn der Hase sich anders bewegt, wenn er hungrig ist?',
-          'Was passiert, wenn der Hunger auf über 10 steigt? Gibt es ein „Game Over"?'
+          'Kannst du ein „Game Over" einbauen, wenn der Hase zu lange nicht gefüttert wird?'
         ]
       },
 
@@ -742,7 +742,7 @@ Bleib stehen.</code>
           steps: [
             {
               title: 'Öffne den Editor',
-              text: 'Gehe zu <a href="https://makecode.calliope.cc" target="_blank">makecode.calliope.cc</a> und erstelle ein neues Projekt. Nenne es <strong>„Meine Schildkröte"</strong>.'
+              text: 'Gehe zu <a href="https://makecode.calliope.cc" target="_blank">makecode.calliope.cc</a> und erstelle ein neues Projekt. Benenne dein Projekt <strong>wie du möchtest.</strong>'
             },
             {
               title: 'Zeige ein Herz',
@@ -750,11 +750,11 @@ Bleib stehen.</code>
             },
             {
               title: 'Füge eine Pause ein',
-              text: 'Ziehe <span class="calliope-block">pausiere (ms) 1500</span> unter deinen LED-Block. Die Schildkröte lässt sich Zeit — 1500 Millisekunden.'
+              text: 'Ziehe den Block <span class="calliope-block">pausiere (ms)</span> aus <strong>Grundlagen</strong> unter deinen LED-Block. Die Schildkröte lässt sich Zeit — anderthalb Sekunden.'
             },
             {
-              title: 'Zeige eine Sonne',
-              text: 'Ziehe einen weiteren <span class="calliope-block">zeige LEDs</span> Block darunter. Male ein Sonnen-Muster. Pause 1500 ms.'
+              title: 'Zeige ein Symbol',
+              text: 'Ziehe den Block <span class="calliope-block">zeige Symbol</span> aus <strong>Grundlagen</strong> darunter und wähle ein Diamant-Muster (◇). Füge wieder eine Pause von anderthalb Sekunden ein.'
             },
             {
               title: 'Lösche die Anzeige',
@@ -762,8 +762,8 @@ Bleib stehen.</code>
             },
             {
               title: 'Teste dein Programm',
-              text: 'Klicke auf den ▶ Play-Button im Simulator. Herz, dann Sonne, dann Stille. Das ist eine <strong>Sequenz</strong>.',
-              textHw: 'Lade das Programm auf deinen Calliope mini. Herz, dann Sonne, dann Stille. Das ist eine <strong>Sequenz</strong>.'
+              text: 'Klicke auf den ▶ Play-Button im Simulator. Siehst du, wie zuerst das Herz erscheint, dann der Diamant, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.',
+              textHw: 'Klicke auf <strong>Herunterladen</strong>, öffne die Datei im Datei-Explorer und ziehe sie auf deinen Calliope mini. Blinkt dein Mini? Dann hast du alles richtig gemacht! Siehst du, wie zuerst das Herz erscheint, dann der Diamant, und dann alles erlischt? Das ist eine <strong>Sequenz</strong>.'
             }
           ]
         },
@@ -811,11 +811,11 @@ Ebbe → Flut → Ebbe → Flut → …</code>
           steps: [
             {
               title: 'Öffne dein Projekt',
-              text: 'Öffne dein Projekt <strong>„Meine Schildkröte"</strong>.'
+              text: 'Öffne dein Projekt.'
             },
             {
               title: 'Finde den Dauerhaft-Block',
-              text: 'Der <span class="calliope-block">dauerhaft</span>-Block ist bereits im Editor. Alles darin wird endlos wiederholt.'
+              text: 'Der <span class="calliope-block">dauerhaft</span>-Block ist bereits im Editor. Programme werden von oben nach unten abgearbeitet — und alles im <span class="calliope-block">dauerhaft</span>-Block wird danach endlos wiederholt.'
             },
             {
               title: 'Zeige ein Herz',
@@ -823,7 +823,7 @@ Ebbe → Flut → Ebbe → Flut → …</code>
             },
             {
               title: 'Pause — Einatmen',
-              text: '<span class="calliope-block">pausiere (ms) 1500</span>. Die Schildkröte atmet langsam und tief.'
+              text: 'Füge <span class="calliope-block">pausiere (ms)</span> ein — wie lange? Die Schildkröte atmet langsam und tief, anderthalb Sekunden passen gut zu ihr!'
             },
             {
               title: 'Zeige ein kleines Herz',
@@ -831,7 +831,7 @@ Ebbe → Flut → Ebbe → Flut → …</code>
             },
             {
               title: 'Pause — Ausatmen',
-              text: 'Noch eine Pause von <span class="calliope-block">1500</span> ms.'
+              text: 'Füge eine weitere Pause derselben Länge ein.'
             },
             {
               title: 'Beobachte',
@@ -906,7 +906,7 @@ Wenn die Zahl klein ist → es ist dunkel</code>
             },
             {
               title: 'Ruhe-Modus',
-              text: 'Im <strong>sonst</strong>-Bereich: <span class="calliope-block">Bildschirminhalt löschen</span>.'
+              text: 'Im <strong>sonst</strong>-Bereich: <span class="calliope-block">zeige Zeichenfolge „z"</span>. Wenn es dunkel ist, ruht die Schildkröte — und zeigt es auch!'
             },
             {
               title: 'Teste mit Licht und Schatten',
@@ -964,11 +964,11 @@ WENN Knopf B gedrückt
             },
             {
               title: 'Bedächtige Freude',
-              text: 'Erst <span class="calliope-block">pausiere 500</span> (sie denkt nach). Dann fröhliches Gesicht. <span class="calliope-block">pausiere 1500</span>. Löschen.'
+              text: 'Überlege dir: Wie zeigt deine Schildkröte, dass sie sich freut? Sie denkt erst nach (kurze Pause), dann zeigt sie ihre Reaktion, wartet und löscht den Bildschirm.'
             },
             {
               title: 'Knopf B: Füttern',
-              text: '<span class="calliope-block">wenn Knopf B gedrückt</span> → Denkpause, anderes Muster (Blatt/Salat), lange Pause, Löschen.'
+              text: '<span class="calliope-block">wenn Knopf B gedrückt</span> — Überlege dir: Was zeigt deine Schildkröte, wenn sie frisst? Wähle ein anderes Muster oder Symbol als bei Knopf A.'
             },
             {
               title: 'Atmung beibehalten',
@@ -1011,47 +1011,43 @@ WENN Knopf B gedrückt
 
         narrative: `<p>Deine Schildkröte kann atmen, sehen und entscheiden. Aber sie sitzt noch auf der Stelle. Selbst die klügste Schildkröte muss sich irgendwann bewegen — langsam, gleichmäßig, unaufhaltsam. Schildkröten haben Ozeane durchquert, nicht durch Geschwindigkeit, sondern durch Beharrlichkeit.</p>
 
-<p>Mit dem <strong>MotionKit</strong> bekommt dein Calliope mini Räder und Sensoren. Das MotionKit hat zwei Motoren (links und rechts), einen <strong>Ultraschallsensor</strong> und LEDs. Deine Schildkröte bewegt sich, wie es ihrer Natur entspricht: ruhig und zuverlässig. Der Ultraschallsensor erkennt Hindernisse rechtzeitig. Kein hektisches Ausweichen — ein bedächtiges Umlenken.</p>`,
+<p>Mit dem <strong>Maqueen</strong>-Roboter bekommt dein Calliope mini Räder und Sensoren. Der Maqueen hat zwei Motoren und einen <strong>Ultraschallsensor</strong>. Deine Schildkröte soll nur losfahren, wenn es hell genug ist — und anhalten, wenn ein Hindernis vor ihr steht. Das baust du Schritt für Schritt auf!</p>`,
 
-        problem: `<p>Deine Schildkröte soll sich mit dem MotionKit bewegen und Hindernisse erkennen. Die Motoren fahren automatisch. Bei einem Hindernis lenkt sie ruhig um — kein Fluchtverhalten, sondern vorsichtiges Navigieren.</p>`,
+        problem: `<p>Deine Schildkröte soll sich bewegen — aber nur, wenn es hell genug ist. Und selbst dann muss sie auf Hindernisse achten. Wie bringst du ihr bei, ihre Umgebung zu prüfen, bevor sie losfährt?</p>`,
 
-        concept: `<p>Das <strong>MotionKit</strong> hat zwei Motoren — links und rechts. Du steuerst Richtung (vorwärts/rückwärts) und Tempo (0–255).</p>
-<p>Ein <strong>Ultraschallsensor</strong> misst Abstände — wie ein Echolot.</p>
-<code>Motor links Richtung vorwärts Tempo 80
-Motor rechts Richtung vorwärts Tempo 80
-→ Die Schildkröte gleitet los.
-
-Ultraschallsensor cm < 20
-→ Hindernis! Langsam umlenken.</code>
-<p>Unterschiedliche Tempo-Werte links und rechts = Kurven.</p>`,
+        concept: `<p>Der <strong>Maqueen</strong>-Roboter hat zwei Motoren und einen <strong>Ultraschallsensor</strong>, der Abstände misst — wie ein Echolot.</p>
+<p>Dein Programm prüft zwei Dinge, bevor die Schildkröte fährt:</p>
+<code>WENN Lichtstärke > 10 (es ist hell)
+  UND WENN Ultraschall > 5 cm (kein Hindernis)
+    DANN fahre vorwärts!
+  SONST → stoppe die Motoren
+SONST (es ist dunkel)
+  → stoppe und zeige „z"</code>
+<p>Wir bauen das in zwei Schritten auf: Erst reagiert die Schildkröte nur auf Licht, dann kommt die Hindernis-Erkennung dazu.</p>`,
 
         guidedTask: {
-          title: 'Die Schildkröte navigiert vorsichtig',
+          title: 'Die Schildkröte lernt sich zu bewegen',
           steps: [
             {
               title: 'Öffne dein Projekt',
-              text: 'Öffne <strong>„Meine Schildkröte"</strong>.'
+              text: 'Öffne dein Projekt.'
             },
             {
-              title: 'MotionKit laden',
-              text: 'Öffne die <strong>Erweiterungen</strong> und wähle das <strong>MotionKit-Paket</strong> aus. Die neuen Blöcke erscheinen in der Codeblock-Bibliothek.'
+              title: 'Maqueen-Erweiterung laden',
+              text: 'Klicke auf <strong>Erweiterungen</strong> und suche nach <strong>Maqueen</strong>. Füge das Paket hinzu — neue Blöcke für Motoren und Sensoren erscheinen.'
             },
             {
-              title: 'Vorwärts gleiten',
-              text: 'In <span class="calliope-block">dauerhaft</span>: Setze <span class="calliope-block">Motor links Richtung vorwärts Tempo 80</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 80</span>. Zeige einen langsamen Pfeil auf den LEDs.'
+              title: 'Schritt 1 — Fahren bei Licht',
+              text: 'In <span class="calliope-block">dauerhaft</span>: Füge <span class="calliope-block">wenn … dann … sonst</span> ein. Bedingung: <span class="calliope-block">Lichtstärke > 10</span>. Im <strong>dann</strong>-Bereich: <span class="calliope-block">Motor alle vorwärts Tempo 50</span> und deine Atem-Animation (großes Herz → kleines Herz). Im <strong>sonst</strong>-Bereich: <span class="calliope-block">Motor alle stoppen</span> und <span class="calliope-block">zeige Zeichenfolge „z"</span>. Teste: Bedecke den Lichtsensor — die Schildkröte stoppt und ruht!'
             },
             {
-              title: 'Hindernis-Erkennung',
-              text: 'Füge eine Bedingung ein: <span class="calliope-block">wenn Ultraschallsensor cm &lt; 20</span> → Stoppe beide Motoren mit <span class="calliope-block">Motor links anhalten</span> und <span class="calliope-block">Motor rechts anhalten</span>. Zeige ein Panzer-Symbol.'
-            },
-            {
-              title: 'Vorsichtiges Umlenken',
-              text: 'Nach dem Stoppen: <span class="calliope-block">Motor links Richtung vorwärts Tempo 80</span> und <span class="calliope-block">Motor rechts Richtung vorwärts Tempo 30</span> (sanfte Kurve). <span class="calliope-block">pausiere 1000</span>, dann wieder beide auf Tempo 80. Ruhig und bedacht.'
+              title: 'Schritt 2 — Hindernis-Erkennung',
+              text: 'Erweitere den <strong>dann</strong>-Bereich: Füge <em>innerhalb</em> der Licht-Bedingung eine zweite Bedingung ein: <span class="calliope-block">wenn Ultraschall Abstand (cm) > 5</span>. Nur wenn nichts im Weg ist, fährt die Schildkröte. Im neuen <strong>sonst</strong>-Bereich: <span class="calliope-block">Motor alle stoppen</span>. Die Schildkröte fährt jetzt nur, wenn es hell ist <strong>und</strong> kein Hindernis vor ihr steht!'
             },
             {
               title: 'Testen',
-              text: 'Beobachte im Simulator, wie die Schildkröte bei Hindernissen sanft umlenkt.',
-              textHw: 'Lade herunter, stelle ein Hindernis auf und beobachte das vorsichtige Navigieren.'
+              text: 'Starte den Simulator. Bedecke den Lichtsensor → die Schildkröte ruht. Gib Licht → sie fährt. Setze ein Hindernis nahe → sie stoppt.',
+              textHw: 'Lade das Programm auf deinen Calliope und teste: Licht an → sie fährt. Hand vor den Ultraschallsensor → sie stoppt. Licht aus → sie ruht!'
             }
           ]
         },
@@ -1059,19 +1055,19 @@ Ultraschallsensor cm < 20
         openTasks: [
           {
             level: 'explore',
-            title: 'Sanfte Kurven',
-            text: '<span class="calliope-block">Motor links</span> auf Tempo 80, <span class="calliope-block">Motor rechts</span> auf Tempo 30 — was passiert? Probiere verschiedene Kombinationen.'
+            title: 'Geschwindigkeit anpassen',
+            text: 'Was passiert bei Tempo 20? Bei Tempo 100? Wie schnell soll deine Schildkröte fahren? Probiere verschiedene Werte!'
           },
           {
             level: 'create',
-            title: 'Sicheres Navigieren',
-            text: 'Programmiere: Bei weitem Abstand normal fahren, bei mittlerem Abstand langsamer, bei nahem Abstand umlenken. Drei Stufen!'
+            title: 'Verhalten bei Hindernis',
+            text: 'Was soll die Schildkröte tun, wenn ein Hindernis erkannt wird? Nur stoppen — oder sich in den Panzer zurückziehen? Oder vielleicht einen Ton spielen?'
           }
         ],
 
         extensions: [
-          'Was wäre, wenn das Tempo von der Helligkeit abhängt?',
-          'Was passiert, wenn <span class="calliope-block">Motor links</span> vorwärts und <span class="calliope-block">Motor rechts</span> rückwärts dreht?'
+          'Was wäre, wenn die Schildkröte ihr Tempo an die Helligkeit anpasst? Bei viel Licht gleitet sie, bei wenig Licht schleicht sie.',
+          'Kannst du die Schildkröte rückwärts fahren lassen, wenn ein Hindernis erkannt wird?'
         ]
       },
 
@@ -1085,14 +1081,14 @@ Ultraschallsensor cm < 20
 
         narrative: `<p>Deine Schildkröte kann atmen, sehen, reagieren, sich bewegen und Hindernissen ausweichen. All das zusammen ergibt schon ein weises kleines Wesen. Aber bisher hast du Anleitungen befolgt — jetzt machst du deine Schildkröte zu <em>deinem</em> Tier.</p>
 
-<p>Zwei neue Fähigkeiten warten: <strong>Touch-Pins</strong> (Berührung) und <strong>Schütteln</strong>. Kombiniert mit allem Bisherigen gestaltest du eine einzigartige Persönlichkeit. Weniger Anleitung, mehr eigene Ideen. Wie reagiert deine Schildkröte, wenn man sie berührt? Was tut sie, wenn sie geschüttelt wird? Du entscheidest!</p>`,
+<p>Drei neue Fähigkeiten warten: <strong>Touch-Pins</strong> (Berührung), <strong>Schütteln</strong> und <strong>Geräusche</strong> (Mikrofon). Kombiniert mit allem Bisherigen gestaltest du eine einzigartige Persönlichkeit. Weniger Anleitung, mehr eigene Ideen. Wie reagiert deine Schildkröte, wenn man sie berührt? Was tut sie, wenn du sie anschreist? Du entscheidest!</p>`,
 
-        problem: `<p>Deine Schildkröte hat viele Fähigkeiten, aber noch keine eigene Persönlichkeit. Kombiniere alles und füge Touch-Pins und Schütteln hinzu. Mach sie einzigartig!</p>`,
+        problem: `<p>Deine Schildkröte hat viele Fähigkeiten, aber noch keine eigene Persönlichkeit. Kombiniere alles und füge Touch-Pins, Schütteln und Mikrofon hinzu. Mach sie einzigartig!</p>`,
 
-        concept: `<p>Der Calliope hat <strong>Touch-Pins</strong> und einen <strong>Beschleunigungssensor</strong> (erkennt Schütteln).</p>
+        concept: `<p>Der Calliope hat <strong>Touch-Pins</strong>, einen <strong>Beschleunigungssensor</strong> (Schütteln) und ein <strong>Mikrofon</strong> (Lautstärke).</p>
 <code>wenn Pin P1 berührt → Schildkröte dreht langsam links
-wenn Pin P2 berührt → Schildkröte dreht langsam rechts  
-wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
+wenn geschüttelt → Schildkröte zieht sich in Panzer zurück
+wenn Lautstärke > 100 → Schildkröte stoppt erschrocken</code>
 <p><strong>Integration</strong>: Du verbindest alle bisherigen Konzepte zu einem eigenen, zusammenhängenden Programm.</p>`,
 
         guidedTask: {
@@ -1100,7 +1096,7 @@ wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
           steps: [
             {
               title: 'Überblick verschaffen',
-              text: 'Öffne <strong>„Meine Schildkröte"</strong>. Was kann sie schon? Atmen, Licht, Knöpfe, Fahren, Ausweichen.'
+              text: 'Öffne dein Projekt. Was kann sie schon? Atmen, Licht, Knöpfe, Fahren, Ausweichen.'
             },
             {
               title: 'Touch-Pins entdecken',
@@ -1109,6 +1105,10 @@ wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
             {
               title: 'Schütteln einbauen',
               text: '<span class="calliope-block">wenn geschüttelt</span>: Was tut deine Schildkröte? Sich in den Panzer zurückziehen? Langsam blinken? Du entscheidest!'
+            },
+            {
+              title: 'Mikrofon nutzen',
+              text: 'Unter <strong>Eingabe</strong> findest du <span class="calliope-block">Lautstärke</span>. Baue eine Bedingung ein: Wenn die Lautstärke hoch genug ist (z.B. wenn du die Schildkröte anschreist), soll sie mit den Motoren reagieren — vielleicht stoppt sie erschrocken und zieht sich in den Panzer zurück!'
             },
             {
               title: 'Verhalten kombinieren',
@@ -1156,48 +1156,48 @@ wenn geschüttelt → Schildkröte zieht sich in Panzer zurück</code>
 
         narrative: `<p>Deine Schildkröte kann viel — aber lebt sie wirklich? Was ein Wesen lebendig macht, sind innere Zustände: satt oder hungrig, wach oder müde. Diese verändern das Verhalten — subtil, aber spürbar.</p>
 
-<p>In <strong>Variablen</strong> speichern wir solche Zustände. Deine Schildkröte ist genügsam — ihr Hunger steigt nur langsam. Sie braucht wenig, aber beständig. Wer sich eine Schildkröte aussucht, muss nicht ständig aufpassen — aber er darf sie nicht vergessen.</p>
+<p>In <strong>Variablen</strong> speichern wir solche Zustände. Der Calliope mini hat <strong>3 RGB-LEDs</strong> — perfekt, um den Hunger deiner Schildkröte sichtbar zu machen!</p>
 
-<p><strong>Lass dich inspirieren!</strong> Auf <a href="https://tinysuperlab.com/produkte/motionkit/programmieren/" target="_blank">tinysuperlab.com</a> findest du weitere Ideen und Projekte für dein MotionKit.</p>`,
+<p>Deine Schildkröte ist genügsam — sie braucht wenig, aber beständig. Wer sich eine Schildkröte aussucht, muss nicht ständig aufpassen — aber er darf sie nicht vergessen.</p>`,
 
-        problem: `<p>Deine Schildkröte soll „hungrig" werden. Hunger steigt langsam. Füttern (Knopf B) senkt ihn. Auf den LEDs soll das sichtbar sein.</p>`,
+        problem: `<p>Deine Schildkröte soll „hungrig" werden. Jedes Mal, wenn sie gefüttert wird (Knopf B), geht eine RGB-LED an — bis alle <strong>3 LEDs</strong> leuchten. Dann ist sie satt und kann nicht mehr gefüttert werden.</p>`,
 
         concept: `<p>Eine <strong>Variable</strong> ist ein benannter Speicherplatz.</p>
-<code>hunger = 0          → satt
-hunger = hunger + 1  → hungriger
-hunger = 0           → gefüttert</code>
-<code>WENN hunger > 8
-  DANN trauriges Gesicht
+<code>futter = 0          → hungrig (keine LED an)
+futter = futter + 1  → bekommt Futter (eine LED mehr)
+futter = 3           → satt (alle 3 LEDs an)</code>
+<code>WENN futter < 3
+  DANN futter = futter + 1
 SONST
-  zufriedenes Gesicht</code>
-<p>In MakeCode: <strong>Variablen</strong> → <strong>Variable erstellen</strong>.</p>`,
+  → nichts tun (schon satt!)</code>
+<p>In MakeCode: <strong>Variablen</strong> → <strong>Variable erstellen</strong>. Die RGB-LEDs findest du unter <strong>RGB-LED</strong>.</p>`,
 
         guidedTask: {
-          title: 'Die Schildkröte kennt Hunger',
+          title: 'Die Schildkröte bekommt Futter',
           steps: [
             {
               title: 'Variable erstellen',
-              text: '<strong>Variablen</strong> → <strong>Variable erstellen</strong> → <code>hunger</code>.'
+              text: '<strong>Variablen</strong> → <strong>Variable erstellen</strong> → <code>futter</code>.'
             },
             {
               title: 'Startwert',
-              text: 'In <span class="calliope-block">beim Start</span>: <span class="calliope-block">hunger auf 0</span>.'
+              text: 'In <span class="calliope-block">beim Start</span>: <span class="calliope-block">futter auf 0</span>. Deine Schildkröte startet hungrig — keine LED leuchtet.'
             },
             {
-              title: 'Hunger steigern',
-              text: 'In <span class="calliope-block">dauerhaft</span>: <span class="calliope-block">ändere hunger um 1</span>, <span class="calliope-block">pausiere 5000</span>. Alle 5 Sekunden etwas hungriger.'
+              title: 'Füttern mit Knopf B',
+              text: 'In <span class="calliope-block">wenn Knopf B gedrückt</span>: Prüfe mit <span class="calliope-block">wenn futter &lt; 3</span> — nur dann darf gefüttert werden. Wenn ja: <span class="calliope-block">ändere futter um 1</span>.'
             },
             {
-              title: 'Gesicht zeigen',
-              text: '<span class="calliope-block">wenn hunger > 8</span> → traurig. Sonst → zufrieden.'
+              title: 'RGB-LEDs anzeigen',
+              text: 'Noch im Knopf-B-Block: Nutze <span class="calliope-block">wenn … dann … sonst wenn …</span>, um je nach Wert von <code>futter</code> die passende Anzahl RGB-LEDs einzuschalten. Bei 1 leuchtet eine LED, bei 2 zwei, bei 3 alle drei.'
             },
             {
-              title: 'Füttern',
-              text: '<span class="calliope-block">wenn Knopf B</span>: <span class="calliope-block">hunger auf 0</span>. Herz zeigen.'
+              title: 'Satt-Meldung',
+              text: 'Im <strong>sonst</strong>-Teil (wenn <code>futter</code> schon 3 ist): Zeige ein zufriedenes Symbol — die Schildkröte ist satt und braucht nichts mehr.'
             },
             {
               title: 'Beobachte',
-              text: 'Erst zufrieden, dann langsam traurig. Knopf B → wieder satt. Geduld gehört zum Kümmern.'
+              text: 'Drücke B mehrmals. Die LEDs gehen eine nach der anderen an. Nach dem dritten Mal passiert nichts mehr — deine Schildkröte ist satt.'
             }
           ]
         },
@@ -1205,19 +1205,19 @@ SONST
         openTasks: [
           {
             level: 'explore',
-            title: 'Müdigkeit',
-            text: 'Zweite Variable <code>muedigkeit</code>. Knopf A = Ruhen. Jetzt zwei Bedürfnisse!'
+            title: 'Hunger über Zeit',
+            text: 'Baue in <span class="calliope-block">dauerhaft</span> ein, dass <code>futter</code> langsam sinkt (z.B. alle paar Sekunden um 1). Jetzt musst du dich dauerhaft kümmern!'
           },
           {
             level: 'create',
-            title: 'Gefühls-Balken',
-            text: 'Hunger als langsam wachsender LED-Balken.'
+            title: 'Farben zeigen Stimmung',
+            text: 'Ändere die Farbe der RGB-LEDs je nach Futter-Stand: rot = hungrig, gelb = etwas satt, grün = voll satt.'
           }
         ],
 
         extensions: [
           'Langsamere Bewegung bei Hunger?',
-          'Was bei Hunger über 15 — eine Warnung?'
+          'Kannst du eine Warnung einbauen, wenn die Schildkröte zu lange nicht gefüttert wird?'
         ]
       },
 
@@ -1364,6 +1364,281 @@ Gleicher Algorithmus. Anderer Charakter.</code>
           'Gibt es ein Tier zwischen Schildkröte und Hase?',
           'Erfinde ein drittes Tier mit anderen Parametern.'
         ]
+      }
+    ]
+  },
+
+  /* ============================================================
+     TEACHER SOLUTIONS — Password-protected reference programs
+     ============================================================ */
+  teacherSolutions: {
+    password: 'Fabel2025',
+
+    hare: [
+      {
+        chapter: 1,
+        title: 'Nach Kapitel 1 — Aufwachen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 500
+    zeige Symbol ↑`
+      },
+      {
+        chapter: 2,
+        title: 'Nach Kapitel 2 — Erste Reaktionen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 500
+    zeige Symbol ↑
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+    pausiere (ms) 333
+    zeige Symbol ♥
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+    pausiere (ms) 333
+    zeige Symbol ↑`
+      },
+      {
+        chapter: 3,
+        title: 'Nach Kapitel 3 — Sehen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 500
+    zeige Symbol ↑
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+    pausiere (ms) 333
+    zeige Symbol ♥
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+    pausiere (ms) 333
+    zeige Symbol ↑
+
+dauerhaft
+    wenn Lichtstärke > 10
+        zeige LEDs          (Atem-Muster klein)
+        pausiere (ms) 300
+        zeige LEDs          (Atem-Muster groß)
+        pausiere (ms) 300
+    sonst
+        zeige Zeichenfolge "z"`
+      },
+      {
+        chapter: 4,
+        title: 'Nach Kapitel 4 — Interaktion',
+        note: 'Knopf A, Knopf B und Touch-Pins sind kreativ — jedes Kind wählt eigene Symbole/LEDs. Die Struktur bleibt gleich, der Inhalt variiert.'
+      },
+      {
+        chapter: 5,
+        title: 'Nach Kapitel 5 — Bewegung (Maqueen)',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 500
+    zeige Symbol ↑
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+
+dauerhaft
+    wenn Lichtstärke > 10
+        wenn Ultraschall (cm) > 5
+            Motor alle vorwärts Tempo 50
+            zeige LEDs      (Atem klein)
+            pausiere (ms) 300
+            zeige LEDs      (Atem groß)
+            pausiere (ms) 300
+        sonst
+            Motor alle stoppen
+    sonst
+        Motor alle stoppen
+        zeige Zeichenfolge "z"`
+      },
+      {
+        chapter: 6,
+        title: 'Nach Kapitel 6 — Persönlichkeit',
+        note: 'Dieses Kapitel erweitert durch kreative Blöcke (Schütteln, Lautstärke, Pins). Beispiel:',
+        code: `... (alles von Kapitel 5) ...
+
+wenn geschüttelt
+    zeige Symbol 😵
+    pausiere (ms) 500
+    Bildschirminhalt löschen
+
+dauerhaft  (Ergänzung)
+    wenn Lautstärke > 128
+        Motor alle vorwärts Tempo 80    (lauter → schneller)
+    sonst
+        ... (bisherige Logik)`
+      },
+      {
+        chapter: 7,
+        title: 'Nach Kapitel 7 — Gefühle (RGB-LEDs)',
+        code: `Variable: futter
+
+beim Start
+    setze futter auf 0
+    zeige Symbol ♥
+    pausiere (ms) 500
+    zeige Symbol ↑
+
+wenn Knopf B gedrückt
+    wenn futter < 3
+        ändere futter um 1
+        wenn futter = 1
+            setze RGB-LED 1 auf grün
+        sonst wenn futter = 2
+            setze RGB-LED 1 auf grün
+            setze RGB-LED 2 auf grün
+        sonst wenn futter = 3
+            setze RGB-LED 1 auf grün
+            setze RGB-LED 2 auf grün
+            setze RGB-LED 3 auf grün
+    sonst
+        zeige Symbol 😊    (schon satt!)
+
+... (+ dauerhaft-Block von Kapitel 5/6)`
+      }
+    ],
+
+    tortoise: [
+      {
+        chapter: 1,
+        title: 'Nach Kapitel 1 — Aufwachen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 1500
+    zeige Symbol ◇`
+      },
+      {
+        chapter: 2,
+        title: 'Nach Kapitel 2 — Erste Reaktionen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 1500
+    zeige Symbol ◇
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+    pausiere (ms) 1500
+    zeige Symbol ♥
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+    pausiere (ms) 1500
+    zeige Symbol ◇`
+      },
+      {
+        chapter: 3,
+        title: 'Nach Kapitel 3 — Sehen',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 1500
+    zeige Symbol ◇
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+    pausiere (ms) 1500
+    zeige Symbol ♥
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+    pausiere (ms) 1500
+    zeige Symbol ◇
+
+dauerhaft
+    wenn Lichtstärke > 10
+        zeige LEDs          (Atem-Muster klein)
+        pausiere (ms) 600
+        zeige LEDs          (Atem-Muster groß)
+        pausiere (ms) 600
+    sonst
+        zeige Zeichenfolge "z"`
+      },
+      {
+        chapter: 4,
+        title: 'Nach Kapitel 4 — Interaktion',
+        note: 'Knopf A, Knopf B und Touch-Pins sind kreativ — jedes Kind wählt eigene Symbole/LEDs. Die Struktur bleibt gleich, der Inhalt variiert.'
+      },
+      {
+        chapter: 5,
+        title: 'Nach Kapitel 5 — Bewegung (Maqueen)',
+        code: `beim Start
+    zeige Symbol ♥
+    pausiere (ms) 1500
+    zeige Symbol ◇
+
+wenn Knopf A gedrückt
+    zeige Symbol 😊
+
+wenn Knopf B gedrückt
+    zeige Symbol 😮
+
+dauerhaft
+    wenn Lichtstärke > 10
+        wenn Ultraschall (cm) > 5
+            Motor alle vorwärts Tempo 30
+            zeige LEDs      (Atem klein)
+            pausiere (ms) 600
+            zeige LEDs      (Atem groß)
+            pausiere (ms) 600
+        sonst
+            Motor alle stoppen
+    sonst
+        Motor alle stoppen
+        zeige Zeichenfolge "z"`
+      },
+      {
+        chapter: 6,
+        title: 'Nach Kapitel 6 — Persönlichkeit',
+        note: 'Dieses Kapitel erweitert durch kreative Blöcke (Schütteln, Lautstärke, Pins). Beispiel:',
+        code: `... (alles von Kapitel 5) ...
+
+wenn geschüttelt
+    zeige Symbol 😵
+    pausiere (ms) 1000
+    Bildschirminhalt löschen
+
+dauerhaft  (Ergänzung)
+    wenn Lautstärke > 128
+        Motor alle vorwärts Tempo 50    (lauter → schneller)
+    sonst
+        ... (bisherige Logik)`
+      },
+      {
+        chapter: 7,
+        title: 'Nach Kapitel 7 — Gefühle (RGB-LEDs)',
+        code: `Variable: futter
+
+beim Start
+    setze futter auf 0
+    zeige Symbol ♥
+    pausiere (ms) 1500
+    zeige Symbol ◇
+
+wenn Knopf B gedrückt
+    wenn futter < 3
+        ändere futter um 1
+        wenn futter = 1
+            setze RGB-LED 1 auf grün
+        sonst wenn futter = 2
+            setze RGB-LED 1 auf grün
+            setze RGB-LED 2 auf grün
+        sonst wenn futter = 3
+            setze RGB-LED 1 auf grün
+            setze RGB-LED 2 auf grün
+            setze RGB-LED 3 auf grün
+    sonst
+        zeige Symbol 😊    (schon satt!)
+
+... (+ dauerhaft-Block von Kapitel 5/6)`
       }
     ]
   }
