@@ -173,8 +173,52 @@ a:hover {
 
 .top-bar__center {
   flex: 1;
-  max-width: 320px;
+  max-width: 520px;
   margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top-bar__center .progress-bar {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* MakeCode quick access — always visible in the top bar */
+.btn-makecode {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.btn-makecode:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-makecode:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+.btn-makecode__short {
+  display: none;
 }
 
 /* LRS Button */
@@ -660,17 +704,6 @@ a:hover {
   font-weight: 600;
 }
 
-.chapter-list__link.completed {
-  color: var(--text-muted);
-}
-
-.chapter-list__link.completed::after {
-  content: '✓';
-  margin-left: auto;
-  color: var(--accent-light);
-  font-size: 0.85rem;
-}
-
 .chapter-list__number {
   display: flex;
   align-items: center;
@@ -697,6 +730,7 @@ a:hover {
 /* --- Chapter Content --- */
 .chapter-content {
   flex: 1;
+  min-width: 0;
   margin-left: var(--sidebar-width);
   padding: 2.5rem 2rem 4rem;
   max-width: calc(var(--content-max-width) + var(--sidebar-width) + 4rem);
@@ -905,7 +939,7 @@ a:hover {
   color: var(--accent);
 }
 
-.task-step__content .calliope-block {
+.calliope-block {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -916,111 +950,11 @@ a:hover {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--accent);
-  margin: 0.2rem 0;
+  margin: 0.1rem 0;
+  line-height: 1.3;
 }
 
-.task-step__check {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  background: var(--accent-bg);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  transition: all var(--transition-fast);
-}
 
-.task-step__check:hover {
-  background: var(--accent);
-  color: white;
-}
-
-.task-step__check input[type="checkbox"] {
-  accent-color: var(--accent);
-  width: 16px;
-  height: 16px;
-}
-
-/* Open Tasks */
-.open-tasks .task-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  margin-bottom: 1rem;
-  transition: all var(--transition-fast);
-}
-
-.open-tasks .task-card:hover {
-  box-shadow: var(--shadow-sm);
-  border-color: var(--accent-light);
-}
-
-.open-tasks .task-card h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: var(--text-primary);
-}
-
-.open-tasks .task-card p {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.open-tasks .task-card .task-level {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-  margin-bottom: 0.5rem;
-}
-
-.task-level--guided {
-  background: var(--accent-bg);
-  color: var(--accent);
-}
-
-.task-level--explore {
-  background: #fef3e2;
-  color: #b8860b;
-}
-
-.task-level--create {
-  background: #e8f4fd;
-  color: #2973a5;
-}
-
-/* Extension Tasks */
-.extension-tasks {
-  background: linear-gradient(135deg, var(--accent-bg), var(--bg-card));
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  border: 1px dashed var(--accent-light);
-}
-
-.extension-tasks .extension-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border-light);
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.extension-tasks .extension-item:last-child {
-  border-bottom: none;
-}
-
-.extension-tasks .extension-item strong {
-  color: var(--text-primary);
-}
 
 /* Reflection — removed from layout, styles kept for safety */
 .reflection {
@@ -1107,14 +1041,13 @@ a:hover {
 
 /* Bonus Chapter Styles */
 .chapter-list__link.bonus {
-  opacity: 0.7;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 .chapter-list__link.bonus .chapter-list__number {
-  background: var(--border-light);
+  background: transparent;
+  border: 1.5px dashed var(--accent-light);
   color: var(--text-muted);
-  font-size: 0.65rem;
 }
 
 .chapter-list__link.bonus.active .chapter-list__number {
@@ -1137,14 +1070,19 @@ a:hover {
 }
 
 .bonus-divider {
-  padding: 0.5rem 1.25rem 0.25rem;
-  font-size: 0.7rem;
-  font-weight: 600;
+  padding: 0.6rem 1.25rem 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   border-top: 1px solid var(--border-light);
   margin-top: 0.5rem;
+}
+
+.bonus-divider--basics {
+  border-top: none;
+  margin-top: 0;
 }
 
 /* Concept label in sidebar */
@@ -1268,6 +1206,11 @@ a:hover {
   }
 
   .top-bar__center {
+    margin: 0 0.5rem;
+    justify-content: center;
+  }
+
+  .top-bar__center .progress-bar {
     display: none;
   }
 
@@ -1314,6 +1257,34 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+  .top-bar {
+    padding: 0 0.5rem;
+  }
+
+  .top-bar__left,
+  .top-bar__right {
+    min-width: 0;
+    gap: 0.25rem;
+  }
+
+  .top-bar__center {
+    margin: 0 0.35rem;
+  }
+
+  .btn-makecode {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    gap: 0.35rem;
+  }
+
+  .btn-makecode__label {
+    display: none;
+  }
+
+  .btn-makecode__short {
+    display: inline;
+  }
+
   .lang-selector {
     gap: 1px;
   }
@@ -1596,4 +1567,293 @@ a:hover {
   overflow-x: auto;
   white-space: pre-wrap;
   margin: 0;
+}
+
+/* =============================================
+   MERKE-KISTE — Merksatz + Ablaufdiagramm
+   ============================================= */
+.concept-explanation > div > p {
+  line-height: 1.7;
+}
+
+.merksatz {
+  margin: 1.25rem 0 0.5rem;
+  padding: 1rem 1.25rem 1.1rem;
+  border: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--accent-bg);
+  position: relative;
+}
+
+.merksatz__label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+}
+
+.merksatz__text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.merksatz--flash {
+  animation: merkFlash 1.4s ease 2;
+}
+
+@keyframes merkFlash {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); transform: scale(1); }
+  40% { box-shadow: 0 0 0 10px var(--accent-glow); transform: scale(1.02); }
+}
+
+.flow-figure {
+  margin: 1.25rem 0 0;
+}
+
+.flow-figure__scroll {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  overflow-x: auto;
+}
+
+.flow-diagram {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.flow-figure figcaption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+/* =============================================
+   BONUS — Auftrag, Fähigkeiten-Karten, Tipps
+   ============================================= */
+.guided-task__title {
+  margin-bottom: 1rem;
+  font-family: var(--font-serif);
+}
+
+.mission__goal {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.mission__hint-line {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.mission {
+  background: var(--accent-bg);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+
+.mission__heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.mission__list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.mission__list li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0.3rem 0;
+}
+
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: start;
+}
+
+.ability-card {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  transition: var(--transition-fast);
+}
+
+.ability-card:hover,
+.ability-card[open] {
+  border-color: var(--accent);
+}
+
+.ability-card summary {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ability-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.ability-card summary::after {
+  content: '+';
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ability-card[open] summary::after {
+  content: '−';
+}
+
+.ability-card__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.ability-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.ability-card__head strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.ability-card__detail {
+  padding: 0 1rem 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.ability-card__detail p {
+  margin: 0.35rem 0;
+}
+
+.hint {
+  border: 1px dashed var(--accent-light);
+  border-radius: var(--radius-sm);
+  margin: 0.5rem 0;
+  background: var(--bg-card);
+}
+
+.hint summary {
+  cursor: pointer;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.hint__body {
+  padding: 0 0.9rem 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* =============================================
+   MERKSATZ-CHECKER (Dialog)
+   ============================================= */
+.modal--merk {
+  max-width: 460px;
+  text-align: center;
+}
+
+.merk-check__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.merk-check h2 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.merk-check p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.merk-check__buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-merk {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-merk--yes {
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  color: #fff;
+}
+
+.btn-merk--no {
+  background: transparent;
+  border: 2px solid var(--border-medium);
+  color: var(--text-primary);
+}
+
+.btn-merk:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Very narrow phones: keep the MakeCode button and languages side by side */
+@media (max-width: 400px) {
+  .btn-makecode svg {
+    display: none;
+  }
+
+  .top-bar__center {
+    margin: 0 0.25rem;
+  }
+
+  .btn-lang {
+    padding: 0.25rem 0.3rem;
+  }
 }

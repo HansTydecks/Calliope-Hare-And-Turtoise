@@ -1,13 +1,26 @@
 /* =============================================
    HASE & SCHILDKRÖTE — Main Application Logic
-   app.js  (v2 — 9 chapters, hardware mode, bonus chapters)
+   app.js  (v3 — Grundlagen / Bonus 1 / Bonus 2, Merke-Kiste, Diagramme)
    ============================================= */
 
 (function () {
   'use strict';
 
-  const TOTAL_CHAPTERS = 9;     // 6 core + 3 bonus
-  const CORE_CHAPTERS  = 6;     // chapters 1-6 are core
+  const TOTAL_CHAPTERS = 9;
+
+  /* Kapitel-Gruppen: 1–5 Grundlagen, 6–7 Bonus 1, 8–9 Bonus 2 (0-indiziert) */
+  const GROUPS = [
+    { key: 'groupBasics', from: 0, to: 4, bonus: false },
+    { key: 'groupBonus1', from: 5, to: 6, bonus: true },
+    { key: 'groupBonus2', from: 7, to: 8, bonus: true }
+  ];
+
+  /* Kapitel, bei denen vor dem Weiterblättern nach dem Merksatz gefragt wird */
+  const MERK_CHECK_CHAPTERS = [0, 1];
+
+  function getGroup(index) {
+    return GROUPS.find(g => index >= g.from && index <= g.to) || GROUPS[0];
+  }
 
   /* --- State --- */
   const state = {
@@ -16,9 +29,11 @@
     chapter: 0,       // 0-indexed
     lrs: false,
     python: false,
-    hardware: false,
-    completedChapters: new Set()
+    hardware: false
   };
+
+  /* Merksatz bestätigt? Nur im Arbeitsspeicher — nach Neuladen wird wieder gefragt */
+  const merkConfirmed = new Set();
 
   /* --- Content Lookup --- */
   const contentMap = {
@@ -85,8 +100,10 @@
     problemText: $('#problemText'),
     conceptText: $('#conceptText'),
     guidedTaskContent: $('#guidedTaskContent'),
-    openTasksContent: $('#openTasksContent'),
-    extensionContent: $('#extensionContent'),
+    sectionConcept: $('#sectionConcept'),
+    merkModal: $('#merkModal'),
+    merkYes: $('#merkYes'),
+    merkNo: $('#merkNo'),
     progressFill: $('#progressFill'),
     progressText: $('#progressText'),
     btnPrevChapter: $('#btnPrevChapter'),
@@ -125,8 +142,7 @@
         chapter: state.chapter,
         lrs: state.lrs,
         python: state.python,
-        hardware: state.hardware,
-        completed: [...state.completedChapters]
+        hardware: state.hardware
       }));
     } catch (e) { /* ignore */ }
   }
@@ -141,7 +157,6 @@
         state.lrs = saved.lrs || false;
         state.python = saved.python || false;
         state.hardware = saved.hardware || false;
-        state.completedChapters = new Set(saved.completed || []);
       }
     } catch (e) { /* ignore */ }
   }
@@ -199,8 +214,19 @@
     els.btnPrevChapter.addEventListener('click', () => navigateChapter(-1));
     els.btnNextChapter.addEventListener('click', () => navigateChapter(1));
 
+    // Merksatz-Checker
+    els.merkYes.addEventListener('click', confirmMerk);
+    els.merkNo.addEventListener('click', declineMerk);
+    els.merkModal.addEventListener('click', (e) => {
+      if (e.target === els.merkModal) declineMerk();
+    });
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
+      if (!els.merkModal.hidden) {
+        if (e.key === 'Escape') declineMerk();
+        return;
+      }
       if (!state.path) return;
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
@@ -328,11 +354,12 @@
       const ch = chapters[i];
       if (!ch) continue;
 
-      // Add bonus divider before first bonus chapter
-      if (i === CORE_CHAPTERS) {
+      // Gruppen-Überschrift vor dem ersten Kapitel jeder Gruppe
+      const group = getGroup(i);
+      if (i === group.from) {
         const divider = document.createElement('li');
-        divider.className = 'bonus-divider';
-        divider.textContent = ui.bonusLabel || 'Bonus';
+        divider.className = 'bonus-divider' + (group.bonus ? '' : ' bonus-divider--basics');
+        divider.textContent = ui[group.key] || group.key;
         els.chapterList.appendChild(divider);
       }
 
@@ -342,8 +369,7 @@
       const link = document.createElement('a');
       link.className = 'chapter-list__link';
       if (i === state.chapter) link.classList.add('active');
-      if (state.completedChapters.has(`${path}-${i}`)) link.classList.add('completed');
-      if (ch.bonus) link.classList.add('bonus');
+      if (group.bonus) link.classList.add('bonus');
       link.href = '#';
       link.setAttribute('role', 'button');
       link.setAttribute('aria-current', i === state.chapter ? 'true' : 'false');
@@ -388,9 +414,10 @@
     els.chapterTitle.textContent = chapter.title;
     els.chapterConcept.textContent = chapter.conceptLabel;
 
-    // Bonus badge
-    if (chapter.bonus) {
-      els.chapterConcept.innerHTML = chapter.conceptLabel + ' <span class="bonus-badge">' + (ui.bonusLabel || 'Bonus') + '</span>';
+    // Gruppen-Badge (Bonus 1 / Bonus 2)
+    const group = getGroup(state.chapter);
+    if (group.bonus) {
+      els.chapterConcept.innerHTML = chapter.conceptLabel + ' <span class="bonus-badge">' + (ui[group.key] || 'Bonus') + '</span>';
     }
 
     // Narrative
@@ -399,8 +426,8 @@
     // Problem
     els.problemText.innerHTML = chapter.problem || '';
 
-    // Concept
-    els.conceptText.innerHTML = chapter.concept || '';
+    // Merke-Kiste: kurze Erklärung → Merksatz → Ablaufdiagramm
+    els.conceptText.innerHTML = renderConcept(chapter, ui);
 
     // Python concept supplement
     const pyData = getPythonData(state.chapter);
@@ -416,12 +443,6 @@
     // Guided Task (with hardware mode support)
     renderGuidedTask(chapter.guidedTask, ui);
 
-    // Open Tasks
-    renderOpenTasks(chapter.openTasks, ui);
-
-    // Extensions
-    renderExtensions(chapter.extensions);
-
     // Navigation buttons
     const maxIndex = TOTAL_CHAPTERS - 1;
     els.btnPrevChapter.hidden = state.chapter === 0;
@@ -433,8 +454,6 @@
       link.setAttribute('aria-current', i === state.chapter ? 'true' : 'false');
     });
 
-    // Mark current chapter as completed when viewed
-    state.completedChapters.add(`${state.path}-${state.chapter}`);
     updateProgress();
     saveState();
 
@@ -444,37 +463,69 @@
     els.chapterContent.style.animation = 'fadeIn 0.5s ease';
   }
 
+  /* --- Merke-Kiste --- */
+  function renderConcept(chapter, ui) {
+    let html = chapter.concept || '';
+
+    if (chapter.merksatz) {
+      html += `
+        <div class="merksatz" id="merksatzBox">
+          <div class="merksatz__label">✏️ ${ui.merkeCopy || 'Schreib das in deinen Hefter:'}</div>
+          <p class="merksatz__text">${chapter.merksatz}</p>
+        </div>`;
+    }
+
+    if (chapter.diagram && window.renderDiagram) {
+      // Diagramm-Beschriftung in der Sprache des Kapiteltextes (EN oder DE-Fallback)
+      const diaUi = (state.lang === 'en' && contentMap.en) ? contentMap.en.ui : contentMap.de.ui;
+      const svg = window.renderDiagram(chapter.diagram, {
+        label: ui.diagramLabel || '',
+        then: diaUi.diagramThen || 'dann',
+        else: diaUi.diagramElse || 'sonst'
+      });
+      html += `
+        <figure class="flow-figure">
+          <div class="flow-figure__scroll">${svg}</div>
+          <figcaption>${ui.diagramLabel || ''}</figcaption>
+        </figure>`;
+    }
+
+    return html;
+  }
+
+  /* --- Aufgabe: Klickanleitung (Grundlagen) oder Auftrag (Bonus) --- */
   function renderGuidedTask(task, ui) {
-    if (!task || !task.steps) {
-      els.guidedTaskContent.innerHTML = '<p><em>Aufgabe wird geladen...</em></p>';
+    if (!task) {
+      els.guidedTaskContent.innerHTML = '';
       return;
     }
 
     const pyData = getPythonData(state.chapter);
 
-    let html = `<h3 style="margin-bottom: 1rem; font-family: var(--font-serif);">${task.title}</h3>`;
+    let html = `<h3 class="guided-task__title">${task.title}</h3>`;
 
-    task.steps.forEach((step, i) => {
-      // Pick text based on hardware mode
-      const text = (state.hardware && step.textHw) ? step.textHw : step.text;
-      // Python alternative for this step
-      const pyStep = (state.python && pyData && pyData.steps && pyData.steps[i])
-        ? renderPythonBlock(pyData.steps[i]) : '';
+    if (task.steps) {
+      task.steps.forEach((step, i) => {
+        // Pick text based on hardware mode
+        const text = (state.hardware && step.textHw) ? step.textHw : step.text;
+        // Python alternative for this step
+        const pyStep = (state.python && pyData && pyData.steps && pyData.steps[i])
+          ? renderPythonBlock(pyData.steps[i]) : '';
 
-      html += `
-        <div class="task-step">
-          <span class="task-step__number">${i + 1}</span>
-          <div class="task-step__content">
-            <h4>${step.title}</h4>
-            <p>${text}</p>
-            ${pyStep}
-            <label class="task-step__check">
-              <input type="checkbox"> ${ui.checkDone || 'Erledigt'}
-            </label>
+        html += `
+          <div class="task-step">
+            <span class="task-step__number">${i + 1}</span>
+            <div class="task-step__content">
+              <h4>${step.title}</h4>
+              <p>${text}</p>
+              ${pyStep}
+            </div>
           </div>
-        </div>
-      `;
-    });
+        `;
+      });
+    } else {
+      html += renderMission(task, ui);
+    }
 
     // Python full guided task block
     if (state.python && pyData && pyData.fullTask) {
@@ -482,6 +533,56 @@
     }
 
     els.guidedTaskContent.innerHTML = html;
+  }
+
+  function renderMission(task, ui) {
+    let html = '';
+
+    if (task.goal) {
+      html += `<p class="mission__goal">${task.goal}</p>`;
+    }
+
+    // Fähigkeiten-Karten (Überblick zum Anklicken)
+    if (task.abilities && task.abilities.length) {
+      html += `<p class="mission__hint-line">${ui.abilitiesIntro || ''}</p><div class="ability-grid">`;
+      task.abilities.forEach(ab => {
+        html += `
+          <details class="ability-card">
+            <summary>
+              <span class="ability-card__icon" aria-hidden="true">${ab.icon || ''}</span>
+              <span class="ability-card__head">
+                <strong>${ab.title}</strong>
+                <span>${ab.short || ''}</span>
+              </span>
+            </summary>
+            <div class="ability-card__detail">${ab.detail || ''}</div>
+          </details>`;
+      });
+      html += `</div>`;
+    }
+
+    if (task.requirements && task.requirements.length) {
+      html += `
+        <div class="mission">
+          <h4 class="mission__heading">${ui.missionRequirements || ''}</h4>
+          <ul class="mission__list">
+            ${task.requirements.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>`;
+    }
+
+    if (task.hints && task.hints.length) {
+      task.hints.forEach((hint, i) => {
+        const label = (ui.hintLabel || 'Tipp') + (task.hints.length > 1 ? ' ' + (i + 1) : '');
+        html += `
+          <details class="hint">
+            <summary>💡 ${label}</summary>
+            <div class="hint__body">${hint}</div>
+          </details>`;
+      });
+    }
+
+    return html;
   }
 
   /* --- Python Data Lookup --- */
@@ -530,50 +631,19 @@
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
-  function renderOpenTasks(tasks, ui) {
-    if (!tasks || tasks.length === 0) {
-      els.openTasksContent.innerHTML = '';
-      return;
-    }
-
-    let html = '';
-    tasks.forEach(task => {
-      const levelClass = task.level === 'guided' ? 'task-level--guided'
-        : task.level === 'explore' ? 'task-level--explore'
-        : 'task-level--create';
-      const levelLabel = task.level === 'guided' ? (ui.taskLevelGuided || 'Klickanleitung')
-        : task.level === 'explore' ? (ui.taskLevelExplore || 'Erkunden')
-        : (ui.taskLevelCreate || 'Gestalten');
-
-      html += `
-        <div class="task-card">
-          <span class="task-level ${levelClass}">${levelLabel}</span>
-          <h4>${task.title}</h4>
-          <p>${task.text}</p>
-        </div>
-      `;
-    });
-
-    els.openTasksContent.innerHTML = html;
-  }
-
-  function renderExtensions(extensions) {
-    if (!extensions || extensions.length === 0) {
-      els.extensionContent.innerHTML = '';
-      return;
-    }
-
-    let html = '';
-    extensions.forEach(ext => {
-      html += `<div class="extension-item">${ext}</div>`;
-    });
-
-    els.extensionContent.innerHTML = html;
-  }
-
   /* --- Navigation --- */
   function goToChapter(index) {
     if (index < 0 || index >= TOTAL_CHAPTERS) return;
+
+    // Merksatz-Checker: in Kapitel 1 und 2 vor dem Weiterblättern nachfragen
+    const merkKey = `${state.path}-${state.chapter}`;
+    if (index > state.chapter
+        && MERK_CHECK_CHAPTERS.includes(state.chapter)
+        && !merkConfirmed.has(merkKey)) {
+      askMerk(index);
+      return;
+    }
+
     state.chapter = index;
     saveState();
     renderChapter();
@@ -587,24 +657,47 @@
     }
   }
 
-  /* --- Progress --- */
+  /* --- Merksatz-Checker --- */
+  let merkTarget = null;
+
+  function askMerk(target) {
+    merkTarget = target;
+    els.merkModal.hidden = false;
+    setTimeout(() => els.merkYes.focus(), 50);
+  }
+
+  function confirmMerk() {
+    merkConfirmed.add(`${state.path}-${state.chapter}`);
+    els.merkModal.hidden = true;
+    const target = merkTarget;
+    merkTarget = null;
+    if (target !== null) goToChapter(target);
+  }
+
+  function declineMerk() {
+    els.merkModal.hidden = true;
+    merkTarget = null;
+    const box = document.getElementById('merksatzBox') || els.sectionConcept;
+    if (!box) return;
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    box.classList.remove('merksatz--flash');
+    void box.offsetWidth; // Animation neu starten
+    box.classList.add('merksatz--flash');
+  }
+
+  /* --- Progress: zeigt nur die aktuelle Position, nichts wird gespeichert --- */
   function updateProgress() {
+    const ui = getUI();
     if (!state.path) {
       els.progressFill.style.width = '0%';
-      els.progressText.textContent = `0 / ${TOTAL_CHAPTERS}`;
+      els.progressText.textContent = '';
       return;
     }
 
-    let completed = 0;
-    for (let i = 0; i < TOTAL_CHAPTERS; i++) {
-      if (state.completedChapters.has(`${state.path}-${i}`)) {
-        completed++;
-      }
-    }
-
-    const percent = Math.round((completed / TOTAL_CHAPTERS) * 100);
+    const current = state.chapter + 1;
+    const percent = Math.round((current / TOTAL_CHAPTERS) * 100);
     els.progressFill.style.width = `${percent}%`;
-    els.progressText.textContent = `${completed} / ${TOTAL_CHAPTERS}`;
+    els.progressText.textContent = `${ui.chapterLabel} ${current} / ${TOTAL_CHAPTERS}`;
   }
 
   /* --- Start --- */
