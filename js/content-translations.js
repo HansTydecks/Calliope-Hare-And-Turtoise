@@ -1,7 +1,7 @@
 /* =============================================
    TRANSLATIONS — Ukrainian, French, Spanish
    UI strings + chapter outlines (9 chapters)
-   v2 — no reflections, new ch6, bonus ch7-9
+   v3 — Merke-Kiste, Gruppen Grundlagen / Bonus 1 / Bonus 2
    ============================================= */
 
 /* ---- UKRAINIAN ---- */
@@ -21,19 +21,22 @@ window.CONTENT_UK = {
     prevChapter: 'Попередній розділ',
     nextChapter: 'Наступний розділ',
     problemTitle: 'Проблема',
-    conceptTitle: 'Ідея інформатики',
     guidedTaskTitle: 'Завдання',
-    openTasksTitle: 'Завдання',
-    extensionTitle: 'А що, якщо…?',
     chapterLabel: 'Розділ',
-    stepLabel: 'Крок',
-    checkDone: 'Готово',
-    taskLevelGuided: 'Покроково',
-    taskLevelExplore: 'Дослідити',
-    taskLevelCreate: 'Створити',
-    openInMakeCode: 'Відкрити в MakeCode',
-    bonusLabel: 'Бонус',
-    hardwareLabel: 'У мене є необхідне обладнання (Calliope mini + мотори + сенсори)'
+    hardwareLabel: 'У мене є необхідне обладнання (Calliope mini + мотори + сенсори)',
+    conceptTitle: 'Скринька для запам\'ятовування',
+    merkeCopy: 'Перепиши це у свій зошит:',
+    diagramLabel: 'Хід програми як діаграма',
+    groupBasics: 'Основи',
+    groupBonus1: 'Бонус 1',
+    groupBonus2: 'Бонус 2',
+    missionRequirements: 'Що має вміти твоя програма:',
+    abilitiesIntro: 'Натисни на вміння, щоб дізнатися більше:',
+    hintLabel: 'Підказка',
+    merkCheckTitle: 'Ти переписав(-ла) головне речення у свій зошит?',
+    merkCheckText: 'Головне речення є у скриньці для запам\'ятовування. Перепиши його, перш ніж іти далі.',
+    merkCheckYes: 'Так, далі ✓',
+    merkCheckNo: 'Ні, покажи його'
   },
   chapters: {
     hare: [
@@ -78,19 +81,22 @@ window.CONTENT_FR = {
     prevChapter: 'Chapitre précédent',
     nextChapter: 'Chapitre suivant',
     problemTitle: 'Le problème',
-    conceptTitle: 'L\'idée informatique',
     guidedTaskTitle: 'Tâche',
-    openTasksTitle: 'Tâches',
-    extensionTitle: 'Et si…?',
     chapterLabel: 'Chapitre',
-    stepLabel: 'Étape',
-    checkDone: 'Fait',
-    taskLevelGuided: 'Pas à pas',
-    taskLevelExplore: 'Explorer',
-    taskLevelCreate: 'Créer',
-    openInMakeCode: 'Ouvrir dans MakeCode',
-    bonusLabel: 'Bonus',
-    hardwareLabel: 'Je possède le matériel nécessaire (Calliope mini + moteurs + capteurs)'
+    hardwareLabel: 'Je possède le matériel nécessaire (Calliope mini + moteurs + capteurs)',
+    conceptTitle: 'La boîte à retenir',
+    merkeCopy: 'Recopie ceci dans ton cahier :',
+    diagramLabel: 'Le déroulement sous forme de diagramme',
+    groupBasics: 'Les bases',
+    groupBonus1: 'Bonus 1',
+    groupBonus2: 'Bonus 2',
+    missionRequirements: 'Ton programme doit savoir :',
+    abilitiesIntro: 'Clique sur une capacité pour en savoir plus :',
+    hintLabel: 'Astuce',
+    merkCheckTitle: 'As-tu recopié la phrase à retenir dans ton cahier ?',
+    merkCheckText: 'La phrase à retenir se trouve dans la boîte à retenir. Recopie-la avant de continuer.',
+    merkCheckYes: 'Oui, continuer ✓',
+    merkCheckNo: 'Non, montre-la-moi'
   },
   chapters: {
     hare: [
@@ -135,19 +141,22 @@ window.CONTENT_ES = {
     prevChapter: 'Capítulo anterior',
     nextChapter: 'Siguiente capítulo',
     problemTitle: 'El problema',
-    conceptTitle: 'La idea informática',
     guidedTaskTitle: 'Tarea',
-    openTasksTitle: 'Tareas',
-    extensionTitle: '¿Y si…?',
     chapterLabel: 'Capítulo',
-    stepLabel: 'Paso',
-    checkDone: 'Hecho',
-    taskLevelGuided: 'Paso a paso',
-    taskLevelExplore: 'Explorar',
-    taskLevelCreate: 'Crear',
-    openInMakeCode: 'Abrir en MakeCode',
-    bonusLabel: 'Bonus',
-    hardwareLabel: 'Tengo el hardware necesario (Calliope mini + motores + sensores)'
+    hardwareLabel: 'Tengo el hardware necesario (Calliope mini + motores + sensores)',
+    conceptTitle: 'Caja para recordar',
+    merkeCopy: 'Copia esto en tu cuaderno:',
+    diagramLabel: 'El programa como diagrama',
+    groupBasics: 'Fundamentos',
+    groupBonus1: 'Bonus 1',
+    groupBonus2: 'Bonus 2',
+    missionRequirements: 'Tu programa debe poder:',
+    abilitiesIntro: 'Haz clic en una habilidad para saber más:',
+    hintLabel: 'Pista',
+    merkCheckTitle: '¿Has copiado la frase clave en tu cuaderno?',
+    merkCheckText: 'La frase clave está en la caja para recordar. Cópiala antes de continuar.',
+    merkCheckYes: 'Sí, continuar ✓',
+    merkCheckNo: 'No, muéstramela'
   },
   chapters: {
     hare: [
