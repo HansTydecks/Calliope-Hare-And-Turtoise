@@ -57,16 +57,16 @@ window.CONTENT_EN = (function () {
         { if: 'light level > 10',
           then: [
             { if: 'distance (cm) > 5',
-              then: [{ a: `motor all forward speed ${speed}`, t: 'motor' }, { a: 'breathing animation' }],
-              else: [{ a: 'motor all stop', t: 'motor' }] }
+              then: [{ a: `Motor both forward Speed ${speed}`, t: 'motor' }, { a: 'breathing animation' }],
+              else: [{ a: 'Motors both stop', t: 'motor' }] }
           ],
-          else: [{ a: 'motor all stop', t: 'motor' }, { a: 'show string "z"' }] }
+          else: [{ a: 'Motors both stop', t: 'motor' }, { a: 'show string "z"' }] }
       ] }
     ],
     /* Bonus: general examples, not the solution */
     events: (shake) => [
       { event: 'on pin P1 touched', body: [{ a: 'show icon: surprised' }] },
-      { event: 'on shake', body: [{ a: shake, t: 'sound' }] },
+      { event: 'on shake', body: [{ a: shake }] },
       { event: 'forever', loop: true, body: [
         { if: 'sound level > 100', then: [{ a: 'motor: turn away', t: 'motor' }] }
       ] }
@@ -86,8 +86,8 @@ window.CONTENT_EN = (function () {
     andOr: [
       { event: 'forever', loop: true, body: [
         { if: 'light level > 50 AND distance (cm) > 10',
-          then: [{ a: 'motor all forward', t: 'motor' }],
-          else: [{ a: 'motor all stop', t: 'motor' }] }
+          then: [{ a: 'Motor both forward', t: 'motor' }],
+          else: [{ a: 'Motors both stop', t: 'motor' }] }
       ] }
     ],
     parameter: (ms) => [
@@ -162,6 +162,7 @@ window.CONTENT_EN = (function () {
       merkCheckText: 'The key sentence is in the Remember Box. Copy it before you go on.',
       merkCheckYes: 'Yes, continue ✓',
       merkCheckNo: 'No, show it to me',
+      openMakeCode: 'Open MakeCode',
       hardwareLabel: 'I have the required hardware (Calliope mini + motors + sensors)'
     },
 
@@ -312,26 +313,26 @@ window.CONTENT_EN = (function () {
           conceptLabel: 'Motor Control and Ultrasonic Sensor',
           conceptShort: 'Motors',
           image: 'img/chapters/hare/h5.png',
-          narrative: `<p>Your hare can breathe, see and react – but it sits still. With the <strong>Maqueen</strong> robot it gets wheels and an <strong>ultrasonic sensor</strong> that measures distances.</p>`,
+          narrative: `<p>Your hare can breathe, see and react – but it sits still. With the <strong>Motion Kit</strong> it gets wheels and an <strong>ultrasonic sensor</strong> that measures distances.</p>`,
           problem: `<p>Your hare should start driving when it is bright – but stop when there is an obstacle in front of it.</p>`,
           concept: C.nested,
           merksatz: M.nested,
-          diagram: D.motors(50),
+          diagram: D.motors(200),
           guidedTask: {
             title: 'The hare learns to move',
             steps: [
-              { title: 'Add the Maqueen extension',
-                text: 'Open your project. Click <strong>Extensions</strong>, search for <strong>Maqueen</strong> and add it. Now you have blocks for motors and sensors.' },
+              { title: 'Add the MotionKit extension',
+                text: 'Open your project. Click <strong>Extensions</strong> and choose <strong>MotionKit (V2)</strong>. The new blocks are in the <strong>MotionKit</strong> category. Not in the list? Paste the link <a href="https://github.com/tinysuperlab/MotionKitV2" target="_blank" rel="noopener">github.com/tinysuperlab/MotionKitV2</a> into the search box.' },
               { title: 'Change the light condition',
                 text: `In ${b('forever')} you already have ${b('if light level > 50 then … else')}. Change the number to <strong>10</strong>.` },
               { title: 'Drive when it is bright',
-                text: `Put ${b('motor all forward speed 50')} into the <strong>then</strong> part, above your breathing animation.` },
+                text: `Put ${b('Motor both Direction forward Speed 200')} from <strong>MotionKit</strong> into the <strong>then</strong> part, above your breathing animation.` },
               { title: 'Stop in the dark',
-                text: `Put ${b('motor all stop')} into the <strong>else</strong> part, next to your "z". Test: dark → the hare stops.` },
+                text: `Put ${b('Motors both stop')} into the <strong>else</strong> part, next to your "z". Test: dark → the hare stops.` },
               { title: 'Add a second condition',
-                text: `Drag a new ${b('if … then … else')} <strong>into the then part</strong>. Condition: ${b('ultrasonic distance (cm) > 5')}.` },
+                text: `Drag a new ${b('if … then … else')} <strong>into the then part</strong>. Condition: ${b('Ultrasonic cm > 5')} (from <strong>MotionKit</strong>).` },
               { title: 'Sort the blocks',
-                text: `Move ${b('motor all forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('motor all stop')} into the <strong>inner else</strong>.` },
+                text: `Move ${b('Motor both … forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('Motors both stop')} into the <strong>inner else</strong>.` },
               { title: 'Test',
                 text: 'Start the simulator. Little light → it sleeps. Lots of light → it drives. Small distance → it stops.',
                 textHw: 'Download the program to your Calliope. Light on → it drives. Hand in front of the sensor → it stops. Light off → it sleeps.' }
@@ -350,7 +351,7 @@ window.CONTENT_EN = (function () {
           problem: `<p>How does your hare react when someone touches it, shakes it or shouts at it? You decide – to fit a fast, impatient hare.</p>`,
           concept: C.events,
           merksatz: M.events,
-          diagram: D.events('play tone'),
+          diagram: D.events('show icon: dizzy'),
           guidedTask: {
             title: 'Give your hare a personality',
             goal: 'Choose new abilities and add them to your program. First plan in your notebook how your hare should react.',
@@ -361,8 +362,6 @@ window.CONTENT_EN = (function () {
                 detail: `<p>Block: ${b('on shake')} in <strong>Input</strong>.</p><p>Idea: Does it get scared? Does it get dizzy? Does it jump for joy?</p>` },
               { icon: '🎤', title: 'Microphone', short: 'The hare hears how loud it is.',
                 detail: `<p>Block: ${b('sound level')} in <strong>Input</strong> – a number, just like the light level.</p><p>Idea: If it gets too loud, it turns away with its motors.</p><p>Think: Where must the condition be so the Calliope checks it again and again?</p>` },
-              { icon: '🎵', title: 'Sounds', short: 'The hare makes sounds.',
-                detail: `<p>Blocks in <strong>Music</strong>, for example ${b('play tone')}.</p><p>Idea: Every reaction gets its own sound.</p>` }
             ],
             requirements: [
               'At least <strong>two</strong> new abilities are added.',
@@ -605,26 +604,26 @@ window.CONTENT_EN = (function () {
           conceptLabel: 'Motor Control and Ultrasonic Sensor',
           conceptShort: 'Motors',
           image: 'img/chapters/tortoise/t5.png',
-          narrative: `<p>Your tortoise can breathe, see and react – but it sits still. With the <strong>Maqueen</strong> robot it gets wheels and an <strong>ultrasonic sensor</strong> that measures distances. Slow, but unstoppable!</p>`,
+          narrative: `<p>Your tortoise can breathe, see and react – but it sits still. With the <strong>Motion Kit</strong> it gets wheels and an <strong>ultrasonic sensor</strong> that measures distances. Slow, but unstoppable!</p>`,
           problem: `<p>Your tortoise should start driving when it is bright – but stop when there is an obstacle in front of it.</p>`,
           concept: C.nested,
           merksatz: M.nested,
-          diagram: D.motors(30),
+          diagram: D.motors(80),
           guidedTask: {
             title: 'The tortoise learns to move',
             steps: [
-              { title: 'Add the Maqueen extension',
-                text: 'Open your project. Click <strong>Extensions</strong>, search for <strong>Maqueen</strong> and add it. Now you have blocks for motors and sensors.' },
+              { title: 'Add the MotionKit extension',
+                text: 'Open your project. Click <strong>Extensions</strong> and choose <strong>MotionKit (V2)</strong>. The new blocks are in the <strong>MotionKit</strong> category. Not in the list? Paste the link <a href="https://github.com/tinysuperlab/MotionKitV2" target="_blank" rel="noopener">github.com/tinysuperlab/MotionKitV2</a> into the search box.' },
               { title: 'Change the light condition',
                 text: `In ${b('forever')} you already have ${b('if light level > 120 then … else')}. Change the number to <strong>10</strong>.` },
               { title: 'Drive when it is bright',
-                text: `Put ${b('motor all forward speed 30')} into the <strong>then</strong> part, above your breathing animation.` },
+                text: `Put ${b('Motor both Direction forward Speed 80')} from <strong>MotionKit</strong> into the <strong>then</strong> part, above your breathing animation.` },
               { title: 'Stop in the dark',
-                text: `Put ${b('motor all stop')} into the <strong>else</strong> part, next to your "z". Test: dark → the tortoise stops.` },
+                text: `Put ${b('Motors both stop')} into the <strong>else</strong> part, next to your "z". Test: dark → the tortoise stops.` },
               { title: 'Add a second condition',
-                text: `Drag a new ${b('if … then … else')} <strong>into the then part</strong>. Condition: ${b('ultrasonic distance (cm) > 5')}.` },
+                text: `Drag a new ${b('if … then … else')} <strong>into the then part</strong>. Condition: ${b('Ultrasonic cm > 5')} (from <strong>MotionKit</strong>).` },
               { title: 'Sort the blocks',
-                text: `Move ${b('motor all forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('motor all stop')} into the <strong>inner else</strong>.` },
+                text: `Move ${b('Motor both … forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('Motors both stop')} into the <strong>inner else</strong>.` },
               { title: 'Test',
                 text: 'Start the simulator. Little light → it rests. Lots of light → it drives. Small distance → it stops.',
                 textHw: 'Download the program to your Calliope. Light on → it drives. Hand in front of the sensor → it stops. Light off → it rests.' }
@@ -643,7 +642,7 @@ window.CONTENT_EN = (function () {
           problem: `<p>How does your tortoise react when someone touches it, shakes it or shouts at it? You decide – to fit a calm, thoughtful tortoise.</p>`,
           concept: C.events,
           merksatz: M.events,
-          diagram: D.events('play tone'),
+          diagram: D.events('show icon: dizzy'),
           guidedTask: {
             title: 'Give your tortoise a personality',
             goal: 'Choose new abilities and add them to your program. First plan in your notebook how your tortoise should react.',
@@ -654,8 +653,6 @@ window.CONTENT_EN = (function () {
                 detail: `<p>Block: ${b('on shake')} in <strong>Input</strong>.</p><p>Idea: Does it pull back into its shell? Does it wait until everything is calm again?</p>` },
               { icon: '🎤', title: 'Microphone', short: 'The tortoise hears how loud it is.',
                 detail: `<p>Block: ${b('sound level')} in <strong>Input</strong> – a number, just like the light level.</p><p>Idea: If it gets too loud, it stops in fright.</p><p>Think: Where must the condition be so the Calliope checks it again and again?</p>` },
-              { icon: '🎵', title: 'Sounds', short: 'The tortoise makes sounds.',
-                detail: `<p>Blocks in <strong>Music</strong>, for example ${b('play tone')}.</p><p>Idea: Low, slow sounds suit it well.</p>` }
             ],
             requirements: [
               'At least <strong>two</strong> new abilities are added.',

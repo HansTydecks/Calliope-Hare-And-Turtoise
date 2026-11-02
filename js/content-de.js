@@ -57,16 +57,16 @@ window.CONTENT_DE = (function () {
         { if: 'Lichtstärke > 10',
           then: [
             { if: 'Abstand (cm) > 5',
-              then: [{ a: `Motor alle vorwärts Tempo ${speed}`, t: 'motor' }, { a: 'Atem-Animation' }],
-              else: [{ a: 'Motor alle stoppen', t: 'motor' }] }
+              then: [{ a: `Motor beide vorwärts Tempo ${speed}`, t: 'motor' }, { a: 'Atem-Animation' }],
+              else: [{ a: 'Motor beide anhalten', t: 'motor' }] }
           ],
-          else: [{ a: 'Motor alle stoppen', t: 'motor' }, { a: 'zeige Zeichenfolge "z"' }] }
+          else: [{ a: 'Motor beide anhalten', t: 'motor' }, { a: 'zeige Zeichenfolge "z"' }] }
       ] }
     ],
     /* Bonus: allgemeine Beispiele, nicht die Lösung */
     events: (shake) => [
       { event: 'wenn Pin P1 berührt', body: [{ a: 'zeige Symbol: überrascht' }] },
-      { event: 'wenn geschüttelt', body: [{ a: shake, t: 'sound' }] },
+      { event: 'wenn geschüttelt', body: [{ a: shake }] },
       { event: 'dauerhaft', loop: true, body: [
         { if: 'Lautstärke > 100', then: [{ a: 'Motor: wegdrehen', t: 'motor' }] }
       ] }
@@ -86,8 +86,8 @@ window.CONTENT_DE = (function () {
     andOr: [
       { event: 'dauerhaft', loop: true, body: [
         { if: 'Lichtstärke > 50 UND Abstand (cm) > 10',
-          then: [{ a: 'Motor alle vorwärts', t: 'motor' }],
-          else: [{ a: 'Motor alle stoppen', t: 'motor' }] }
+          then: [{ a: 'Motor beide vorwärts', t: 'motor' }],
+          else: [{ a: 'Motor beide anhalten', t: 'motor' }] }
       ] }
     ],
     parameter: (ms) => [
@@ -162,6 +162,7 @@ window.CONTENT_DE = (function () {
       merkCheckText: 'Der Merksatz steht in der Merke-Kiste. Schreib ihn ab, bevor du weitermachst.',
       merkCheckYes: 'Ja, weiter ✓',
       merkCheckNo: 'Nein, zeig ihn mir',
+      openMakeCode: 'MakeCode öffnen',
       hardwareLabel: 'Ich besitze die nötige Hardware (Calliope mini + Motoren + Sensoren)'
     },
 
@@ -312,26 +313,26 @@ window.CONTENT_DE = (function () {
           conceptLabel: 'Motorsteuerung und Ultraschallsensor',
           conceptShort: 'Motoren',
           image: 'img/chapters/hare/h5.png',
-          narrative: `<p>Dein Hase kann atmen, sehen und reagieren – aber er sitzt still. Mit dem <strong>Maqueen</strong>-Roboter bekommt er Räder und einen <strong>Ultraschallsensor</strong>, der Abstände misst.</p>`,
+          narrative: `<p>Dein Hase kann atmen, sehen und reagieren – aber er sitzt still. Mit dem <strong>Motion Kit</strong> bekommt er Räder und einen <strong>Ultraschallsensor</strong>, der Abstände misst.</p>`,
           problem: `<p>Dein Hase soll losfahren, wenn es hell ist – aber anhalten, wenn ein Hindernis vor ihm steht.</p>`,
           concept: C.nested,
           merksatz: M.nested,
-          diagram: D.motors(50),
+          diagram: D.motors(200),
           guidedTask: {
             title: 'Der Hase lernt sich zu bewegen',
             steps: [
-              { title: 'Maqueen-Erweiterung laden',
-                text: 'Öffne dein Projekt. Klicke auf <strong>Erweiterungen</strong>, suche <strong>Maqueen</strong> und füge sie hinzu. Jetzt gibt es Blöcke für Motoren und Sensoren.' },
+              { title: 'MotionKit-Erweiterung laden',
+                text: 'Öffne dein Projekt. Klicke auf <strong>Erweiterungen</strong> und wähle <strong>MotionKit (V2)</strong>. Die neuen Blöcke findest du in der Kategorie <strong>MotionKit</strong>. Steht es nicht in der Liste? Füge den Link <a href="https://github.com/tinysuperlab/MotionKitV2" target="_blank" rel="noopener">github.com/tinysuperlab/MotionKitV2</a> in das Suchfeld ein.' },
               { title: 'Licht-Bedingung anpassen',
                 text: `In ${b('dauerhaft')} steht schon ${b('wenn Lichtstärke > 50 dann … sonst')}. Ändere die Zahl auf <strong>10</strong>.` },
               { title: 'Losfahren bei Licht',
-                text: `Lege ${b('Motor alle vorwärts Tempo 50')} in den <strong>dann</strong>-Teil, über deine Atem-Animation.` },
+                text: `Lege ${b('Motor beide Richtung vorwärts Tempo 200')} aus <strong>MotionKit</strong> in den <strong>dann</strong>-Teil, über deine Atem-Animation.` },
               { title: 'Anhalten im Dunkeln',
-                text: `Lege ${b('Motor alle stoppen')} in den <strong>sonst</strong>-Teil, zu deinem „z". Teste: Dunkel → der Hase stoppt.` },
+                text: `Lege ${b('Motor beide anhalten')} in den <strong>sonst</strong>-Teil, zu deinem „z". Teste: Dunkel → der Hase stoppt.` },
               { title: 'Zweite Bedingung einbauen',
-                text: `Ziehe ein neues ${b('wenn … dann … sonst')} <strong>in den dann-Teil</strong>. Bedingung: ${b('Ultraschall Abstand (cm) > 5')}.` },
+                text: `Ziehe ein neues ${b('wenn … dann … sonst')} <strong>in den dann-Teil</strong>. Bedingung: ${b('Ultraschallsensor cm > 5')} (aus <strong>MotionKit</strong>).` },
               { title: 'Blöcke einsortieren',
-                text: `Schiebe ${b('Motor alle vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor alle stoppen')}.` },
+                text: `Schiebe ${b('Motor beide … vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor beide anhalten')}.` },
               { title: 'Testen',
                 text: 'Starte den Simulator. Wenig Licht → er schläft. Viel Licht → er fährt. Kleiner Abstand → er stoppt.',
                 textHw: 'Lade das Programm auf deinen Calliope. Licht an → er fährt. Hand vor den Sensor → er stoppt. Licht aus → er schläft.' }
@@ -350,7 +351,7 @@ window.CONTENT_DE = (function () {
           problem: `<p>Wie reagiert dein Hase, wenn man ihn berührt, schüttelt oder anschreit? Das entscheidest du – passend zu einem schnellen, ungeduldigen Hasen.</p>`,
           concept: C.events,
           merksatz: M.events,
-          diagram: D.events('spiele Ton'),
+          diagram: D.events('zeige Symbol: schwindelig'),
           guidedTask: {
             title: 'Gib deinem Hasen Persönlichkeit',
             goal: 'Wähle neue Fähigkeiten aus und baue sie in dein Programm ein. Plane zuerst in deinem Hefter, wie dein Hase reagieren soll.',
@@ -361,8 +362,6 @@ window.CONTENT_DE = (function () {
                 detail: `<p>Block: ${b('wenn geschüttelt')} in <strong>Eingabe</strong>.</p><p>Idee: Erschrickt er? Wird ihm schwindelig? Hüpft er vor Freude?</p>` },
               { icon: '🎤', title: 'Mikrofon', short: 'Der Hase hört, wie laut es ist.',
                 detail: `<p>Block: ${b('Lautstärke')} in <strong>Eingabe</strong> – eine Zahl, wie bei der Lichtstärke.</p><p>Idee: Wird es zu laut, dreht er sich mit den Motoren weg.</p><p>Überlege: Wo muss die Bedingung stehen, damit der Calliope sie immer wieder prüft?</p>` },
-              { icon: '🎵', title: 'Töne', short: 'Der Hase macht Geräusche.',
-                detail: `<p>Blöcke in <strong>Musik</strong>, z. B. ${b('spiele Note')}.</p><p>Idee: Jede Reaktion bekommt ihren eigenen Ton.</p>` }
             ],
             requirements: [
               'Mindestens <strong>zwei</strong> neue Fähigkeiten sind eingebaut.',
@@ -605,26 +604,26 @@ window.CONTENT_DE = (function () {
           conceptLabel: 'Motorsteuerung und Ultraschallsensor',
           conceptShort: 'Motoren',
           image: 'img/chapters/tortoise/t5.png',
-          narrative: `<p>Deine Schildkröte kann atmen, sehen und reagieren – aber sie sitzt still. Mit dem <strong>Maqueen</strong>-Roboter bekommt sie Räder und einen <strong>Ultraschallsensor</strong>, der Abstände misst. Langsam, aber unaufhaltsam!</p>`,
+          narrative: `<p>Deine Schildkröte kann atmen, sehen und reagieren – aber sie sitzt still. Mit dem <strong>Motion Kit</strong> bekommt sie Räder und einen <strong>Ultraschallsensor</strong>, der Abstände misst. Langsam, aber unaufhaltsam!</p>`,
           problem: `<p>Deine Schildkröte soll losfahren, wenn es hell ist – aber anhalten, wenn ein Hindernis vor ihr steht.</p>`,
           concept: C.nested,
           merksatz: M.nested,
-          diagram: D.motors(30),
+          diagram: D.motors(80),
           guidedTask: {
             title: 'Die Schildkröte lernt sich zu bewegen',
             steps: [
-              { title: 'Maqueen-Erweiterung laden',
-                text: 'Öffne dein Projekt. Klicke auf <strong>Erweiterungen</strong>, suche <strong>Maqueen</strong> und füge sie hinzu. Jetzt gibt es Blöcke für Motoren und Sensoren.' },
+              { title: 'MotionKit-Erweiterung laden',
+                text: 'Öffne dein Projekt. Klicke auf <strong>Erweiterungen</strong> und wähle <strong>MotionKit (V2)</strong>. Die neuen Blöcke findest du in der Kategorie <strong>MotionKit</strong>. Steht es nicht in der Liste? Füge den Link <a href="https://github.com/tinysuperlab/MotionKitV2" target="_blank" rel="noopener">github.com/tinysuperlab/MotionKitV2</a> in das Suchfeld ein.' },
               { title: 'Licht-Bedingung anpassen',
                 text: `In ${b('dauerhaft')} steht schon ${b('wenn Lichtstärke > 120 dann … sonst')}. Ändere die Zahl auf <strong>10</strong>.` },
               { title: 'Losfahren bei Licht',
-                text: `Lege ${b('Motor alle vorwärts Tempo 30')} in den <strong>dann</strong>-Teil, über deine Atem-Animation.` },
+                text: `Lege ${b('Motor beide Richtung vorwärts Tempo 80')} aus <strong>MotionKit</strong> in den <strong>dann</strong>-Teil, über deine Atem-Animation.` },
               { title: 'Anhalten im Dunkeln',
-                text: `Lege ${b('Motor alle stoppen')} in den <strong>sonst</strong>-Teil, zu deinem „z". Teste: Dunkel → die Schildkröte stoppt.` },
+                text: `Lege ${b('Motor beide anhalten')} in den <strong>sonst</strong>-Teil, zu deinem „z". Teste: Dunkel → die Schildkröte stoppt.` },
               { title: 'Zweite Bedingung einbauen',
-                text: `Ziehe ein neues ${b('wenn … dann … sonst')} <strong>in den dann-Teil</strong>. Bedingung: ${b('Ultraschall Abstand (cm) > 5')}.` },
+                text: `Ziehe ein neues ${b('wenn … dann … sonst')} <strong>in den dann-Teil</strong>. Bedingung: ${b('Ultraschallsensor cm > 5')} (aus <strong>MotionKit</strong>).` },
               { title: 'Blöcke einsortieren',
-                text: `Schiebe ${b('Motor alle vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor alle stoppen')}.` },
+                text: `Schiebe ${b('Motor beide … vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor beide anhalten')}.` },
               { title: 'Testen',
                 text: 'Starte den Simulator. Wenig Licht → sie ruht. Viel Licht → sie fährt. Kleiner Abstand → sie stoppt.',
                 textHw: 'Lade das Programm auf deinen Calliope. Licht an → sie fährt. Hand vor den Sensor → sie stoppt. Licht aus → sie ruht.' }
@@ -643,7 +642,7 @@ window.CONTENT_DE = (function () {
           problem: `<p>Wie reagiert deine Schildkröte, wenn man sie berührt, schüttelt oder anschreit? Das entscheidest du – passend zu einer ruhigen, bedachten Schildkröte.</p>`,
           concept: C.events,
           merksatz: M.events,
-          diagram: D.events('spiele Ton'),
+          diagram: D.events('zeige Symbol: schwindelig'),
           guidedTask: {
             title: 'Gib deiner Schildkröte Persönlichkeit',
             goal: 'Wähle neue Fähigkeiten aus und baue sie in dein Programm ein. Plane zuerst in deinem Hefter, wie deine Schildkröte reagieren soll.',
@@ -654,8 +653,6 @@ window.CONTENT_DE = (function () {
                 detail: `<p>Block: ${b('wenn geschüttelt')} in <strong>Eingabe</strong>.</p><p>Idee: Zieht sie sich in den Panzer zurück? Wartet sie, bis alles wieder ruhig ist?</p>` },
               { icon: '🎤', title: 'Mikrofon', short: 'Die Schildkröte hört, wie laut es ist.',
                 detail: `<p>Block: ${b('Lautstärke')} in <strong>Eingabe</strong> – eine Zahl, wie bei der Lichtstärke.</p><p>Idee: Wird es zu laut, stoppt sie erschrocken.</p><p>Überlege: Wo muss die Bedingung stehen, damit der Calliope sie immer wieder prüft?</p>` },
-              { icon: '🎵', title: 'Töne', short: 'Die Schildkröte macht Geräusche.',
-                detail: `<p>Blöcke in <strong>Musik</strong>, z. B. ${b('spiele Note')}.</p><p>Idee: Tiefe, langsame Töne passen gut zu ihr.</p>` }
             ],
             requirements: [
               'Mindestens <strong>zwei</strong> neue Fähigkeiten sind eingebaut.',
@@ -822,7 +819,7 @@ dauerhaft
       },
       {
         chapter: 5,
-        title: 'Nach Kapitel 5 — Bewegung (Maqueen)',
+        title: 'Nach Kapitel 5 — Bewegung (MotionKit)',
         code: `beim Start
     zeige Symbol ♥
     pausiere (ms) 500
@@ -836,16 +833,16 @@ wenn Knopf B gedrückt
 
 dauerhaft
     wenn Lichtstärke > 10
-        wenn Ultraschall (cm) > 5
-            Motor alle vorwärts Tempo 50
+        wenn Ultraschallsensor cm > 5
+            Motor beide Richtung vorwärts Tempo 200
             zeige LEDs      (Atem klein)
             pausiere (ms) 300
             zeige LEDs      (Atem groß)
             pausiere (ms) 300
         sonst
-            Motor alle stoppen
+            Motor beide anhalten
     sonst
-        Motor alle stoppen
+        Motor beide anhalten
         zeige Zeichenfolge "z"`
       },
       {
@@ -861,7 +858,7 @@ wenn geschüttelt
 
 dauerhaft  (Ergänzung)
     wenn Lautstärke > 128
-        Motor alle vorwärts Tempo 80    (lauter → schneller)
+        Motor beide Richtung vorwärts Tempo 255    (lauter → schneller)
     sonst
         ... (bisherige Logik)`
       },
@@ -956,7 +953,7 @@ dauerhaft
       },
       {
         chapter: 5,
-        title: 'Nach Kapitel 5 — Bewegung (Maqueen)',
+        title: 'Nach Kapitel 5 — Bewegung (MotionKit)',
         code: `beim Start
     zeige Symbol ♥
     pausiere (ms) 1500
@@ -970,16 +967,16 @@ wenn Knopf B gedrückt
 
 dauerhaft
     wenn Lichtstärke > 10
-        wenn Ultraschall (cm) > 5
-            Motor alle vorwärts Tempo 30
+        wenn Ultraschallsensor cm > 5
+            Motor beide Richtung vorwärts Tempo 80
             zeige LEDs      (Atem klein)
             pausiere (ms) 600
             zeige LEDs      (Atem groß)
             pausiere (ms) 600
         sonst
-            Motor alle stoppen
+            Motor beide anhalten
     sonst
-        Motor alle stoppen
+        Motor beide anhalten
         zeige Zeichenfolge "z"`
       },
       {
@@ -995,7 +992,7 @@ wenn geschüttelt
 
 dauerhaft  (Ergänzung)
     wenn Lautstärke > 128
-        Motor alle vorwärts Tempo 50    (lauter → schneller)
+        Motor beide Richtung vorwärts Tempo 150    (lauter → schneller)
     sonst
         ... (bisherige Logik)`
       },

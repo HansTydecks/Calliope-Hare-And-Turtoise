@@ -288,28 +288,27 @@ basic.forever(on_forever)`,
         concept: {
           explanation: `<p><strong>Motoren</strong> und <strong>Ultraschallsensor</strong> in MakeCode Python:</p>
 <ul>
-<li><code>motors.motor_A.set_speed(80)</code> — Motor A auf Geschwindigkeit 80</li>
-<li><code>motors.motor_B.set_speed(80)</code> — Motor B auf Geschwindigkeit 80</li>
-<li><code>sensors.ultrasonic_distance()</code> — Abstand in cm messen</li>
+<li><code>maqueen.motor_run(Motors.ALL, Dir.CW, 200)</code> — beide Motoren vorwärts, Tempo 200 (0–255)</li>
+<li><code>maqueen.motor_run(Motors.M1, Dir.CCW, 200)</code> — nur linker Motor, rückwärts</li>
+<li><code>maqueen.motor_stop(Motors.ALL)</code> — beide Motoren anhalten</li>
+<li><code>maqueen.ultrasonic(DistanceUnit.CENTIMETERS)</code> — Abstand in cm messen</li>
 </ul>
-<p>Negative Geschwindigkeit = rückwärts. <code>0</code> = stoppen.</p>`,
+<p>Die Befehle kommen aus der Erweiterung <strong>MotionKit (V2)</strong>. <code>M1</code> = links, <code>M2</code> = rechts.</p>`,
           code: `# Motoren steuern
-motors.motor_A.set_speed(80)          # Vorwärts
-motors.motor_B.set_speed(80)
+maqueen.motor_run(Motors.ALL, Dir.CW, 200)          # Vorwärts
 
 # Ultraschall-Abstand lesen
-abstand = sensors.ultrasonic_distance()
+abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
 
 # Hindernis-Erkennung
 if abstand < 15:
     # Stoppen!
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     # Drehen (Flucht!)
-    motors.motor_A.set_speed(-80)
-    motors.motor_B.set_speed(80)
+    maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 200)
     basic.pause(500)`,
-          tip: `Wenn Motor A rückwärts und Motor B vorwärts dreht, macht der Hase eine schnelle Drehung auf der Stelle — perfekt für Fluchtverhalten!`
+          tip: `Wenn der linke Motor (M1) rückwärts und der rechte (M2) vorwärts dreht, macht der Hase eine schnelle Drehung auf der Stelle — perfekt für Fluchtverhalten!`
         },
         fullTask: {
           explanation: `<p><strong>Fluchtverhalten des Hasen — vollständiges Programm:</strong></p>`,
@@ -317,27 +316,25 @@ if abstand < 15:
 # Motorsteuerung + Ultraschallsensor
 
 def on_forever():
-    abstand = sensors.ultrasonic_distance()
+    abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     
     if abstand < 15:
         # Hindernis erkannt! Flucht!
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.show_string("!")
         basic.pause(200)
         
         # Blitzschnelle Drehung
-        motors.motor_A.set_speed(-80)
-        motors.motor_B.set_speed(80)
+        maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+        maqueen.motor_run(Motors.M2, Dir.CW, 200)
         basic.pause(500)
     else:
         # Kein Hindernis → vorwärts!
-        motors.motor_A.set_speed(80)
-        motors.motor_B.set_speed(80)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 200)
         basic.show_arrow(ArrowNames.NORTH)
 
 basic.forever(on_forever)`,
-          tip: `Die Motoren-Befehle können je nach Calliope-Erweiterung leicht anders heißen. Schau in MakeCode unter <strong>Motoren</strong>, welche Blöcke verfügbar sind, und wechsle dann zu Python.`
+          tip: `Füge zuerst die Erweiterung <strong>MotionKit (V2)</strong> hinzu. Wie die Befehle genau heißen, siehst du, wenn du einen Block aus <strong>MotionKit</strong> einfügst und dann auf Python umschaltest.`
         }
       },
 
@@ -354,8 +351,8 @@ basic.forever(on_forever)`,
           code: `# Touch-Pins
 def on_pin_p1():
     # Links berührt → nach rechts ausweichen
-    motors.motor_A.set_speed(80)
-    motors.motor_B.set_speed(30)
+    maqueen.motor_run(Motors.M1, Dir.CW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 80)
     basic.pause(500)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
@@ -388,46 +385,43 @@ input.on_button_pressed(Button.B, on_button_b)
 
 # === Touch-Pins ===
 def on_pin_p1():
-    motors.motor_A.set_speed(80)
-    motors.motor_B.set_speed(30)
+    maqueen.motor_run(Motors.M1, Dir.CW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 80)
     basic.pause(500)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
 def on_pin_p2():
-    motors.motor_A.set_speed(30)
-    motors.motor_B.set_speed(80)
+    maqueen.motor_run(Motors.M1, Dir.CW, 80)
+    maqueen.motor_run(Motors.M2, Dir.CW, 200)
     basic.pause(500)
 input.on_pin_pressed(TouchPin.P2, on_pin_p2)
 
 # === Schütteln ===
 def on_shake():
     basic.show_icon(IconNames.SURPRISED)
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.pause(1000)
 input.on_gesture(Gesture.SHAKE, on_shake)
 
 # === Hauptschleife ===
 def on_forever():
     if input.light_level() > 50:
-        abstand = sensors.ultrasonic_distance()
+        abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
         if abstand < 15:
             # Flucht!
-            motors.motor_A.set_speed(-80)
-            motors.motor_B.set_speed(80)
+            maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+            maqueen.motor_run(Motors.M2, Dir.CW, 200)
             basic.pause(500)
         else:
             # Normal fahren + atmen
-            motors.motor_A.set_speed(80)
-            motors.motor_B.set_speed(80)
+            maqueen.motor_run(Motors.ALL, Dir.CW, 200)
             basic.show_icon(IconNames.HEART)
             basic.pause(300)
             basic.show_icon(IconNames.HEART_SMALL)
             basic.pause(300)
     else:
         # Dunkel → schlafen
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
         basic.pause(1000)
 
@@ -516,14 +510,12 @@ input.on_button_pressed(Button.B, on_button_b)`,
           code: `# UND-Verknüpfung
 if hunger > 5 and input.light_level() > 50:
     # hungrig UND hell → Futter suchen
-    motors.motor_A.set_speed(60)
-    motors.motor_B.set_speed(60)
+    maqueen.motor_run(Motors.ALL, Dir.CW, 150)
 
 # ODER-Verknüpfung
 if muedigkeit > 7 or input.light_level() < 30:
     # müde ODER dunkel → schlafen
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.clear_screen()
 
 # Kombination mit NICHT
@@ -547,13 +539,11 @@ def on_forever():
     
     if hunger > 5 and input.light_level() > 50:
         # Hungrig UND hell → Futtersuche
-        motors.motor_A.set_speed(60)
-        motors.motor_B.set_speed(60)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 150)
         basic.show_arrow(ArrowNames.NORTH)
     elif muedigkeit > 7 or input.light_level() < 30:
         # Müde ODER dunkel → Schlafen
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
     else:
         # Normal → Atmen
@@ -595,8 +585,8 @@ input.on_button_pressed(Button.A, on_button_a)`,
 ATEM_PAUSE = 300      # Hase: schnell (300ms)
 # ATEM_PAUSE = 1500   # Schildkröte: langsam (1500ms)
 
-MOTOR_SPEED = 80      # Hase: schnell
-# MOTOR_SPEED = 30    # Schildkröte: langsam
+MOTOR_SPEED = 200      # Hase: schnell
+# MOTOR_SPEED = 80    # Schildkröte: langsam
 
 LICHT_SCHWELLE = 50   # Hase: empfindlich
 # LICHT_SCHWELLE = 120  # Schildkröte: geduldig
@@ -623,17 +613,16 @@ radio.set_group(1)
 
 # Parameter: Hase
 ATEM_PAUSE = 300
-MOTOR_SPEED = 80
+MOTOR_SPEED = 200
 
 def on_forever():
-    abstand = sensors.ultrasonic_distance()
+    abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     if abstand < 15:
         # Hindernis! Per Funk melden
         radio.send_string("Hindernis!")
         basic.show_string("!")
     else:
-        motors.motor_A.set_speed(MOTOR_SPEED)
-        motors.motor_B.set_speed(MOTOR_SPEED)
+        maqueen.motor_run(Motors.ALL, Dir.CW, MOTOR_SPEED)
         basic.show_icon(IconNames.HEART)
         basic.pause(ATEM_PAUSE)
 basic.forever(on_forever)
@@ -835,20 +824,18 @@ basic.forever(on_forever)`,
       /* ---- Kapitel 5: Bewegen (Motoren) ---- */
       {
         concept: {
-          explanation: `<p>Die Schildkröte fährt langsamer (<code>30</code> statt <code>80</code>) und erkennt Hindernisse früher (<code>20</code> cm statt <code>15</code> cm). Kein hektisches Ausweichen — ein sanftes Umlenken:</p>`,
+          explanation: `<p>Die Schildkröte fährt langsamer (<code>80</code> statt <code>200</code>) und erkennt Hindernisse früher (<code>20</code> cm statt <code>15</code> cm). Kein hektisches Ausweichen — ein sanftes Umlenken:</p>`,
           code: `# Schildkröte: langsam und vorsichtig
-motors.motor_A.set_speed(30)   # Langsam
-motors.motor_B.set_speed(30)
+maqueen.motor_run(Motors.ALL, Dir.CW, 80)   # Langsam
 
 # Hindernis bei 20 cm erkennen (früher als Hase!)
-if sensors.ultrasonic_distance() < 20:
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+if maqueen.ultrasonic(DistanceUnit.CENTIMETERS) < 20:
+    maqueen.motor_stop(Motors.ALL)
     # Sanfte Kurve statt Flucht
-    motors.motor_A.set_speed(30)
-    motors.motor_B.set_speed(10)
+    maqueen.motor_run(Motors.M1, Dir.CW, 80)
+    maqueen.motor_run(Motors.M2, Dir.CW, 30)
     basic.pause(1000)`,
-          tip: `Die Schildkröte lenkt sanft um (<code>30</code>/<code>10</code>) statt sich zu drehen (<code>-80</code>/<code>80</code>). Ruhig und besonnen.`
+          tip: `Die Schildkröte lenkt sanft um (<code>80</code>/<code>30</code>) statt sich auf der Stelle zu drehen. Ruhig und besonnen.`
         },
         fullTask: {
           explanation: `<p><strong>Vorsichtiges Navigieren:</strong></p>`,
@@ -856,12 +843,11 @@ if sensors.ultrasonic_distance() < 20:
 # Langsame Motoren + vorsichtiges Ausweichen
 
 def on_forever():
-    abstand = sensors.ultrasonic_distance()
+    abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     
     if abstand < 20:
         # Hindernis → anhalten und umlenken
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.show_leds("""
             . # # # .
             # . . . #
@@ -872,17 +858,16 @@ def on_forever():
         basic.pause(500)
         
         # Sanfte Kurve
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(10)
+        maqueen.motor_run(Motors.M1, Dir.CW, 80)
+        maqueen.motor_run(Motors.M2, Dir.CW, 30)
         basic.pause(1000)
     else:
         # Kein Hindernis → langsam geradeaus
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(30)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 80)
         basic.show_arrow(ArrowNames.NORTH)
 
 basic.forever(on_forever)`,
-          tip: `Die Schildkröte navigiert mit Geschwindigkeit <code>30</code> — deutlich langsamer als der Hase mit <code>80</code>. Aber sie erkennt Hindernisse früher (bei <code>20</code> cm).`
+          tip: `Die Schildkröte navigiert mit Tempo <code>80</code> — deutlich langsamer als der Hase mit <code>200</code>. Aber sie erkennt Hindernisse früher (bei <code>20</code> cm).`
         }
       },
 
@@ -896,8 +881,7 @@ basic.forever(on_forever)`,
 </ul>`,
           code: `# Schütteln: Schildkröte zieht sich zurück
 def on_shake():
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.show_leds("""
         . # # # .
         # . . . #
@@ -930,15 +914,14 @@ input.on_button_pressed(Button.B, on_button_b)
 
 # === Touch-Pins ===
 def on_pin_p1():
-    motors.motor_A.set_speed(30)
-    motors.motor_B.set_speed(10)
+    maqueen.motor_run(Motors.M1, Dir.CW, 80)
+    maqueen.motor_run(Motors.M2, Dir.CW, 30)
     basic.pause(1000)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
 # === Schütteln = Panzer ===
 def on_shake():
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.show_leds("""
         . # # # .
         # . . . #
@@ -952,21 +935,19 @@ input.on_gesture(Gesture.SHAKE, on_shake)
 # === Hauptschleife ===
 def on_forever():
     if input.light_level() > 120:
-        abstand = sensors.ultrasonic_distance()
+        abstand = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
         if abstand < 20:
-            motors.motor_A.set_speed(30)
-            motors.motor_B.set_speed(10)
+            maqueen.motor_run(Motors.M1, Dir.CW, 80)
+            maqueen.motor_run(Motors.M2, Dir.CW, 30)
             basic.pause(1000)
         else:
-            motors.motor_A.set_speed(30)
-            motors.motor_B.set_speed(30)
+            maqueen.motor_run(Motors.ALL, Dir.CW, 80)
             basic.show_icon(IconNames.HEART)
             basic.pause(1500)
             basic.show_icon(IconNames.HEART_SMALL)
             basic.pause(1500)
     else:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
         basic.pause(2000)
 
@@ -1029,7 +1010,7 @@ input.on_button_pressed(Button.B, on_button_b)`,
           code: `# Schildkröte: höhere Schwellenwerte
 if hunger > 8 and input.light_level() > 120:
     # hungrig UND wirklich hell
-    motors.motor_A.set_speed(30)
+    maqueen.motor_run(Motors.ALL, Dir.CW, 80)
 
 if muedigkeit > 10 or input.light_level() < 50:
     # müde ODER dunkel
@@ -1049,12 +1030,10 @@ def on_forever():
     muedigkeit += 1
     
     if hunger > 8 and input.light_level() > 120:
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(30)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 80)
         basic.show_arrow(ArrowNames.NORTH)
     elif muedigkeit > 10 or input.light_level() < 50:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
     else:
         basic.show_icon(IconNames.HEART)
@@ -1086,8 +1065,8 @@ input.on_button_pressed(Button.A, on_button_a)`,
 # ATEM_PAUSE = 300    # Hase: schnell
 ATEM_PAUSE = 1500     # Schildkröte: langsam
 
-# MOTOR_SPEED = 80    # Hase: schnell
-MOTOR_SPEED = 30      # Schildkröte: langsam
+# MOTOR_SPEED = 200    # Hase: schnell
+MOTOR_SPEED = 80      # Schildkröte: langsam
 
 # LICHT_SCHWELLE = 50   # Hase: empfindlich
 LICHT_SCHWELLE = 120    # Schildkröte: geduldig
@@ -1113,7 +1092,7 @@ radio.set_group(1)
 
 # Parameter: Schildkröte
 ATEM_PAUSE = 1500
-MOTOR_SPEED = 30
+MOTOR_SPEED = 80
 
 # Nachricht vom Hasen empfangen
 def on_received(text):
@@ -1127,8 +1106,7 @@ def on_received(text):
 radio.on_received_string(on_received)
 
 def on_forever():
-    motors.motor_A.set_speed(MOTOR_SPEED)
-    motors.motor_B.set_speed(MOTOR_SPEED)
+    maqueen.motor_run(Motors.ALL, Dir.CW, MOTOR_SPEED)
     basic.show_icon(IconNames.HEART)
     basic.pause(ATEM_PAUSE)
 basic.forever(on_forever)`,
@@ -1360,24 +1338,23 @@ basic.forever(on_forever)`,
         concept: {
           explanation: `<p><strong>Motors</strong> and <strong>ultrasonic sensor</strong> in MakeCode Python:</p>
 <ul>
-<li><code>motors.motor_A.set_speed(80)</code> — Motor A at speed 80</li>
-<li><code>motors.motor_B.set_speed(80)</code> — Motor B at speed 80</li>
-<li><code>sensors.ultrasonic_distance()</code> — distance in cm</li>
+<li><code>maqueen.motor_run(Motors.ALL, Dir.CW, 200)</code> — both motors forward, speed 200 (0–255)</li>
+<li><code>maqueen.motor_run(Motors.M1, Dir.CCW, 200)</code> — left motor only, backwards</li>
+<li><code>maqueen.motor_stop(Motors.ALL)</code> — stop both motors</li>
+<li><code>maqueen.ultrasonic(DistanceUnit.CENTIMETERS)</code> — distance in cm</li>
 </ul>
-<p>Negative speed = reverse. <code>0</code> = stop.</p>`,
+<p>These commands come from the <strong>MotionKit (V2)</strong> extension. <code>M1</code> = left, <code>M2</code> = right.</p>`,
           code: `# Control motors
-motors.motor_A.set_speed(80)
-motors.motor_B.set_speed(80)
+maqueen.motor_run(Motors.ALL, Dir.CW, 200)
 
 # Obstacle detection
-distance = sensors.ultrasonic_distance()
+distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
 if distance < 15:
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
-    motors.motor_A.set_speed(-80)
-    motors.motor_B.set_speed(80)
+    maqueen.motor_stop(Motors.ALL)
+    maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 200)
     basic.pause(500)`,
-          tip: `When Motor A goes backward and Motor B forward, the hare spins in place — perfect for escape behaviour!`
+          tip: `When the left motor (M1) goes backward and the right one (M2) forward, the hare spins in place — perfect for escape behaviour!`
         },
         fullTask: {
           explanation: `<p><strong>Escape behaviour — full program:</strong></p>`,
@@ -1385,26 +1362,24 @@ if distance < 15:
 # Motors + ultrasonic sensor
 
 def on_forever():
-    distance = sensors.ultrasonic_distance()
+    distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     
     if distance < 15:
         # Obstacle! Escape!
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.show_string("!")
         basic.pause(200)
         # Lightning-fast spin
-        motors.motor_A.set_speed(-80)
-        motors.motor_B.set_speed(80)
+        maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+        maqueen.motor_run(Motors.M2, Dir.CW, 200)
         basic.pause(500)
     else:
         # No obstacle → forward!
-        motors.motor_A.set_speed(80)
-        motors.motor_B.set_speed(80)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 200)
         basic.show_arrow(ArrowNames.NORTH)
 
 basic.forever(on_forever)`,
-          tip: `Motor commands may differ slightly depending on the Calliope extension. Check MakeCode's <strong>Motors</strong> category for available blocks, then switch to Python.`
+          tip: `Add the <strong>MotionKit (V2)</strong> extension first. To see the exact command names, insert a block from <strong>MotionKit</strong> and then switch to Python.`
         }
       },
 
@@ -1420,8 +1395,8 @@ basic.forever(on_forever)`,
 <p>Combine everything: loops, conditions, sensors, motors, pins and shaking — into your unique animal!</p>`,
           code: `# Touch pins
 def on_pin_p1():
-    motors.motor_A.set_speed(80)
-    motors.motor_B.set_speed(30)
+    maqueen.motor_run(Motors.M1, Dir.CW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 80)
     basic.pause(500)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
@@ -1452,37 +1427,34 @@ input.on_button_pressed(Button.B, on_button_b)
 
 # === Touch Pins ===
 def on_pin_p1():
-    motors.motor_A.set_speed(80)
-    motors.motor_B.set_speed(30)
+    maqueen.motor_run(Motors.M1, Dir.CW, 200)
+    maqueen.motor_run(Motors.M2, Dir.CW, 80)
     basic.pause(500)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
 # === Shake ===
 def on_shake():
     basic.show_icon(IconNames.SURPRISED)
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.pause(1000)
 input.on_gesture(Gesture.SHAKE, on_shake)
 
 # === Main loop ===
 def on_forever():
     if input.light_level() > 50:
-        distance = sensors.ultrasonic_distance()
+        distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
         if distance < 15:
-            motors.motor_A.set_speed(-80)
-            motors.motor_B.set_speed(80)
+            maqueen.motor_run(Motors.M1, Dir.CCW, 200)
+            maqueen.motor_run(Motors.M2, Dir.CW, 200)
             basic.pause(500)
         else:
-            motors.motor_A.set_speed(80)
-            motors.motor_B.set_speed(80)
+            maqueen.motor_run(Motors.ALL, Dir.CW, 200)
             basic.show_icon(IconNames.HEART)
             basic.pause(300)
             basic.show_icon(IconNames.HEART_SMALL)
             basic.pause(300)
     else:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
         basic.pause(1000)
 basic.forever(on_forever)`,
@@ -1560,7 +1532,7 @@ input.on_button_pressed(Button.B, on_button_b)`,
 <p>More intuitive than MakeCode blocks because you can read it like English!</p>`,
           code: `# AND
 if hunger > 5 and input.light_level() > 50:
-    motors.motor_A.set_speed(60)
+    maqueen.motor_run(Motors.ALL, Dir.CW, 150)
 
 # OR
 if tiredness > 7 or input.light_level() < 30:
@@ -1581,12 +1553,10 @@ def on_forever():
     tiredness += 1
     
     if hunger > 5 and input.light_level() > 50:
-        motors.motor_A.set_speed(60)
-        motors.motor_B.set_speed(60)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 150)
         basic.show_arrow(ArrowNames.NORTH)
     elif tiredness > 7 or input.light_level() < 30:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
     else:
         basic.show_icon(IconNames.HEART)
@@ -1623,8 +1593,8 @@ input.on_button_pressed(Button.A, on_button_a)`,
 BREATH_PAUSE = 300     # Hare: fast
 # BREATH_PAUSE = 1500  # Tortoise: slow
 
-MOTOR_SPEED = 80       # Hare: fast
-# MOTOR_SPEED = 30     # Tortoise: slow
+MOTOR_SPEED = 200       # Hare: fast
+# MOTOR_SPEED = 80     # Tortoise: slow
 
 LIGHT_THRESHOLD = 50       # Hare: sensitive
 # LIGHT_THRESHOLD = 120    # Tortoise: patient
@@ -1648,16 +1618,15 @@ basic.forever(on_forever)`,
 
 radio.set_group(1)
 BREATH_PAUSE = 300
-MOTOR_SPEED = 80
+MOTOR_SPEED = 200
 
 def on_forever():
-    distance = sensors.ultrasonic_distance()
+    distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     if distance < 15:
         radio.send_string("Obstacle!")
         basic.show_string("!")
     else:
-        motors.motor_A.set_speed(MOTOR_SPEED)
-        motors.motor_B.set_speed(MOTOR_SPEED)
+        maqueen.motor_run(Motors.ALL, Dir.CW, MOTOR_SPEED)
         basic.show_icon(IconNames.HEART)
         basic.pause(BREATH_PAUSE)
 basic.forever(on_forever)
@@ -1837,26 +1806,24 @@ basic.forever(on_forever)`,
       /* ---- Chapter 5: Moving ---- */
       {
         concept: {
-          explanation: `<p>The tortoise drives slower (<code>30</code> vs <code>80</code>) and detects obstacles earlier (<code>20</code>cm vs <code>15</code>cm). No frantic dodging — gentle course correction:</p>`,
-          code: `motors.motor_A.set_speed(30)   # Slow
-motors.motor_B.set_speed(30)
+          explanation: `<p>The tortoise drives slower (<code>80</code> vs <code>200</code>) and detects obstacles earlier (<code>20</code>cm vs <code>15</code>cm). No frantic dodging — gentle course correction:</p>`,
+          code: `maqueen.motor_run(Motors.ALL, Dir.CW, 80)   # Slow
 
-if sensors.ultrasonic_distance() < 20:
-    motors.motor_A.set_speed(30)
-    motors.motor_B.set_speed(10)   # Gentle curve
+if maqueen.ultrasonic(DistanceUnit.CENTIMETERS) < 20:
+    maqueen.motor_run(Motors.M1, Dir.CW, 80)
+    maqueen.motor_run(Motors.M2, Dir.CW, 30)   # Gentle curve
     basic.pause(1000)`,
-          tip: `The tortoise steers gently (<code>30</code>/<code>10</code>) instead of spinning (<code>-80</code>/<code>80</code>). Calm and deliberate.`
+          tip: `The tortoise steers gently (<code>80</code>/<code>30</code>) instead of spinning on the spot. Calm and deliberate.`
         },
         fullTask: {
           explanation: `<p><strong>Careful navigation:</strong></p>`,
           code: `# My Tortoise — Chapter 5: Moving
 
 def on_forever():
-    distance = sensors.ultrasonic_distance()
+    distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
     
     if distance < 20:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.show_leds("""
             . # # # .
             # . . . #
@@ -1865,15 +1832,14 @@ def on_forever():
             . # # # .
         """)
         basic.pause(500)
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(10)
+        maqueen.motor_run(Motors.M1, Dir.CW, 80)
+        maqueen.motor_run(Motors.M2, Dir.CW, 30)
         basic.pause(1000)
     else:
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(30)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 80)
         basic.show_arrow(ArrowNames.NORTH)
 basic.forever(on_forever)`,
-          tip: `Speed <code>30</code> vs the hare's <code>80</code>. But it detects obstacles earlier (at <code>20</code>cm vs <code>15</code>cm).`
+          tip: `Speed <code>80</code> vs the hare's <code>200</code>. But it detects obstacles earlier (at <code>20</code>cm vs <code>15</code>cm).`
         }
       },
 
@@ -1886,8 +1852,7 @@ basic.forever(on_forever)`,
 <li><code>input.on_gesture(Gesture.SHAKE, function)</code> — retreat into shell</li>
 </ul>`,
           code: `def on_shake():
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.show_leds("""
         . # # # .
         # . . . #
@@ -1918,14 +1883,13 @@ def on_button_b():
 input.on_button_pressed(Button.B, on_button_b)
 
 def on_pin_p1():
-    motors.motor_A.set_speed(30)
-    motors.motor_B.set_speed(10)
+    maqueen.motor_run(Motors.M1, Dir.CW, 80)
+    maqueen.motor_run(Motors.M2, Dir.CW, 30)
     basic.pause(1000)
 input.on_pin_pressed(TouchPin.P1, on_pin_p1)
 
 def on_shake():
-    motors.motor_A.set_speed(0)
-    motors.motor_B.set_speed(0)
+    maqueen.motor_stop(Motors.ALL)
     basic.show_leds("""
         . # # # .
         # . . . #
@@ -1938,21 +1902,19 @@ input.on_gesture(Gesture.SHAKE, on_shake)
 
 def on_forever():
     if input.light_level() > 120:
-        distance = sensors.ultrasonic_distance()
+        distance = maqueen.ultrasonic(DistanceUnit.CENTIMETERS)
         if distance < 20:
-            motors.motor_A.set_speed(30)
-            motors.motor_B.set_speed(10)
+            maqueen.motor_run(Motors.M1, Dir.CW, 80)
+            maqueen.motor_run(Motors.M2, Dir.CW, 30)
             basic.pause(1000)
         else:
-            motors.motor_A.set_speed(30)
-            motors.motor_B.set_speed(30)
+            maqueen.motor_run(Motors.ALL, Dir.CW, 80)
             basic.show_icon(IconNames.HEART)
             basic.pause(1500)
             basic.show_icon(IconNames.HEART_SMALL)
             basic.pause(1500)
     else:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
         basic.pause(2000)
 basic.forever(on_forever)`,
@@ -2008,7 +1970,7 @@ input.on_button_pressed(Button.B, on_button_b)`,
         concept: {
           explanation: `<p>Same Python syntax, different thresholds:</p>`,
           code: `if hunger > 8 and input.light_level() > 120:
-    motors.motor_A.set_speed(30)
+    maqueen.motor_run(Motors.ALL, Dir.CW, 80)
 
 if tiredness > 10 or input.light_level() < 50:
     basic.clear_screen()`,
@@ -2027,12 +1989,10 @@ def on_forever():
     tiredness += 1
     
     if hunger > 8 and input.light_level() > 120:
-        motors.motor_A.set_speed(30)
-        motors.motor_B.set_speed(30)
+        maqueen.motor_run(Motors.ALL, Dir.CW, 80)
         basic.show_arrow(ArrowNames.NORTH)
     elif tiredness > 10 or input.light_level() < 50:
-        motors.motor_A.set_speed(0)
-        motors.motor_B.set_speed(0)
+        maqueen.motor_stop(Motors.ALL)
         basic.clear_screen()
     else:
         basic.show_icon(IconNames.HEART)
@@ -2063,8 +2023,8 @@ input.on_button_pressed(Button.A, on_button_a)`,
 # BREATH_PAUSE = 300   # Hare
 BREATH_PAUSE = 1500    # Tortoise
 
-# MOTOR_SPEED = 80     # Hare
-MOTOR_SPEED = 30       # Tortoise
+# MOTOR_SPEED = 200     # Hare
+MOTOR_SPEED = 80       # Tortoise
 
 # LIGHT_THRESHOLD = 50    # Hare
 LIGHT_THRESHOLD = 120     # Tortoise
@@ -2088,7 +2048,7 @@ basic.forever(on_forever)`,
 
 radio.set_group(1)
 BREATH_PAUSE = 1500
-MOTOR_SPEED = 30
+MOTOR_SPEED = 80
 
 def on_received(text):
     if text == "Obstacle!":
@@ -2099,8 +2059,7 @@ def on_received(text):
 radio.on_received_string(on_received)
 
 def on_forever():
-    motors.motor_A.set_speed(MOTOR_SPEED)
-    motors.motor_B.set_speed(MOTOR_SPEED)
+    maqueen.motor_run(Motors.ALL, Dir.CW, MOTOR_SPEED)
     basic.show_icon(IconNames.HEART)
     basic.pause(BREATH_PAUSE)
 basic.forever(on_forever)`,
