@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garten-Simulator — Hase & Schildkröte</title>
+  <meta name="description" content="Teste dein Calliope-mini-Programm mit dem MotionKit V2 in einem 3D-Garten – ohne Calliope zu Hause. Einfach die .hex-Datei aus MakeCode hineinziehen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sim/sim.css">
+</head>
+<body>
+
+  <header class="sim-top">
+    <a class="sim-back" href="index.html" id="backLink">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-t="back">Zur Lernseite</span>
+    </a>
+    <h1 class="sim-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22V12"/><path d="M12 12c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 15c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/><path d="M4 22h16"/></svg>
+      <span data-t="title">Garten-Simulator</span>
+    </h1>
+    <div class="sim-top__right">
+      <a class="btn-makecode" href="https://makecode.calliope.cc" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span class="btn-makecode__label" data-t="openMakeCode">MakeCode öffnen</span>
+        <span class="btn-makecode__short" aria-hidden="true">MakeCode</span>
+      </a>
+      <div class="lang" role="group" aria-label="Sprache">
+        <button class="lang__btn" data-lang="de">DE</button>
+        <button class="lang__btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="sim-layout">
+    <!-- ===== 3D-Bühne ===== -->
+    <section class="stage" id="stage" aria-label="3D-Garten">
+      <div class="stage__canvas" id="canvasHost"></div>
+
+      <div class="stage__bar stage__bar--top">
+        <div class="chips" id="gardenChips" role="group" aria-label="Garten">
+          <button class="chip" data-garden="wiese" data-t="gWiese">Wiese</button>
+          <button class="chip" data-garden="hecken" data-t="gHecken">Hecken</button>
+          <button class="chip" data-garden="pfad" data-t="gPfad">Pfad</button>
+          <button class="chip" data-garden="begegnung" data-t="gBegegnung">Begegnung</button>
+        </div>
+        <div class="chips" id="cameraChips" role="group" aria-label="Kamera">
+          <button class="chip chip--icon" data-cam="overview" data-tt="camOverview" title="Überblick">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="chip chip--icon" data-cam="follow" data-tt="camFollow" title="Tier folgen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </button>
+          <button class="chip chip--icon" data-cam="top" data-tt="camTop" title="Von oben">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="stage__bar stage__bar--bottom">
+        <button class="ctl ctl--primary" id="btnPlay" aria-pressed="true">
+          <svg class="i-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          <svg class="i-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>
+          <span data-t="pause" class="lbl-pause">Pause</span><span data-t="play" class="lbl-play">Weiter</span>
+        </button>
+        <button class="ctl" id="btnResetAll">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/></svg>
+          <span data-t="resetAll">Alles neu starten</span>
+        </button>
+        <label class="ctl ctl--toggle">
+          <input type="checkbox" id="chkTrail">
+          <span data-t="trail">Spur</span>
+        </label>
+      </div>
+
+      <div class="stage__empty" id="emptyHint">
+        <div class="empty-card">
+          <div class="empty-card__icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <p class="empty-card__title" data-t="emptyTitle">Zieh deine .hex-Datei hierher</p>
+          <ol class="empty-card__steps">
+            <li data-t="step1">In MakeCode programmieren</li>
+            <li data-t="step2">„Herunterladen" klicken → .hex-Datei</li>
+            <li data-t="step3">Datei hier in den Garten ziehen</li>
+          </ol>
+          <div class="empty-card__actions">
+            <button class="ctl ctl--primary" id="btnEmptyOpen" data-t="chooseFile">Datei wählen</button>
+            <button class="ctl" id="btnEmptyDemo" data-t="tryDemo">Beispiel ansehen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage__drop" id="dropOverlay" aria-hidden="true">
+        <div class="drop-card">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-t="dropHere">Loslassen – dein Tier startet sofort!</span>
+        </div>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- ===== Bedienfeld ===== -->
+    <aside class="panel" id="panel">
+      <div class="slots" id="slots">
+        <!-- wird von main.js gefüllt -->
+      </div>
+
+      <section class="card calliope" id="calliopeCard">
+        <h2 class="card__title"><span data-t="calliopeOf">Calliope von</span> <span id="calliopeOwner"></span></h2>
+        <div class="board">
+          <button class="board__btn board__btn--a" data-btn="A" aria-label="Knopf A">A</button>
+          <div class="board__face">
+            <div class="board__rgb" id="boardRgb" aria-hidden="true"></div>
+            <div class="matrix" id="matrix" aria-label="LED-Anzeige"></div>
+          </div>
+          <button class="board__btn board__btn--b" data-btn="B" aria-label="Knopf B">B</button>
+        </div>
+        <div class="board__row">
+          <button class="pill" data-btn="AB">A+B</button>
+          <button class="pill" id="btnShake">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 8l-2 4 2 4M20 8l2 4-2 4"/><rect x="7" y="4" width="10" height="16" rx="2"/></svg>
+            <span data-t="shake">Schütteln</span>
+          </button>
+          <button class="pill" id="btnClap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+            <span data-t="clap">Klatschen</span>
+          </button>
+        </div>
+        <div class="board__row board__row--pins" role="group" aria-label="Pins">
+          <span class="row-label" data-t="pins">Pins:</span>
+          <button class="pin" data-pin="0">P0</button>
+          <button class="pin" data-pin="1">P1</button>
+          <button class="pin" data-pin="2">P2</button>
+          <button class="pin" data-pin="3">P3</button>
+        </div>
+        <p class="keys-hint" data-t="keysHint">Tastatur: A und B drücken</p>
+      </section>
+
+      <section class="card">
+        <h2 class="card__title" data-t="world">Umgebung</h2>
+        <label class="slider">
+          <span class="slider__label"><span data-t="light">Licht</span> <output id="outLight">200</output></span>
+          <span class="slider__track">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            <input type="range" id="rngLight" min="0" max="255" value="200">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+          </span>
+        </label>
+        <label class="slider">
+          <span class="slider__label"><span data-t="temp">Temperatur</span> <output id="outTemp">21 °C</output></span>
+          <span class="slider__track">
+            <span class="slider__end">-5</span>
+            <input type="range" id="rngTemp" min="-5" max="40" value="21">
+            <span class="slider__end">40</span>
+          </span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2 class="card__title" data-t="sensors">Was das Tier misst</h2>
+        <dl class="readout">
+          <div><dt data-t="distance">Ultraschall</dt><dd id="roDist">–</dd></div>
+          <div><dt data-t="line">Liniensensor L / R</dt><dd id="roLine">–</dd></div>
+          <div><dt data-t="motorL">Motor links</dt><dd><span class="bar"><span id="roML"></span></span></dd></div>
+          <div><dt data-t="motorR">Motor rechts</dt><dd><span class="bar"><span id="roMR"></span></span></dd></div>
+        </dl>
+      </section>
+
+      <section class="card">
+        <h2 class="card__title" data-t="messages">Meldungen</h2>
+        <div class="log" id="log" aria-live="polite"></div>
+      </section>
+
+      <details class="card help">
+        <summary data-t="helpTitle">Hilfe & Tipps</summary>
+        <ul>
+          <li data-t="help1">Das Tier lässt sich mit der Maus im Garten verschieben.</li>
+          <li data-t="help2">Hase und Schildkröte können gleichzeitig fahren und sich per Funk Nachrichten schicken.</li>
+          <li data-t="help3">Im Pfad-Garten gibt es eine schwarze Linie für den Liniensensor.</li>
+          <li data-t="help4">Der Simulator rechnet nur nach – echte Motoren fahren nie ganz genau gleich.</li>
+        </ul>
+      </details>
+
+      <input type="file" id="fileInput" accept=".hex,.ts,.js,.txt" hidden>
+    </aside>
+  </main>
+
+  <script src="sim/vendor/lzma-d-min.js"></script>
+  <script src="sim/hex.js"></script>
+  <script type="module" src="sim/main.js"></script>
+</body>
+</html>

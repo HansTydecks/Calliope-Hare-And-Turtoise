@@ -163,6 +163,7 @@ window.CONTENT_DE = (function () {
       merkCheckYes: 'Ja, weiter ✓',
       merkCheckNo: 'Nein, zeig ihn mir',
       openMakeCode: 'MakeCode öffnen',
+      openSimulator: 'Garten-Simulator',
       hardwareLabel: 'Ich besitze die nötige Hardware (Calliope mini + Motoren + Sensoren)'
     },
 
@@ -334,7 +335,7 @@ window.CONTENT_DE = (function () {
               { title: 'Blöcke einsortieren',
                 text: `Schiebe ${b('Motor beide … vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor beide anhalten')}.` },
               { title: 'Testen',
-                text: 'Starte den Simulator. Wenig Licht → er schläft. Viel Licht → er fährt. Kleiner Abstand → er stoppt.',
+                text: 'Klicke auf <strong>Herunterladen</strong> und zieh die .hex-Datei in den <a href="simulator.html" target="_blank" rel="noopener">Garten-Simulator</a>. Wenig Licht → er schläft. Viel Licht → er fährt. Hecke davor → er stoppt.',
                 textHw: 'Lade das Programm auf deinen Calliope. Licht an → er fährt. Hand vor den Sensor → er stoppt. Licht aus → er schläft.' }
             ]
           }
@@ -625,7 +626,7 @@ window.CONTENT_DE = (function () {
               { title: 'Blöcke einsortieren',
                 text: `Schiebe ${b('Motor beide … vorwärts')} und die Atem-Animation ins <strong>innere dann</strong>. Ins <strong>innere sonst</strong> kommt ${b('Motor beide anhalten')}.` },
               { title: 'Testen',
-                text: 'Starte den Simulator. Wenig Licht → sie ruht. Viel Licht → sie fährt. Kleiner Abstand → sie stoppt.',
+                text: 'Klicke auf <strong>Herunterladen</strong> und zieh die .hex-Datei in den <a href="simulator.html" target="_blank" rel="noopener">Garten-Simulator</a>. Wenig Licht → sie ruht. Viel Licht → sie fährt. Hecke davor → sie stoppt.',
                 textHw: 'Lade das Programm auf deinen Calliope. Licht an → sie fährt. Hand vor den Sensor → sie stoppt. Licht aus → sie ruht.' }
             ]
           }

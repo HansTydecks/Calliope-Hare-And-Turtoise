@@ -163,6 +163,7 @@ window.CONTENT_EN = (function () {
       merkCheckYes: 'Yes, continue ✓',
       merkCheckNo: 'No, show it to me',
       openMakeCode: 'Open MakeCode',
+      openSimulator: 'Garden simulator',
       hardwareLabel: 'I have the required hardware (Calliope mini + motors + sensors)'
     },
 
@@ -334,7 +335,7 @@ window.CONTENT_EN = (function () {
               { title: 'Sort the blocks',
                 text: `Move ${b('Motor both … forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('Motors both stop')} into the <strong>inner else</strong>.` },
               { title: 'Test',
-                text: 'Start the simulator. Little light → it sleeps. Lots of light → it drives. Small distance → it stops.',
+                text: 'Click <strong>Download</strong> and drag the .hex file into the <a href="simulator.html" target="_blank" rel="noopener">garden simulator</a>. Little light → it sleeps. Lots of light → it drives. Hedge in front → it stops.',
                 textHw: 'Download the program to your Calliope. Light on → it drives. Hand in front of the sensor → it stops. Light off → it sleeps.' }
             ]
           }
@@ -625,7 +626,7 @@ window.CONTENT_EN = (function () {
               { title: 'Sort the blocks',
                 text: `Move ${b('Motor both … forward')} and the breathing animation into the <strong>inner then</strong>. Put ${b('Motors both stop')} into the <strong>inner else</strong>.` },
               { title: 'Test',
-                text: 'Start the simulator. Little light → it rests. Lots of light → it drives. Small distance → it stops.',
+                text: 'Click <strong>Download</strong> and drag the .hex file into the <a href="simulator.html" target="_blank" rel="noopener">garden simulator</a>. Little light → it rests. Lots of light → it drives. Hedge in front → it stops.',
                 textHw: 'Download the program to your Calliope. Light on → it drives. Hand in front of the sensor → it stops. Light off → it rests.' }
             ]
           }
